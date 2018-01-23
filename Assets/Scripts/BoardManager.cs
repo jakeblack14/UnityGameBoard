@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//Test
 namespace GameCore {
     public class BoardManager : MonoBehaviour {
 
