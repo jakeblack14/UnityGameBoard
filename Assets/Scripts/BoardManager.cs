@@ -29,8 +29,6 @@ namespace GameCore {
         private Material previousMat;
         public Material selectedMat;
 
-        public bool isPlayerXTurn = true;
-
         private Move currentMove;
 
         private void Start()
@@ -84,8 +82,8 @@ namespace GameCore {
                 return;
 
             
-            currentMove.Begin.X = x;
-            currentMove.Begin.Y = y;
+            currentMove.Begin.X = y;
+            currentMove.Begin.Y = x;
 
             selectedGamePiece = GamePiecesArray[x, y];
 
@@ -109,8 +107,8 @@ namespace GameCore {
             //    isPlayerXTurn = !isPlayerXTurn;
             //}
 
-            currentMove.End.X = x;
-            currentMove.End.Y = y;
+            currentMove.End.X = y;
+            currentMove.End.Y = x;
 
             if(game.movePiece(currentPlayer.getIdentity(), currentMove))
             {
