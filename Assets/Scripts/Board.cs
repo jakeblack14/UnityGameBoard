@@ -151,7 +151,7 @@ namespace GameCore
             return true;
         }
 
-        public bool isGameOver()
+        public bool isGameOver() // Might need fixed for game over as well. 
         {
             if (gameOver)
             {
