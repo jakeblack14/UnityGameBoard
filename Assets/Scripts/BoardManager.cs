@@ -50,30 +50,36 @@ namespace GameCore {
         {
             UpdateSelection();
             //DrawChessboard();
-
-            if (Input.GetMouseButtonDown(0))
+            if (!game.gameOver())
             {
-                //selectionX and selectionY correspond to what square on the board the mouse is currently on
-                if (selectionX >= 0 && selectionY >= 0)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    //if(GamePiecesArray[selectionX, selectionY] != null)
-                    //{
-                    //    SelectGamePiece(selectionX, selectionY);
-                    //}
-                    //else
-                    //{
-                    //    MoveGamePiece(selectionX, selectionY);
-                    //}
+                    //selectionX and selectionY correspond to what square on the board the mouse is currently on
+                    if (selectionX >= 0 && selectionY >= 0)
+                    {
+                        //if(GamePiecesArray[selectionX, selectionY] != null)
+                        //{
+                        //    SelectGamePiece(selectionX, selectionY);
+                        //}
+                        //else
+                        //{
+                        //    MoveGamePiece(selectionX, selectionY);
+                        //}
 
-                    if (selectedGamePiece == null)
-                    {
-                        SelectGamePiece(selectionX, selectionY);
-                    }
-                    else
-                    {
-                        MoveGamePiece(selectionX, selectionY);
+                        if (selectedGamePiece == null)
+                        {
+                            SelectGamePiece(selectionX, selectionY);
+                        }
+                        else
+                        {
+                            MoveGamePiece(selectionX, selectionY);
+                        }
                     }
                 }
+            }
+            else
+            {
+              
             }
         }
 

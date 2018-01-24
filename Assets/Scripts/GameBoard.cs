@@ -85,7 +85,7 @@ namespace GameCore
         public bool gameOver()
         {
             //get the value from the Low Level Board
-            return board.isGameOver();
+           return board.isGameOver();
         }
 
         //Returns the token as a Square object based on the board itself
@@ -155,11 +155,9 @@ namespace GameCore
             {
                 return false;
             }
-            Boolean tempMakeMove = board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, false);
             //Execute the move on the Low Abstraction Board
-            Boolean tempIsGameOver = board.isGameOver();
-            //return board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, false);
-            return tempMakeMove;
+            return board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, false);
+            
         }
 
     }
