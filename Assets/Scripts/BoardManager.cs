@@ -9,6 +9,7 @@ namespace GameCore {
         public GamePieces[,] GamePiecesArray { set; get; }
 
         private GamePieces selectedGamePiece;
+        private GamePieces removedGamePiece;
 
         private static GameBoard game;
 
@@ -55,6 +56,15 @@ namespace GameCore {
                 //selectionX and selectionY correspond to what square on the board the mouse is currently on
                 if (selectionX >= 0 && selectionY >= 0)
                 {
+                    //if(GamePiecesArray[selectionX, selectionY] != null)
+                    //{
+                    //    SelectGamePiece(selectionX, selectionY);
+                    //}
+                    //else
+                    //{
+                    //    MoveGamePiece(selectionX, selectionY);
+                    //}
+
                     if (selectedGamePiece == null)
                     {
                         SelectGamePiece(selectionX, selectionY);
@@ -112,6 +122,13 @@ namespace GameCore {
 
             if(game.movePiece(currentPlayer.getIdentity(), currentMove))
             {
+                if(game.pieceLastTaken != null)
+                {
+                    removedGamePiece = GamePiecesArray[game.pieceLastTaken.Y, game.pieceLastTaken.X];
+                    Destroy(removedGamePiece.GetComponent<GamePieces>());
+                    //GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
+                }
+
                 GamePiecesArray[selectedGamePiece.CurrentX, selectedGamePiece.CurrentY] = null;
 
                 selectedGamePiece.transform.position = GetTileCenter(x, y);
@@ -128,6 +145,12 @@ namespace GameCore {
                 {
                     currentPlayer.setPlayer(identity.X);
                 }
+            }
+
+            else
+            {
+                selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
+                selectedGamePiece = null;
             }
 
 

@@ -14,6 +14,8 @@ namespace GameCore
         public const short ROW = 8;
         public const short COL = 8;
 
+        public COORD pieceLastTaken = null;
+
         public identity firstPlayer;
 
 
@@ -117,7 +119,7 @@ namespace GameCore
             }
 
             //Try the move check on the Low Abstraction Board
-            return board.makeMove(isFirstsTurn, move.Begin.X - 1, move.Begin.Y - 1, move.End.X - 1, move.End.Y - 1, false);
+            return board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, true);
         }
 
 
@@ -130,8 +132,34 @@ namespace GameCore
                 isFirstsTurn = true;
             }
 
+            //Check the move
+            bool moveIsValid = checkMove(currentPlayer, move);
+            if (moveIsValid)
+            {
+                //If the move is valid...
+                //and if there is a piece from the other team that will be taken
+                char pieceAtEnd = board.getPieceAt(move.End.X, move.End.Y);
+                if (pieceAtEnd != (char)currentPlayer && pieceAtEnd != 'S')
+                {
+                    //set the destination as the last piece taken
+                    pieceLastTaken = move.End;
+                }
+                else
+                {
+                    //Otherwise, set the piece last taken to null
+
+                    pieceLastTaken = null;
+                }
+            }
+            else
+            {
+                return false;
+            }
+            Boolean tempMakeMove = board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, false);
             //Execute the move on the Low Abstraction Board
-            return board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, false);
+            Boolean tempIsGameOver = board.isGameOver();
+            //return board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, false);
+            return tempMakeMove;
         }
 
     }
