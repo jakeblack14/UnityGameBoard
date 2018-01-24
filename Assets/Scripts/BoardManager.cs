@@ -131,8 +131,8 @@ namespace GameCore {
                 if(game.pieceLastTaken != null)
                 {
                     removedGamePiece = GamePiecesArray[game.pieceLastTaken.Y, game.pieceLastTaken.X];
-                    Destroy(removedGamePiece.GetComponent<GamePieces>());
-                    //GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
+                    Destroy(removedGamePiece.GetComponent<MeshRenderer>());
+                    GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
                 }
 
                 GamePiecesArray[selectedGamePiece.CurrentX, selectedGamePiece.CurrentY] = null;
