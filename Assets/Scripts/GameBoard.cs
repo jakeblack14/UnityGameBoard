@@ -131,7 +131,7 @@ namespace GameCore
             }
 
             //Execute the move on the Low Abstraction Board
-            return board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, true);
+            return board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, false);
         }
 
     }
