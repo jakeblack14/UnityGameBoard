@@ -136,7 +136,7 @@ namespace GameCore {
 
                     Destroy(removedGamePiece.GetComponent<MeshRenderer>());
                     //activeGamePieces.Remove();
-                    GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
+                    GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = selectedGamePiece;
 
                     Destroy(removedGamePiece.GetComponent<GamePieces>());
                     //GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
@@ -144,6 +144,7 @@ namespace GameCore {
                 }
                 
                 GamePiecesArray[currentMove.Begin.Y,currentMove.Begin.X] = null;
+                //GamePiecesArray[currentMove.End.Y, currentMove.End.X] = selectedGamePiece;
 
                 selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
                 GamePiecesArray[x, y] = selectedGamePiece;
