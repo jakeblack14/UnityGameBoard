@@ -132,6 +132,7 @@ namespace GameCore {
                 {
                     removedGamePiece = GamePiecesArray[game.pieceLastTaken.Y, game.pieceLastTaken.X];
                     Destroy(removedGamePiece.GetComponent<MeshRenderer>());
+                    //activeGamePieces.Remove();
                     GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
                 }
 
@@ -155,7 +156,10 @@ namespace GameCore {
 
             else
             {
-                selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
+                if (selectedGamePiece.GetComponent<MeshRenderer>())
+                {
+                    selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
+                }
                 selectedGamePiece = null;
             }
 
