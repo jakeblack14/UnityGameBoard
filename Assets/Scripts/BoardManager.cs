@@ -131,9 +131,14 @@ namespace GameCore {
                 if(game.pieceLastTaken != null)
                 {
                     removedGamePiece = GamePiecesArray[game.pieceLastTaken.Y, game.pieceLastTaken.X];
+<<<<<<< HEAD
                     Destroy(removedGamePiece.GetComponent<MeshRenderer>());
                     //activeGamePieces.Remove();
                     GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
+=======
+                    Destroy(removedGamePiece.GetComponent<GamePieces>());
+                    //GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
+>>>>>>> parent of 944a684... Working Game Able to Destroy Objects
                 }
 
                 GamePiecesArray[selectedGamePiece.CurrentX, selectedGamePiece.CurrentY] = null;
