@@ -167,3 +167,4 @@ C:\Users\softdev.SI-203-01\Documents\GitHub\UnityGameBoard\Temp\UnityVS_bin\Debu
 C:\Users\softdev.SI-203-01\Documents\GitHub\UnityGameBoard\Temp\UnityVS_obj\Debug\UnityGameBoard.csproj.CoreCompileInputs.cache
 C:\Users\softdev.SI-203-01\Documents\GitHub\UnityGameBoard\Temp\UnityVS_obj\Debug\Assembly-CSharp.dll
 C:\Users\softdev.SI-203-01\Documents\GitHub\UnityGameBoard\Temp\UnityVS_obj\Debug\Assembly-CSharp.pdb
+C:\Users\softdev.SI-203-01\Documents\GitHub\UnityGameBoard\Temp\UnityVS_obj\Debug\UnityGameBoard.csprojResolveAssemblyReference.cache

@@ -102,11 +102,8 @@ namespace GameCore {
             currentMove.Begin.X = y;
             currentMove.Begin.Y = x;
 
-            try { selectedGamePiece = GamePiecesArray[x, y]; }
-            catch (Exception ex)
-            {
-                Console.Write(ex);
-            }
+            selectedGamePiece = GamePiecesArray[x, y];
+            
 
             previousMat = selectedGamePiece.GetComponent<MeshRenderer>().material;
             selectedMat.mainTexture = previousMat.mainTexture;
@@ -145,13 +142,10 @@ namespace GameCore {
                     //GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
 
                 }
+                
+                GamePiecesArray[currentMove.Begin.Y,currentMove.Begin.X] = null;
 
-                GamePiecesArray[selectedGamePiece.CurrentX, selectedGamePiece.CurrentY] = null;
-
-
-          
                 selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
-                activeGamePieces.RemoveAt(x);
                 GamePiecesArray[x, y] = selectedGamePiece;
 
                 selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
