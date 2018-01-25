@@ -9,7 +9,7 @@ namespace GameCore
     public class GameBoard
     {
         //Low Level Board class is used to track the physical board; will increase AI speed
-        public Board board;
+        public static Board board;
                 
         public const short ROW = 8;
         public const short COL = 8;
