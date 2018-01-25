@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -101,7 +102,11 @@ namespace GameCore {
             currentMove.Begin.X = y;
             currentMove.Begin.Y = x;
 
-            selectedGamePiece = GamePiecesArray[x, y];
+            try { selectedGamePiece = GamePiecesArray[x, y]; }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
 
             previousMat = selectedGamePiece.GetComponent<MeshRenderer>().material;
             selectedMat.mainTexture = previousMat.mainTexture;
@@ -131,19 +136,22 @@ namespace GameCore {
                 if(game.pieceLastTaken != null)
                 {
                     removedGamePiece = GamePiecesArray[game.pieceLastTaken.Y, game.pieceLastTaken.X];
-<<<<<<< HEAD
+
                     Destroy(removedGamePiece.GetComponent<MeshRenderer>());
                     //activeGamePieces.Remove();
                     GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
-=======
+
                     Destroy(removedGamePiece.GetComponent<GamePieces>());
                     //GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
->>>>>>> parent of 944a684... Working Game Able to Destroy Objects
+
                 }
 
                 GamePiecesArray[selectedGamePiece.CurrentX, selectedGamePiece.CurrentY] = null;
 
-                selectedGamePiece.transform.position = GetTileCenter(x, y);
+
+          
+                selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
+                activeGamePieces.RemoveAt(x);
                 GamePiecesArray[x, y] = selectedGamePiece;
 
                 selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
