@@ -141,10 +141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamePieces:
-  - {fileID: 1950771420778270, guid: 8767b6e97706b484f9197bf06dc480bb, type: 2}
-  - {fileID: 1683976706644754, guid: b0ae07619b2129e4b80ab3dbf6b5f312, type: 2}
+  - {fileID: 1350422577168664, guid: da5bb5ae45be62a4b8a373c238825b37, type: 2}
+  - {fileID: 1639294928536042, guid: c2556d20a12073f4885c816ca7ff739e, type: 2}
   selectedMat: {fileID: 2100000, guid: f631629de52d49647aea57f1c286ed4e, type: 2}
-  isPlayerXTurn: 1
 --- !u!4 &364588627
 Transform:
   m_ObjectHideFlags: 0
