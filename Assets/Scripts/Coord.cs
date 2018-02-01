@@ -8,7 +8,7 @@ namespace GameCore
 {
     public class COORD
     {
-        public int X;
-        public int Y;
+        public int row;
+        public int col;
     }
 }

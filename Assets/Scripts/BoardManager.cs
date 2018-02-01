@@ -19,8 +19,8 @@ namespace GameCore {
 
 
         Player PlayerX = new Player();
-        Player PlayerO = new Player();
-        Player currentPlayer = null;
+        Player PlayerO = new AIPlayer();
+        Player currentPlayer =  null;
 
         private int selectionX = -1;
         private int selectionY = -1;
@@ -53,7 +53,21 @@ namespace GameCore {
             //DrawChessboard();
             if (!game.gameOver())
             {
-                if (Input.GetMouseButtonDown(0))
+                if (currentPlayer.isAI())
+                {
+                    if (!currentPlayer.hasRequestedMove())
+                    {
+                        currentPlayer.requestMove();
+                    }
+                    else if (currentPlayer.hasMove())
+                    {
+                        Move automove = currentPlayer.getMove();
+                        SelectGamePiece(automove.Begin.col, automove.Begin.row);
+                        MoveGamePiece(automove.End.col, automove.End.row);
+
+                    }
+                }
+                else if (Input.GetMouseButtonDown(0))
                 {
                     //selectionX and selectionY correspond to what square on the board the mouse is currently on
                     if (selectionX >= 0 && selectionY >= 0)
@@ -99,12 +113,12 @@ namespace GameCore {
                 return;
 
             
-            currentMove.Begin.X = y;
-            currentMove.Begin.Y = x;
+            currentMove.Begin.row = y;
+            currentMove.Begin.col = x;
 
             selectedGamePiece = GamePiecesArray[x, y];
             
-
+            //DO NOT DEBUG NEXT LINE
             previousMat = selectedGamePiece.GetComponent<MeshRenderer>().material;
             selectedMat.mainTexture = previousMat.mainTexture;
             selectedGamePiece.GetComponent<MeshRenderer>().material = selectedMat;
@@ -125,26 +139,26 @@ namespace GameCore {
             //    isPlayerXTurn = !isPlayerXTurn;
             //}
 
-            currentMove.End.X = y;
-            currentMove.End.Y = x;
+            currentMove.End.row = y;
+            currentMove.End.col = x;
 
             if(game.movePiece(currentPlayer.getIdentity(), currentMove))
             {
                 if(game.pieceLastTaken != null)
                 {
-                    removedGamePiece = GamePiecesArray[game.pieceLastTaken.Y, game.pieceLastTaken.X];
+                    removedGamePiece = GamePiecesArray[game.pieceLastTaken.col, game.pieceLastTaken.row];
 
                     Destroy(removedGamePiece.GetComponent<MeshRenderer>());
                     //activeGamePieces.Remove();
-                    GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = selectedGamePiece;
+                    GamePiecesArray[game.pieceLastTaken.row, game.pieceLastTaken.col] = selectedGamePiece;
 
                     Destroy(removedGamePiece.GetComponent<GamePieces>());
                     //GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
 
                 }
                 
-                GamePiecesArray[currentMove.Begin.Y,currentMove.Begin.X] = null;
-                //GamePiecesArray[currentMove.End.Y, currentMove.End.X] = selectedGamePiece;
+                GamePiecesArray[currentMove.Begin.col,currentMove.Begin.row] = null;
+                //GamePiecesArray[currentMove.End.col, currentMove.End.row] = selectedGamePiece;
 
                 selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
                 GamePiecesArray[x, y] = selectedGamePiece;
@@ -152,13 +166,14 @@ namespace GameCore {
                 selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
                 selectedGamePiece = null;
 
+
                 if (currentPlayer.getIdentity() == identity.X)
                 {
-                    currentPlayer.setPlayer(identity.O);
+                    currentPlayer = PlayerO;
                 }
                 else
                 {
-                    currentPlayer.setPlayer(identity.X);
+                    currentPlayer = PlayerX;
                 }
             }
 
@@ -233,35 +248,10 @@ namespace GameCore {
             }
         }
 
-        //private void DrawChessboard()
-        //{
-        //    //line pointing to the right
-        //    Vector3 widthLine = Vector3.right * 8;
-
-        //    //line pointing forward
-        //    Vector3 heightLine = Vector3.forward * 8;
-
-        //    for(int i = 0; i <= 8; i++)
-        //    {
-        //        Vector3 start = Vector3.forward * i;
-        //        Debug.DrawLine(start, start + widthLine);
-        //        for (int j = 0; j <= 8; j++)
-        //        {
-        //            start = Vector3.right * j;
-        //            Debug.DrawLine(start, start + heightLine);
-        //        }
-        //    }
-
-        //    //Draw the selection
-        //    if(selectionX >= 0 && selectionY >= 0)
-        //    {
-        //        Debug.DrawLine( Vector3.forward * selectionY + Vector3.right * selectionX,
-        //            Vector3.forward * (selectionY + 1) + Vector3.right * (selectionX + 1));
-
-        //        Debug.DrawLine(
-        //Vector3.forward * (selectionY + 1) + Vector3.right * selectionX,
-        //Vector3.forward * selectionY + Vector3.right * (selectionX + 1));
-        //    }
-        //}
+        
+        public static Board getBoard()
+        {
+            return game.getBoard();
+        }
     }
 }

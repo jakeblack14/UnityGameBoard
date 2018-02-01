@@ -23,11 +23,28 @@ namespace GameCore
             return playerIdentity;
         }
 
-        public Move getMove()
+        public virtual Move getMove()
         {
-            Move result = new GameCore.Move();
-            result.getFromUser(this);
-            return result;
+            return null;
+        }
+
+        public virtual bool isAI()
+        {
+            return false;
+        }
+
+        public virtual void requestMove()
+        { }
+
+        public virtual bool hasRequestedMove()
+        {
+            return false;
+        }
+
+
+        public virtual bool hasMove()
+        {
+            return false;
         }
 
         /*public char getIdentity()

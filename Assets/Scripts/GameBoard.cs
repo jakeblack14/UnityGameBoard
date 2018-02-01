@@ -19,10 +19,23 @@ namespace GameCore
         public identity firstPlayer;
 
 
-        //Returns a copy of the Low Level Board
+        //Returns a COPY of the Low Level Board
         public Board getBoard()
         {
-            return board;
+            //Make a copy of the board
+            Board result = new Board();
+
+            //Copy every element to the copy
+            result.whiteCount = board.whiteCount;
+            result.blackCount = board.blackCount;
+            for (int i = 0; i < 8; i++)
+            {
+                result.whiteRows[i] = board.whiteRows[i];
+                result.blackRows[i] = board.blackRows[i];
+            }
+
+            //Return the copy
+            return result;
         }
 
         //Initializing a New Gameboard
@@ -93,7 +106,7 @@ namespace GameCore
         {
                         
             //get the piece value from the board, using its 0-7 reference system
-            char temp = board.getPieceAt(coord.X - 1, coord.Y - 1);
+            char temp = board.getPieceAt(coord.row - 1, coord.col - 1);
 
             //Return the square type represented by the value
             if (temp == 'W')
@@ -119,7 +132,7 @@ namespace GameCore
             }
 
             //Try the move check on the Low Abstraction Board
-            return board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, true);
+            return board.makeMove(isFirstsTurn, move.Begin.row, move.Begin.col, move.End.row, move.End.col, true);
         }
 
 
@@ -138,7 +151,7 @@ namespace GameCore
             {
                 //If the move is valid...
                 //and if there is a piece from the other team that will be taken
-                char pieceAtEnd = board.getPieceAt(move.End.X, move.End.Y);
+                char pieceAtEnd = board.getPieceAt(move.End.row, move.End.col);
                 if (pieceAtEnd != (char)currentPlayer && pieceAtEnd != 'S')
                 {
                     //set the destination as the last piece taken
@@ -156,7 +169,7 @@ namespace GameCore
                 return false;
             }
             //Execute the move on the Low Abstraction Board
-            return board.makeMove(isFirstsTurn, move.Begin.X, move.Begin.Y, move.End.X, move.End.Y, false);
+            return board.makeMove(isFirstsTurn, move.Begin.row, move.Begin.col, move.End.row, move.End.col, false);
             
         }
 
