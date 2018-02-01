@@ -43,8 +43,7 @@ namespace GameCore
             }
         }
 
-
-
+        
         public override void requestMove()
         {
             Thread thread = new Thread(executeRequestMove);
