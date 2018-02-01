@@ -93,7 +93,7 @@ namespace GameCore {
             //if (GamePiecesArray[x, y].isPlayerX != isPlayerXTurn)
             //    return;
 
-            //currentPlayer.turn
+            //currentPlayer.turn 
 
             if (GamePiecesArray[x, y].pieceIdentity != currentPlayer.getIdentity())
                 return;
