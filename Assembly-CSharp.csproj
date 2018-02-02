@@ -51,10 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\AI\AICore.cs" />
-     <Compile Include="Assets\Scripts\AI\AIEvaluationUtils.cs" />
-     <Compile Include="Assets\Scripts\AI\Node.cs" />
-     <Compile Include="Assets\Scripts\AI\Tree.cs" />
+     <Compile Include="Assets\Materials\LowPolyEarth\EarthSpinScript.cs" />
      <Compile Include="Assets\Scripts\AIPlayer.cs" />
      <Compile Include="Assets\Scripts\Board.cs" />
      <Compile Include="Assets\Scripts\BoardManager.cs" />
@@ -67,11 +64,12 @@
      <Compile Include="Assets\Scripts\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
      <Compile Include="Assets\Scripts\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
      <Compile Include="Assets\Scripts\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+     <Compile Include="Assets\Scripts\ObjectSpin.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\Program.cs" />
      <Compile Include="Assets\Scripts\Properties\AssemblyInfo.cs" />
      <Compile Include="Assets\Scripts\QuitOnClick.cs" />
      <Compile Include="Assets\Scripts\Square.cs" />
+     <Compile Include="Assets\Scripts\WorldSpin.cs" />
      <None Include="Assets\Scripts\obj\Debug\GameCore.csproj.FileListAbsolute.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
