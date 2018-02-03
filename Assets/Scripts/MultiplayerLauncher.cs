@@ -68,10 +68,11 @@ namespace TechPlanet.SpaceRace
         /// </summary>
         void Start()
         {
-           // progressLabel.SetActive(false);
-          //  controlPanel.SetActive(true);
+            // progressLabel.SetActive(false);
+            //  controlPanel.SetActive(true);
             //Random rand = new Random();
-           // if (rand.Next(0, 2))
+            // if (rand.Next(0, 2))
+            
         }
 
 
