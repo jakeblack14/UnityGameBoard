@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class NetworkMovements : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    void Start() {
+        PhotonView photonView = PhotonView.Get(this);
+        //example of chat message call
+        //photonView.RPC("ChatMessage", PhotonTargets.All, "jup", "and jup!");
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+    }
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
@@ -29,5 +31,11 @@ public class NetworkMovements : MonoBehaviour {
             //Turn = stream.ReceiveNext();
         }
 
+    }
+    //So to call a function that is marked like below as PunRPC you have to initialize a PhotonView
+    [PunRPC]
+    void ChatMessage(string a, string b)
+    {
+        Debug.Log(string.Format("Chat message ", a, b));
     }
 }
