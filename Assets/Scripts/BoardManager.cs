@@ -30,6 +30,7 @@ namespace GameCore {
 
         public GameObject canvas;
         public GameObject GameOverPanel;
+        private static bool wasCreated;
 
         private Material previousMat;
         public Material selectedMat;
@@ -38,6 +39,8 @@ namespace GameCore {
 
         private void Start()
         {
+            wasCreated = false;
+
             SpawnAllGamePieces();
 
             PlayerX.setPlayer(identity.X);
@@ -98,8 +101,12 @@ namespace GameCore {
             else
             {
                 //pull up UI
-                GameObject gameOverPanel = Instantiate(GameOverPanel) as GameObject;
-                gameOverPanel.transform.SetParent(canvas.transform, false);
+                if (!wasCreated)
+                {
+                    GameObject gameOverPanel = Instantiate(GameOverPanel) as GameObject;
+                    gameOverPanel.transform.SetParent(canvas.transform, false);
+                    wasCreated = true;
+                }
             }
         }
 

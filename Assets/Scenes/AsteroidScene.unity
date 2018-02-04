@@ -257,7 +257,7 @@ MonoBehaviour:
   - {fileID: 1794387152681008, guid: f162143aa8dfbff4598c44ec120f761d, type: 2}
   - {fileID: 1683976706644754, guid: b0ae07619b2129e4b80ab3dbf6b5f312, type: 2}
   canvas: {fileID: 1995059285}
-  GameOverPanel: {fileID: 1901653754963598, guid: 3ec01bbacbcf81345af382dd05f5be6b,
+  GameOverPanel: {fileID: 1765621098322546, guid: 3ec01bbacbcf81345af382dd05f5be6b,
     type: 2}
   selectedMat: {fileID: 2100000, guid: f631629de52d49647aea57f1c286ed4e, type: 2}
 --- !u!4 &364588627
