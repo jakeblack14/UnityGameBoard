@@ -28,6 +28,9 @@ namespace GameCore {
         public List<GameObject> gamePieces;
         private List<GameObject> activeGamePieces;
 
+        public GameObject canvas;
+        public GameObject GameOverPanel;
+
         private Material previousMat;
         public Material selectedMat;
 
@@ -94,7 +97,9 @@ namespace GameCore {
             }
             else
             {
-              
+                //pull up UI
+                GameObject gameOverPanel = Instantiate(GameOverPanel) as GameObject;
+                gameOverPanel.transform.SetParent(canvas.transform, false);
             }
         }
 
