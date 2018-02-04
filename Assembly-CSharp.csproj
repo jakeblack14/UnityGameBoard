@@ -202,6 +202,7 @@
      <Compile Include="Assets\Scripts\Enums.cs" />
      <Compile Include="Assets\Scripts\GameBoard.cs" />
      <Compile Include="Assets\Scripts\GamePieces.cs" />
+     <Compile Include="Assets\Scripts\GameSettingsManager.cs" />
      <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\MultiplayerLauncher.cs" />
