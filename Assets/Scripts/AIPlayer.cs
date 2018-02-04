@@ -11,17 +11,10 @@ namespace GameCore
 {
     class AIPlayer : Player
     {
-        public struct AIMove
-        {
-            public int value;
-            public ushort row;
-            public ushort col;
-            public ushort target;
-        };
 
         //Imports C++ AI DLL
-        [DllImport(@"AICoreD.dll")]
-        private static extern AIMove AIGetMove(int blackCount, int whiteCount, uint[] blackRows, uint[] whiteRows, bool isWhitesTurn);
+        //[DllImport(@"AICore.dll")]
+        //private static extern AIMove AIGetMove(int blackCount, int whiteCount, uint[] blackRows, uint[] whiteRows, bool isWhitesTurn);
 
         private Move newMove = null;
         private bool movePending = false;
@@ -74,7 +67,7 @@ namespace GameCore
 
 
             //Get the move from the AI DLL
-            AIMove nextMove = AIGetMove(board.blackCount, board.whiteCount, board.blackRows, board.whiteRows, isWhitesTurn);
+            AICore.AIMove nextMove = AICore.AICore.AIGetMove(board.blackCount, board.whiteCount, board.blackRows, board.whiteRows, isWhitesTurn);
 
             //Convert the AIMove to a Move class
             result.Begin.row = nextMove.row;

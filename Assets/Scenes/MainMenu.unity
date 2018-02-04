@@ -979,8 +979,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 793312533}
-        m_MethodName: MultiplayerLauncher.Connect
+      - m_Target: {fileID: 793312534}
+        m_MethodName: Connect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2263,6 +2263,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f9b7ca9b061ec4b9ff50dac15b31aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Loglevel: 1
+  Turn: 0
+  Player1Turn: 0
+  Player2Turn: 0
 --- !u!224 &793312535
 RectTransform:
   m_ObjectHideFlags: 0
