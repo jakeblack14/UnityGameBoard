@@ -14,7 +14,13 @@ public class NetworkMovements : MonoBehaviour {
         //photonView.RPC("ChatMessage", PhotonTargets.All, "jup", "and jup!");
         move = new Move();
     }
-
+    void Awake()
+    {
+        // Use this function for initializing variables or game state, called once during the lifetime of the script
+        // This is called before Start
+        // You can use start to pass any information back and forth when it iniatlizes
+        // Will probably move starts stuff into this after more research
+    }
     // Update is called once per frame
     void Update() {
 
@@ -41,7 +47,13 @@ public class NetworkMovements : MonoBehaviour {
     {
         Debug.Log(string.Format("Chat message ", a, b));
     }
-
+    //can maybe use this as the event that sends the move? Keep thinking on this
+    private void OnMouseEnter()
+    {
+        
+    }
+    //Should send the move to everyone on the network, need to look and see if it sends it to itself also
+    //it is possible to change it if it does
     [PunRPC]
     public void sendMove()
     {
