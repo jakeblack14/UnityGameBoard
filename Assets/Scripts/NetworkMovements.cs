@@ -55,7 +55,7 @@ public class NetworkMovements : MonoBehaviour {
     //Should send the move to everyone on the network, need to look and see if it sends it to itself also
     //it is possible to change it if it does
     [PunRPC]
-    public void sendMove()
+    public void SendMove()
     {
         //Need more here like some way to connect to the gameboard 
         // movePiece(player.Identity, move);
