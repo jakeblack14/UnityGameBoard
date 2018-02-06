@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //TestChanges
 namespace GameCore {
@@ -30,6 +31,7 @@ namespace GameCore {
 
         public GameObject canvas;
         public GameObject GameOverPanel;
+        public Text winnerText;
         private static bool wasCreated;
 
         private Material previousMat;
@@ -100,12 +102,22 @@ namespace GameCore {
             }
             else
             {
-                //pull up UI
+                //pull up Game Over Screen
                 if (!wasCreated)
                 {
                     GameObject gameOverPanel = Instantiate(GameOverPanel) as GameObject;
                     gameOverPanel.transform.SetParent(canvas.transform, false);
                     wasCreated = true;
+
+                    if (currentPlayer == PlayerX)
+                    {
+                        winnerText.text = "Player X wins!!";
+                    }
+                    else if (currentPlayer == PlayerO)
+                    {
+                        winnerText.text = "Player O wins!!";
+                    }
+
                 }
             }
         }
