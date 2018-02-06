@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TechPlanet.SpaceRace;
 //TestChanges
 namespace GameCore {
     public class BoardManager : MonoBehaviour {
@@ -210,7 +210,7 @@ namespace GameCore {
                 selectedGamePiece = null;
             }
 
-
+            
         }
 
         private void UpdateSelection()
