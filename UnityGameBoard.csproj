@@ -480,6 +480,7 @@
     <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\MultiplayerLauncher.cs" />
+    <Compile Include="Assets\Scripts\NetworkGameManager.cs" />
     <Compile Include="Assets\Scripts\NetworkInfoSent.cs" />
     <Compile Include="Assets\Scripts\NetworkMovements.cs" />
     <Compile Include="Assets\Scripts\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />

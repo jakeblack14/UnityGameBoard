@@ -117,6 +117,7 @@ namespace TechPlanet.SpaceRace
             // #Critical: The first we try to do is to join a potential existing room. If there is, good, else, we'll be called back with OnPhotonRandomJoinFailed()  
             PhotonNetwork.JoinRandomRoom();
 
+
         }
 
 
