@@ -142,6 +142,7 @@ namespace TechPlanet.SpaceRace
         public override void OnJoinedRoom()
         {
             Debug.Log("DemoAnimator/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
+           // Idk what goes in this yet but this seems to be the way to load a scene through photon network PhotonNetwork.InstantiateSceneObject()
         }
         #endregion
     }

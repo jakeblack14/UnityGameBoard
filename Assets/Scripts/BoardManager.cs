@@ -162,7 +162,7 @@ namespace GameCore {
 
                     Destroy(removedGamePiece.GetComponent<MeshRenderer>());
                     //activeGamePieces.Remove();
-                    GamePiecesArray[game.pieceLastTaken.row, game.pieceLastTaken.col] = selectedGamePiece;
+                    GamePiecesArray[game.pieceLastTaken.col, game.pieceLastTaken.row] = selectedGamePiece;
 
                     Destroy(removedGamePiece.GetComponent<GamePieces>());
                     //GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
@@ -173,7 +173,7 @@ namespace GameCore {
                 //GamePiecesArray[currentMove.End.col, currentMove.End.row] = selectedGamePiece;
 
                 selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
-                GamePiecesArray[x, y] = selectedGamePiece;
+                GamePiecesArray[x,y] = selectedGamePiece;
 
                 selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
                 selectedGamePiece = null;

@@ -54,6 +54,9 @@ public class NetworkMovements : MonoBehaviour {
     }
     //Should send the move to everyone on the network, need to look and see if it sends it to itself also
     //it is possible to change it if it does
+    /// <summary>
+    /// This in theory should send the move just done to the other player
+    /// </summary>
     [PunRPC]
     public void SendMove()
     {
