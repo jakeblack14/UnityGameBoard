@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 using System.Runtime.InteropServices;
 using System.Threading;
-using TechPlanet.SpaceRace
+using TechPlanet.SpaceRace;
 
 namespace GameCore
 {
-    class NetworkPlayer : Player, 
+    public class NetworkPlayer : Player 
     {
 
         //Imports C++ AI DLL
         //[DllImport(@"AICore.dll")]
         //private static extern AIMove AIGetMove(int blackCount, int whiteCount, uint[] blackRows, uint[] whiteRows, bool isWhitesTurn);
 
-        private Move newMove = null;
-        private bool movePending = false;
+        public Move newMove = null;
+        public bool movePending = false;
 
         public override bool isNetwork()
         {

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using GameCore;
 
 namespace TechPlanet.SpaceRace
 {
@@ -14,16 +14,14 @@ namespace TechPlanet.SpaceRace
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
         /// </summary>   
         [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
-      //  public byte MaxPlayersPerRoom = 2;
+        //  public byte MaxPlayersPerRoom = 2;
 
-       // [Tooltip("The Ui Panel to let the user enter name, connect and play")]
-       // public GameObject controlPanel;
-       // [Tooltip("The UI Label to inform the user that the connection is in progress")]
-      //  public GameObject progressLabel;
+        // [Tooltip("The Ui Panel to let the user enter name, connect and play")]
+        // public GameObject controlPanel;
+        // [Tooltip("The UI Label to inform the user that the connection is in progress")]
+        //  public GameObject progressLabel;
 
-        public int Turn;
-        public int Player1Turn;
-        public int Player2Turn;
+        
         #endregion
 
 
@@ -60,6 +58,9 @@ namespace TechPlanet.SpaceRace
             // #NotImportant
             // Force LogLevel
             PhotonNetwork.logLevel = Loglevel;
+            GameCore.NetworkPlayer player1 = new GameCore.NetworkPlayer();
+
+            PhotonNetwork.OnEventCall += OnEvent;
         }
 
 
@@ -144,6 +145,27 @@ namespace TechPlanet.SpaceRace
         {
             Debug.Log("DemoAnimator/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
            // Idk what goes in this yet but this seems to be the way to load a scene through photon network PhotonNetwork.InstantiateSceneObject()
+           if (PhotonNetwork.isMasterClient)
+            {
+                PhotonNetwork.LoadLevel("MultiPlayer Scene");
+            }
+        }
+
+        public void SendTheMove(GameCore.NetworkPlayer player1)
+        {
+            Move move = new Move();
+            move = player1.getMove();
+            PhotonNetwork.RaiseEvent(0, move, true, null);
+        }
+        public void MakeMove(GameCore.NetworkPlayer player1)
+        {
+
+        }
+        void OnEvent(byte eventCode, object content, int senderId)
+        {
+            Debug.Log("it works now you hoe");
+            PhotonPlayer sender = PhotonPlayer.Find(senderId); // This shows who sent the message
+            Move =
         }
         #endregion
     }
