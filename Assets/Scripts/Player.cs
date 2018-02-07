@@ -33,6 +33,11 @@ namespace GameCore
             return false;
         }
 
+        public virtual bool isNetwork()
+        {
+            return false;
+        }
+
         public virtual void requestMove()
         { }
 
