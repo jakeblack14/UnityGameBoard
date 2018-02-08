@@ -21,7 +21,8 @@ namespace TechPlanet.SpaceRace
         // [Tooltip("The UI Label to inform the user that the connection is in progress")]
         //  public GameObject progressLabel;
         GameObject button;
-        
+        GameCore.NetworkPlayer player1 = new GameCore.NetworkPlayer();
+        GameCore.NetworkPlayer player2 = new GameCore.NetworkPlayer();
         #endregion
 
 
@@ -58,8 +59,8 @@ namespace TechPlanet.SpaceRace
             // #NotImportant
             // Force LogLevel
             PhotonNetwork.logLevel = Loglevel;
-            GameCore.NetworkPlayer player1 = new GameCore.NetworkPlayer();
-
+            
+            
             PhotonNetwork.OnEventCall += OnEvent;
         }
 
@@ -137,7 +138,8 @@ namespace TechPlanet.SpaceRace
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
-            PhotonNetwork.CreateRoom(null, roomOptions, null);
+            player1.setPlayer(identity.X);
+            PhotonNetwork.CreateRoom("Room1", roomOptions, null);
                 
           //  PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2 }, null);
         }
@@ -150,6 +152,19 @@ namespace TechPlanet.SpaceRace
             {
                 PhotonNetwork.LoadLevel("MultiPlayer Scene");
             }
+           if (PhotonNetwork.room.PlayerCount == 2)
+            {
+                StartGame();
+            }
+            
+        }
+        void StartGame()
+        {
+           if (player1.getIdentity() != identity.X)
+            {
+                player1.setPlayer(identity.O);
+            }
+          
         }
 
         public void SendTheMove(GameCore.NetworkPlayer player1)
