@@ -20,7 +20,7 @@ namespace TechPlanet.SpaceRace
         // public GameObject controlPanel;
         // [Tooltip("The UI Label to inform the user that the connection is in progress")]
         //  public GameObject progressLabel;
-
+        GameObject button;
         
         #endregion
 
@@ -73,7 +73,7 @@ namespace TechPlanet.SpaceRace
             //  controlPanel.SetActive(true);
             //Random rand = new Random();
             // if (rand.Next(0, 2))
-            
+            button = GameObject.Find("Start");
         }
 
         
@@ -104,6 +104,7 @@ namespace TechPlanet.SpaceRace
                 // #Critical, we must first and foremost connect to Photon Online Server.
                 PhotonNetwork.ConnectUsingSettings(_gameVersion);
             }
+            button.SetActive(false);
         }
 
 
@@ -155,7 +156,7 @@ namespace TechPlanet.SpaceRace
         {
             Move move = new Move();
             move = player1.getMove();
-            PhotonNetwork.RaiseEvent(0, move, true, null);
+            PhotonNetwork.RaiseEvent(0, player1, true, null);
         }
         public void MakeMove(GameCore.NetworkPlayer player1)
         {
@@ -165,7 +166,7 @@ namespace TechPlanet.SpaceRace
         {
             Debug.Log("it works now you hoe");
             PhotonPlayer sender = PhotonPlayer.Find(senderId); // This shows who sent the message
-            Move =
+            GameCore.NetworkPlayer tempPlayer = (GameCore.NetworkPlayer)content;
         }
         #endregion
     }
