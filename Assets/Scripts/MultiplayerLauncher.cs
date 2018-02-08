@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using GameCore;
 
 namespace TechPlanet.SpaceRace
 {
@@ -14,16 +14,15 @@ namespace TechPlanet.SpaceRace
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
         /// </summary>   
         [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
-      //  public byte MaxPlayersPerRoom = 2;
+        //  public byte MaxPlayersPerRoom = 2;
 
-       // [Tooltip("The Ui Panel to let the user enter name, connect and play")]
-       // public GameObject controlPanel;
-       // [Tooltip("The UI Label to inform the user that the connection is in progress")]
-      //  public GameObject progressLabel;
-
-        public int Turn;
-        public int Player1Turn;
-        public int Player2Turn;
+        // [Tooltip("The Ui Panel to let the user enter name, connect and play")]
+        // public GameObject controlPanel;
+        // [Tooltip("The UI Label to inform the user that the connection is in progress")]
+        //  public GameObject progressLabel;
+        GameObject button;
+        GameCore.NetworkPlayer player1 = new GameCore.NetworkPlayer();
+        GameCore.NetworkPlayer player2 = new GameCore.NetworkPlayer();
         #endregion
 
 
@@ -60,6 +59,9 @@ namespace TechPlanet.SpaceRace
             // #NotImportant
             // Force LogLevel
             PhotonNetwork.logLevel = Loglevel;
+            
+            
+            PhotonNetwork.OnEventCall += OnEvent;
         }
 
 
@@ -72,10 +74,10 @@ namespace TechPlanet.SpaceRace
             //  controlPanel.SetActive(true);
             //Random rand = new Random();
             // if (rand.Next(0, 2))
-            
+            button = GameObject.Find("Start");
         }
 
-
+        
         #endregion
 
 
@@ -103,6 +105,7 @@ namespace TechPlanet.SpaceRace
                 // #Critical, we must first and foremost connect to Photon Online Server.
                 PhotonNetwork.ConnectUsingSettings(_gameVersion);
             }
+            button.SetActive(false);
         }
 
 
@@ -135,7 +138,9 @@ namespace TechPlanet.SpaceRace
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
-            PhotonNetwork.CreateRoom(null, roomOptions, null);
+            player1.setPlayer(identity.X);
+            Debug.Log("Identity is x");
+            PhotonNetwork.CreateRoom("Room1", roomOptions, null);
                 
           //  PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2 }, null);
         }
@@ -144,6 +149,41 @@ namespace TechPlanet.SpaceRace
         {
             Debug.Log("DemoAnimator/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
            // Idk what goes in this yet but this seems to be the way to load a scene through photon network PhotonNetwork.InstantiateSceneObject()
+           if (PhotonNetwork.isMasterClient)
+            {
+                PhotonNetwork.LoadLevel("MultiPlayer Scene");
+            }
+           if (PhotonNetwork.room.PlayerCount == 2)
+            {
+                StartGame();
+            }
+            
+        }
+        void StartGame()
+        {
+           if (player1.getIdentity() != identity.X)
+            {
+                player1.setPlayer(identity.O);
+                Debug.Log("Identity is 0");
+            }
+          
+        }
+
+        public void SendTheMove(GameCore.NetworkPlayer player1)
+        {
+            Move move = new Move();
+            move = player1.getMove();
+            PhotonNetwork.RaiseEvent(0, player1, true, null);
+        }
+        public void MakeMove(GameCore.NetworkPlayer player1)
+        {
+
+        }
+        void OnEvent(byte eventCode, object content, int senderId)
+        {
+            Debug.Log("it works now you hoe");
+            PhotonPlayer sender = PhotonPlayer.Find(senderId); // This shows who sent the message
+            GameCore.NetworkPlayer tempPlayer = (GameCore.NetworkPlayer)content;
         }
         #endregion
     }
