@@ -139,6 +139,7 @@ namespace TechPlanet.SpaceRace
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
             player1.setPlayer(identity.X);
+            Debug.Log("Identity is x");
             PhotonNetwork.CreateRoom("Room1", roomOptions, null);
                 
           //  PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2 }, null);
@@ -163,6 +164,7 @@ namespace TechPlanet.SpaceRace
            if (player1.getIdentity() != identity.X)
             {
                 player1.setPlayer(identity.O);
+                Debug.Log("Identity is 0");
             }
           
         }
