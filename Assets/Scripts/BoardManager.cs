@@ -20,7 +20,7 @@ namespace GameCore {
 
 
         Player PlayerX = new Player();
-        Player PlayerO = new AIPlayer();
+        Player PlayerO = new Player();
         Player currentPlayer =  null;
 
         private int selectionX = -1;
@@ -47,6 +47,7 @@ namespace GameCore {
 
             PlayerX.setPlayer(identity.X);
             PlayerO.setPlayer(identity.O);
+            
             currentPlayer = PlayerX;
 
             game = new GameBoard();

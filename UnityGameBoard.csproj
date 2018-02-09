@@ -469,15 +469,15 @@
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
     <Compile Include="Assets\Scripts\AIPlayer.cs" />
-    <Compile Include="Assets\Scripts\BackButtonManager.cs" />
     <Compile Include="Assets\Scripts\Board.cs" />
     <Compile Include="Assets\Scripts\BoardManager.cs" />
     <Compile Include="Assets\Scripts\Coord.cs" />
     <Compile Include="Assets\Scripts\Enums.cs" />
     <Compile Include="Assets\Scripts\GameBoard.cs" />
+    <Compile Include="Assets\Scripts\GameBoardData.cs" />
     <Compile Include="Assets\Scripts\GamePieces.cs" />
-    <Compile Include="Assets\Scripts\GameSettingsManager.cs" />
     <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
+    <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\MultiplayerLauncher.cs" />
     <Compile Include="Assets\Scripts\NetworkGameManager.cs" />

@@ -166,6 +166,8 @@ namespace TechPlanet.SpaceRace
                 player1.setPlayer(identity.O);
                 Debug.Log("Identity is 0");
             }
+           //Send player identity to gamecore
+
           
         }
 
@@ -175,15 +177,13 @@ namespace TechPlanet.SpaceRace
             move = player1.getMove();
             PhotonNetwork.RaiseEvent(0, player1, true, null);
         }
-        public void MakeMove(GameCore.NetworkPlayer player1)
-        {
-
-        }
+       
         void OnEvent(byte eventCode, object content, int senderId)
         {
             Debug.Log("it works now you hoe");
             PhotonPlayer sender = PhotonPlayer.Find(senderId); // This shows who sent the message
             GameCore.NetworkPlayer tempPlayer = (GameCore.NetworkPlayer)content;
+          //  MakeMove(tempPlayer.getMove);
         }
         #endregion
     }

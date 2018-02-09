@@ -125,6 +125,9 @@ namespace GameCore
 
         public bool checkMove(identity currentPlayer, Move move)
         {
+            //Flip the move if needed
+            Move boardRelativeMove = flipMoveIfNeeded(move);
+
             bool isFirstsTurn = false;
             if (firstPlayer == currentPlayer)
             {
@@ -132,7 +135,7 @@ namespace GameCore
             }
 
             //Try the move check on the Low Abstraction Board
-            return board.makeMove(isFirstsTurn, move.Begin.row, move.Begin.col, move.End.row, move.End.col, true);
+            return board.makeMove(isFirstsTurn, boardRelativeMove.Begin.row, boardRelativeMove.Begin.col, boardRelativeMove.End.row, boardRelativeMove.End.col, true);
         }
 
 
@@ -145,14 +148,20 @@ namespace GameCore
                 isFirstsTurn = true;
             }
 
+            //Flip the move if needed
+            Move boardRelativeMove = flipMoveIfNeeded(move);
+
+
             //Check the move
             bool moveIsValid = checkMove(currentPlayer, move);
             if (moveIsValid)
             {
+
+
                 //If the move is valid...
                 //and if there is a piece from the other team that will be taken
-                char pieceAtEnd = board.getPieceAt(move.End.row, move.End.col);
-                if (pieceAtEnd != (char)currentPlayer && pieceAtEnd != 'S')
+                char pieceAtEnd = board.getPieceAt(boardRelativeMove.End.row, boardRelativeMove.End.col);
+                if (pieceAtEnd != 'S')
                 {
                     //set the destination as the last piece taken
                     pieceLastTaken = move.End;
@@ -169,8 +178,25 @@ namespace GameCore
                 return false;
             }
             //Execute the move on the Low Abstraction Board
-            return board.makeMove(isFirstsTurn, move.Begin.row, move.Begin.col, move.End.row, move.End.col, false);
+            return board.makeMove(isFirstsTurn, boardRelativeMove.Begin.row, boardRelativeMove.Begin.col, boardRelativeMove.End.row, boardRelativeMove.End.col, false);
             
+        }
+
+        private Move flipMoveIfNeeded(Move move)
+        {
+            if (firstPlayer == identity.O)
+            {
+                Move result = new Move();
+                result.Begin.row = 7 - move.Begin.row;
+                result.Begin.col = 7 - move.Begin.col;
+                result.End.row = 7 - move.End.row;
+                result.End.col = 7 - move.End.col;
+                return result;
+            }
+            else
+            {
+                return move;
+            }
         }
 
     }
