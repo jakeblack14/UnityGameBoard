@@ -21,8 +21,7 @@ namespace TechPlanet.SpaceRace
         // [Tooltip("The UI Label to inform the user that the connection is in progress")]
         //  public GameObject progressLabel;
         GameObject button;
-        GameCore.NetworkPlayer player1 = new GameCore.NetworkPlayer();
-        GameCore.NetworkPlayer player2 = new GameCore.NetworkPlayer();
+        public GameCore.NetworkPlayer player1 = null;  
         #endregion
 
 
@@ -105,7 +104,7 @@ namespace TechPlanet.SpaceRace
                 // #Critical, we must first and foremost connect to Photon Online Server.
                 PhotonNetwork.ConnectUsingSettings(_gameVersion);
             }
-            button.SetActive(false);
+            //button.SetActive(false);
         }
 
 
@@ -138,7 +137,10 @@ namespace TechPlanet.SpaceRace
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
-            player1.setPlayer(identity.X);
+            //player1.setPlayer(identity.X);
+            player1 = new GameCore.NetworkPlayer(identity.X);
+            BoardManager.firstPlayerIdentity = identity.X;
+
             Debug.Log("Identity is x");
             PhotonNetwork.CreateRoom("Room1", roomOptions, null);
                 
@@ -161,9 +163,11 @@ namespace TechPlanet.SpaceRace
         }
         void StartGame()
         {
-           if (player1.getIdentity() != identity.X)
+            //if (player1.getIdentity() != identity.X)
+            if (player1 == null)
             {
-                player1.setPlayer(identity.O);
+                player1 = new GameCore.NetworkPlayer (identity.O);
+                BoardManager.firstPlayerIdentity = identity.O;
                 Debug.Log("Identity is 0");
             }
            //Send player identity to gamecore

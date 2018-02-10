@@ -8,6 +8,13 @@ using TechPlanet.SpaceRace;
 namespace GameCore {
     public class BoardManager : MonoBehaviour {
 
+        public static identity firstPlayerIdentity = identity.X;
+        public static Boolean againstNetwork = false;
+        public static Boolean againstAI = false;
+
+        private TechPlanet.SpaceRace.MultiplayerLauncher multi = null;
+
+
         public GamePieces[,] GamePiecesArray { set; get; }
 
         private GamePieces selectedGamePiece;
@@ -19,8 +26,8 @@ namespace GameCore {
         private const float TILE_OFFSET = 0.5f;
 
 
-        Player PlayerX = new Player();
-        Player PlayerO = new Player();
+        Player PlayerX = new Player(identity.X);
+        Player PlayerO = new Player(identity.O);
         Player currentPlayer =  null;
 
         private int selectionX = -1;
@@ -39,22 +46,49 @@ namespace GameCore {
 
         private Move currentMove;
 
+
+        private void setFirstPlayer()
+        {
+            if (firstPlayerIdentity == identity.X)
+            {
+                currentPlayer = PlayerX;
+            }
+            else
+            {
+                currentPlayer = PlayerO;
+            }
+        }
+
         private void Start()
         {
+            //Set the player parameters based on whether we are playing against an AI or network (or the default - against local)
+            if (againstNetwork)
+            {
+                //Set a new network player as the opponent (O)
+                PlayerO = new NetworkPlayer(identity.O);
+
+            }
+            else if (againstAI)
+            {
+                //Set a new AI player as the opponent (O)
+                PlayerO = new AIPlayer(identity.O);
+            }
+
             wasCreated = false;
+
 
             SpawnAllGamePieces();
 
-            PlayerX.setPlayer(identity.X);
-            PlayerO.setPlayer(identity.O);
-            
-            currentPlayer = PlayerX;
+
+            setFirstPlayer();
 
             game = new GameBoard();
             game.newGameBoard(currentPlayer.getIdentity());
 
             currentMove = new Move();
         }
+
+
 
         private void Update()
         {

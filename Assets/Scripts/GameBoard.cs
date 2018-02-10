@@ -121,6 +121,7 @@ namespace GameCore
             {
                 return Square.S;
             }
+
         }
 
         public bool checkMove(identity currentPlayer, Move move)

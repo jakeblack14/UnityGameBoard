@@ -20,6 +20,12 @@ namespace GameCore
         public Move newMove = null;
         public bool movePending = false;
 
+
+        public NetworkPlayer(identity newIdentity) :
+        base(newIdentity)
+        {
+        }
+
         public override bool isNetwork()
         {
             return true;

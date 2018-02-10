@@ -6,7 +6,6 @@ using GameCore;
 
 public class NetworkMovements : MonoBehaviour {
     Move move;
-    Player player = new Player();
     // Use this for initialization
     void Start() {
         PhotonView photonView = PhotonView.Get(this);

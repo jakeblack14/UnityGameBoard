@@ -19,6 +19,12 @@ namespace GameCore
         private Move newMove = null;
         private bool movePending = false;
 
+        public AIPlayer(identity newIdentity) :
+        base(newIdentity)
+        {
+        }
+
+
         public override bool isAI()
         {
             return true;

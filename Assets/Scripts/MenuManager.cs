@@ -72,6 +72,14 @@ public class MenuManager : MonoBehaviour {
     public void turnSelected(int index)
     {
         highlightButton(turnButtons, index);
+        if (index == 0)
+        {
+            GameCore.BoardManager.firstPlayerIdentity = GameCore.identity.X;
+        }
+        else
+        {
+            GameCore.BoardManager.firstPlayerIdentity = GameCore.identity.O;
+        }
 
         //currentButton = turnButtons[index];
 
@@ -136,6 +144,25 @@ public class MenuManager : MonoBehaviour {
 
     public void gamePlayButtonClicked()
     {
+        GameCore.BoardManager.againstAI = true;
+        GameCore.BoardManager.againstNetwork = false;
         SceneManager.LoadScene(locationIndex + 1);
     }
+
+    public void localButtonClicked()
+    {
+        GameCore.BoardManager.againstAI = false;
+        GameCore.BoardManager.againstNetwork = false;
+        SceneManager.LoadScene(locationIndex + 1);
+
+    }
+
+    public void networkButtonClicked()
+    {
+        GameCore.BoardManager.againstAI = false;
+        GameCore.BoardManager.againstNetwork = true;
+        SceneManager.LoadScene("MultiPlayer Scene");
+
+    }
+
 }

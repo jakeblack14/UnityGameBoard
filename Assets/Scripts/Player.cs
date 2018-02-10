@@ -13,6 +13,11 @@ namespace GameCore
         private identity playerIdentity;
         public bool turn = false;
      
+        public Player(identity newIdentity)
+        {
+            playerIdentity = newIdentity;
+        }
+
         public void setPlayer(identity iden)
         {
             playerIdentity = iden;
