@@ -11,8 +11,8 @@ namespace GameCore {
         public static identity firstPlayerIdentity = identity.X;
         public static Boolean againstNetwork = false;
         public static Boolean againstAI = false;
-
-        private TechPlanet.SpaceRace.MultiplayerLauncher multi = null;
+        //MultiplayerLauncher multi = new MultiplayerLauncher();
+       // private TechPlanet.SpaceRace.MultiplayerLauncher multi = null;
 
 
         public GamePieces[,] GamePiecesArray { set; get; }
@@ -86,6 +86,7 @@ namespace GameCore {
             game.newGameBoard(currentPlayer.getIdentity());
 
             currentMove = new Move();
+            //SendTheMove()
         }
 
 

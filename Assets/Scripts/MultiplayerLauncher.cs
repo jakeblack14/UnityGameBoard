@@ -69,11 +69,14 @@ namespace TechPlanet.SpaceRace
         /// </summary>
         void Start()
         {
+            GameObject go = GameObject.Find("GameBoard");
+            GameBoard jeff = go.GetComponent<GameBoard>();
+            
             // progressLabel.SetActive(false);
             //  controlPanel.SetActive(true);
             //Random rand = new Random();
             // if (rand.Next(0, 2))
-            button = GameObject.Find("Start");
+            //button = GameObject.Find("Start");
         }
 
         
@@ -170,7 +173,7 @@ namespace TechPlanet.SpaceRace
                 BoardManager.firstPlayerIdentity = identity.O;
                 Debug.Log("Identity is 0");
             }
-           //Send player identity to gamecore
+          
 
           
         }
@@ -179,6 +182,7 @@ namespace TechPlanet.SpaceRace
         {
             Move move = new Move();
             move = player1.getMove();
+            Debug.Log("Move is being sent");
             PhotonNetwork.RaiseEvent(0, player1, true, null);
         }
        
