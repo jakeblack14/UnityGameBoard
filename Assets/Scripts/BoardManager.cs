@@ -113,6 +113,7 @@ namespace GameCore {
                 }
                 else if (Input.GetMouseButtonDown(0))
                 {
+                    Move jeffsMove = new Move();
                     //selectionX and selectionY correspond to what square on the board the mouse is currently on
                     if (selectionX >= 0 && selectionY >= 0)
                     {
@@ -128,10 +129,18 @@ namespace GameCore {
                         if (selectedGamePiece == null)
                         {
                             SelectGamePiece(selectionX, selectionY);
+                            jeffsMove.Begin.col = selectionX;
+                            jeffsMove.Begin.row = selectionY;
                         }
                         else
                         {
                             MoveGamePiece(selectionX, selectionY);
+                            jeffsMove.Begin.col = selectionX;
+                            jeffsMove.Begin.row = selectionY;
+                            GameObject goJeff = GameObject.Find("GameBoard");
+                            MultiplayerLauncher jeff = goJeff.GetComponent<MultiplayerLauncher>();
+                            jeff.SendTheMove(jeffsMove.Begin.col, jeffsMove.Begin.row, jeffsMove.End.col, jeffsMove.End.row);
+
                         }
                     }
                 }
@@ -158,7 +167,7 @@ namespace GameCore {
             }
         }
 
-        private void SelectGamePiece(int x, int y)
+        public void SelectGamePiece(int x, int y)
         {
             //checks to see if there is a game piece on that square
             if (GamePiecesArray[x, y] == null)
@@ -185,7 +194,7 @@ namespace GameCore {
 
         }
 
-        private void MoveGamePiece(int x, int y)
+        public void MoveGamePiece(int x, int y)
         {
             //if (selectedGamePiece.isMoveValid(x, y))
             //{

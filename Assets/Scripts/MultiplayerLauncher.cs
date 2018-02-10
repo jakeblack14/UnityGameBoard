@@ -69,8 +69,7 @@ namespace TechPlanet.SpaceRace
         /// </summary>
         void Start()
         {
-            GameObject go = GameObject.Find("GameBoard");
-            GameBoard jeff = go.GetComponent<GameBoard>();
+            
             
             // progressLabel.SetActive(false);
             //  controlPanel.SetActive(true);
@@ -178,20 +177,34 @@ namespace TechPlanet.SpaceRace
           
         }
 
-        public void SendTheMove(GameCore.NetworkPlayer player1)
+        public void SendTheMove(int temp1, int temp2, int temp3, int temp4)
         {
-            Move move = new Move();
-            move = player1.getMove();
+            Move sentMove = new Move();
+            sentMove.Begin.col = temp1;
+            sentMove.Begin.row = temp2;
+            sentMove.End.col = temp3;
+            sentMove.End.row = temp4;
             Debug.Log("Move is being sent");
-            PhotonNetwork.RaiseEvent(0, player1, true, null);
+            int[] moveArray = new int[4];
+            moveArray[0] = sentMove.Begin.col;
+            moveArray[1] = sentMove.Begin.row;
+            moveArray[2] = sentMove.End.col;
+            moveArray[3] = sentMove.End.row;
+            PhotonNetwork.RaiseEvent(0, moveArray, true, null);
         }
        
         void OnEvent(byte eventCode, object content, int senderId)
         {
             Debug.Log("it works now you hoe");
             PhotonPlayer sender = PhotonPlayer.Find(senderId); // This shows who sent the message
-            GameCore.NetworkPlayer tempPlayer = (GameCore.NetworkPlayer)content;
-          //  MakeMove(tempPlayer.getMove);
+            int[] receivedArray = new int[4];
+            receivedArray = (int[])content;
+            //GameCore.Move move = (GameCore.Move)content;
+            //  MakeMove(tempPlayer.getMove);
+            GameObject go = GameObject.Find("BoardManager");
+            BoardManager jeff = go.GetComponent<BoardManager>();
+            jeff.SelectGamePiece(receivedArray[0], receivedArray[1]);
+            jeff.MoveGamePiece(receivedArray[2], receivedArray[3]);
         }
         #endregion
     }
