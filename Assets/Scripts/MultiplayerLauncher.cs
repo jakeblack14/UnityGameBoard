@@ -201,8 +201,13 @@ namespace TechPlanet.SpaceRace
             receivedArray = (int[])content;
             //GameCore.Move move = (GameCore.Move)content;
             //  MakeMove(tempPlayer.getMove);
-            GameObject go = GameObject.Find("BoardManager");
+            GameObject go = GameObject.Find("GameBoard");
             BoardManager jeff = go.GetComponent<BoardManager>();
+            Debug.Log("ReceivedArray");
+            Debug.Log(receivedArray[0]);
+            Debug.Log(receivedArray[1]);
+            Debug.Log(receivedArray[2]);
+            Debug.Log(receivedArray[3]);
             jeff.SelectGamePiece(receivedArray[0], receivedArray[1]);
             jeff.MoveGamePiece(receivedArray[2], receivedArray[3]);
         }
