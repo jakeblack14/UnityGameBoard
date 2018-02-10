@@ -494,6 +494,7 @@
     <Compile Include="Assets\Scripts\ReloadScene.cs" />
     <Compile Include="Assets\Scripts\Square.cs" />
     <Compile Include="Assets\Scripts\WorldSpin.cs" />
+    <Compile Include="Assets\TutorialManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />
