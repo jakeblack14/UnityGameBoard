@@ -14,11 +14,10 @@ public class MenuManager : MonoBehaviour {
     private Button[] levelButtons;
     private Button[] turnButtons;
 
-    private Color32 selectedColor = new Color32(230, 101, 255, 255);
+    private Color32 selectedColor = new Color32(255, 255, 255, 255);
+    private Color32 originalColor = new Color32(139, 207, 255, 255);
 
     private Button currentButton;
-
-    private ColorBlock originalColorBlock;
 
     private int locationIndex;
 
@@ -53,8 +52,6 @@ public class MenuManager : MonoBehaviour {
         locationButtons = GameObject.Find("LocationButtons").GetComponentsInChildren<Button>();
         levelButtons = GameObject.Find("LevelButtons").GetComponentsInChildren<Button>();
         turnButtons = GameObject.Find("TurnButtons").GetComponentsInChildren<Button>();
-
-        originalColorBlock = locationButtons[0].colors;
     }
 
     public void locationSelected(int index)
@@ -72,6 +69,8 @@ public class MenuManager : MonoBehaviour {
     public void turnSelected(int index)
     {
         highlightButton(turnButtons, index);
+
+
         if (index == 0)
         {
             GameCore.BoardManager.firstPlayerIdentity = GameCore.identity.X;
@@ -126,18 +125,13 @@ public class MenuManager : MonoBehaviour {
     private void highlightButton(Button[] currentButtons, int index)
     {
         currentButton = currentButtons[index];
+        currentButton.image.color = selectedColor;
 
-        ColorBlock tempColorBlock = currentButton.colors;
-
-        tempColorBlock.normalColor = selectedColor;
-        tempColorBlock.highlightedColor = selectedColor;
-        currentButton.colors = tempColorBlock;
-
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < currentButtons.Length; i++)
         {
             if (i != index)
             {
-                currentButtons[i].colors = originalColorBlock;
+                currentButtons[i].image.color = originalColor;
             }
         }
     }
@@ -162,7 +156,6 @@ public class MenuManager : MonoBehaviour {
         GameCore.BoardManager.againstAI = false;
         GameCore.BoardManager.againstNetwork = true;
         SceneManager.LoadScene("MultiPlayer Scene");
-
     }
 
 }
