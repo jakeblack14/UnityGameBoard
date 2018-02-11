@@ -139,7 +139,10 @@ namespace GameCore {
                             jeffsMove.Begin.row = selectionY;
                             GameObject goJeff = GameObject.Find("GameBoard");
                             MultiplayerLauncher jeff = goJeff.GetComponent<MultiplayerLauncher>();
-                            jeff.SendTheMove(jeffsMove.Begin.col, jeffsMove.Begin.row, jeffsMove.End.col, jeffsMove.End.row);
+                            if (againstNetwork)
+                            {
+                                jeff.SendTheMove(jeffsMove.Begin.col, jeffsMove.Begin.row, jeffsMove.End.col, jeffsMove.End.row);
+                            }
 
                         }
                     }
