@@ -102,7 +102,7 @@ public class MenuManager : MonoBehaviour {
     {
         int index = 0;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 6; i++)
         {
             if (MenuPanels[i].activeSelf)
             {

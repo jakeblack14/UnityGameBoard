@@ -834,6 +834,7 @@ MonoBehaviour:
   - {fileID: 1567863194}
   - {fileID: 618258574}
   - {fileID: 1757042955}
+  - {fileID: 1489385628}
   inputField: {fileID: 575585313}
 --- !u!1 &241133147
 GameObject:
@@ -5363,7 +5364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s1: []
-  b1: {fileID: 0}
+  BackButton: {fileID: 0}
+  NextButton: {fileID: 0}
   I1: {fileID: 1570244174}
 --- !u!114 &1489385633
 MonoBehaviour:
