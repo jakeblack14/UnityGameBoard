@@ -507,6 +507,7 @@
     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
     <None Include="Assets\Plugins\release_history.txt" />
     <None Include="Assets\Scripts\obj\Debug\GameCore.csproj.FileListAbsolute.txt" />
+    <None Include="Assets\futura\sharefonts.net.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
