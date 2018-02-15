@@ -203,6 +203,7 @@
      <Compile Include="Assets\Scripts\GameBoard.cs" />
      <Compile Include="Assets\Scripts\GameBoardData.cs" />
      <Compile Include="Assets\Scripts\GamePieces.cs" />
+     <Compile Include="Assets\Scripts\GameTutorialDisappear.cs" />
      <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />

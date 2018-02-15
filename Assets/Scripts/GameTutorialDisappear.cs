@@ -5,22 +5,17 @@ using UnityEngine.UI;
 
 public class GameTutorialDisappear : MonoBehaviour
 {
-    GameObject Tutorial;
-
-    static bool on = false;
-    // Use this for initialization
+    public GameObject Tutorial;
 
     public void CheckHelpMenu()
     {
-        if (on)
+        if (Tutorial.activeSelf)
         {
             Tutorial.SetActive(false);
-            on = false;
         }
         else
         {
             Tutorial.SetActive(true);
-            on = true;
         }
     }
 }
