@@ -12,8 +12,12 @@ namespace GameCore {
         public static Boolean againstNetwork = false;
         public static Boolean againstAI = false;
         //MultiplayerLauncher multi = new MultiplayerLauncher();
-       // private TechPlanet.SpaceRace.MultiplayerLauncher multi = null;
-
+        // private TechPlanet.SpaceRace.MultiplayerLauncher multi = null;
+        public static int beginCol = 0;
+        public static int beginRow = 0;
+        public static int endRow = 0;
+        public static int endCol = 0;
+       
 
         public GamePieces[,] GamePiecesArray { set; get; }
 
@@ -113,7 +117,7 @@ namespace GameCore {
                 }
                 else if (Input.GetMouseButtonDown(0))
                 {
-                    Move jeffsMove = new Move();
+                    
                     //selectionX and selectionY correspond to what square on the board the mouse is currently on
                     if (selectionX >= 0 && selectionY >= 0)
                     {
@@ -129,19 +133,23 @@ namespace GameCore {
                         if (selectedGamePiece == null)
                         {
                             SelectGamePiece(selectionX, selectionY);
-                            jeffsMove.Begin.col = selectionX;
-                            jeffsMove.Begin.row = selectionY;
+                            beginCol = selectionY;
+                            beginRow = selectionX;
+                            //networkMove.Begin.row = selectionX;
+                          //  networkMove.Begin.col = selectionY;
                         }
                         else
                         {
                             MoveGamePiece(selectionX, selectionY);
-                            jeffsMove.Begin.col = selectionX;
-                            jeffsMove.Begin.row = selectionY;
+                            endCol = selectionY;
+                            endRow = selectionX;
+                           // networkMove.End.row = selectionX;
+                          //  networkMove.End.col = selectionY;
                             GameObject goJeff = GameObject.Find("GameBoard");
                             MultiplayerLauncher jeff = goJeff.GetComponent<MultiplayerLauncher>();
                             if (againstNetwork)
                             {
-                                jeff.SendTheMove(jeffsMove.Begin.col, jeffsMove.Begin.row, jeffsMove.End.col, jeffsMove.End.row);
+                                jeff.SendTheMove(beginRow, beginCol, endRow, endCol);
                             }
 
                         }

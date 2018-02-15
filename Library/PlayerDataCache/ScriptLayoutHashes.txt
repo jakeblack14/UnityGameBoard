@@ -104,6 +104,7 @@ c63db43c730fa2cbb8ca07de15898cb6 UnityEngine.UI.dll:UnityEngine.UI.Toggle
 f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
+fe3d33fb8ee9241a52ee6cb23f3f71a2 Assembly-CSharp.dll:.GameTutorialDisappear
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.OnClickFlashRpc
 ebfdd2489194de73284a969277395ad0 Assembly-CSharp.dll:.DemoRPGMovement
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:ExitGames.Demos.ToDemoHubButton
@@ -165,7 +166,7 @@ e626bae268f8b272b7a2d07760d262c6 Assembly-CSharp.dll:.PickupController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CubeLerp
 9650139907be6d63bf3c3eaa8900f13f Assembly-CSharp.dll:.myThirdPersonController
 362c847978adb9cef4966ca1c5403c2b Assembly-CSharp.dll:.MoveCam
-8fa4a327f229aa78143f0fe2c21d2373 Assembly-CSharp.dll:.Tutorial
+919e713ff7d2e223a20c960ccb16cbeb Assembly-CSharp.dll:.Tutorial
 4ce2b1853c9a392b036a6a654be90ccb Assembly-CSharp.dll:.OnClickInstantiate
 a7a85e3660316548e6df72942099a49d Assembly-CSharp.dll:.MessageOverlay
 293b3d08f8607df9b4483b0dc4d8d5d6 Assembly-CSharp.dll:.ColorPerPlayer

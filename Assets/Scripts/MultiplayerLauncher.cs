@@ -180,16 +180,16 @@ namespace TechPlanet.SpaceRace
         public void SendTheMove(int temp1, int temp2, int temp3, int temp4)
         {
             Move sentMove = new Move();
-            sentMove.Begin.col = temp1;
-            sentMove.Begin.row = temp2;
-            sentMove.End.col = temp3;
-            sentMove.End.row = temp4;
+            sentMove.Begin.row = temp1;
+            sentMove.Begin.col = temp2;
+            sentMove.End.row = temp3;
+            sentMove.End.col = temp4;
             Debug.Log("Move is being sent");
             int[] moveArray = new int[4];
-            moveArray[0] = sentMove.Begin.col;
-            moveArray[1] = sentMove.Begin.row;
-            moveArray[2] = sentMove.End.col;
-            moveArray[3] = sentMove.End.row;
+            moveArray[0] = sentMove.Begin.row;
+            moveArray[1] = sentMove.Begin.col;
+            moveArray[2] = sentMove.End.row;
+            moveArray[3] = sentMove.End.col;
             PhotonNetwork.RaiseEvent(0, moveArray, true, null);
         }
        
