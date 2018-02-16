@@ -29,7 +29,7 @@ namespace GameCore {
         private const float TILE_SIZE = 1.0f;
         private const float TILE_OFFSET = 0.5f;
 
-
+        public static Move networkMove;
         Player PlayerX = new Player(identity.X);
         Player PlayerO = new Player(identity.O);
         Player currentPlayer =  null;
@@ -114,6 +114,19 @@ namespace GameCore {
                         MoveGamePiece(  automove.End.col, automove.End.row);
 
                     }
+                }
+                else if(currentPlayer.isNetwork())
+                {
+                    // Maybe implement threading here
+                    // if (networkMove == null)
+                   // {
+                       // setTimeout(UpdateSelection, 50);
+                       // return;
+                    //}
+                    // Move newMoveNetwork = NetworkMove
+                    //SelectGamePiece
+                    // MoveGamePiece
+                    // NetworkMove = null;
                 }
                 else if (Input.GetMouseButtonDown(0))
                 {
@@ -284,6 +297,13 @@ namespace GameCore {
                 Debug.Log("Not Going First");
             }
         }
+        public void ReceiveNetworkMove(int beginRow, int beginCol, int endRow, int endCol)
+        {
+            networkMove.Begin.row = beginRow;
+            networkMove.Begin.col = beginCol;
+            networkMove.End.row = endRow;
+            networkMove.End.col = endCol;
+        }
         private void UpdateSelection()
         {
             if (!Camera.main)
@@ -314,6 +334,7 @@ namespace GameCore {
             GamePiecesArray[x, y].SetPosition(x, y);
             activeGamePieces.Add(go);
         }
+        
 
         private Vector3 GetTileCenter(int x, int y)
         {
