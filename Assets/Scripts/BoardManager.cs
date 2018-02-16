@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TechPlanet.SpaceRace;
+
+
 //TestChanges
 namespace GameCore {
     public class BoardManager : MonoBehaviour {
@@ -29,7 +31,8 @@ namespace GameCore {
         private const float TILE_SIZE = 1.0f;
         private const float TILE_OFFSET = 0.5f;
 
-        public static Move networkMove;
+      
+        public static Move networkMove = new Move();
         Player PlayerX = new Player(identity.X);
         Player PlayerO = new Player(identity.O);
         Player currentPlayer =  null;
@@ -65,6 +68,7 @@ namespace GameCore {
 
         private void Start()
         {
+            networkMove = null;
             //Set the player parameters based on whether we are playing against an AI or network (or the default - against local)
             if (againstNetwork)
             {
@@ -117,13 +121,17 @@ namespace GameCore {
                 }
                 else if(currentPlayer.isNetwork())
                 {
+
+                    // Move newNetworkMove = GetNetworkMove();
                     // Maybe implement threading here
-                    // if (networkMove == null)
-                   // {
-                       // setTimeout(UpdateSelection, 50);
-                       // return;
-                    //}
+                    do
+                    {
+                        //do nothing
+                    } while (networkMove == null);
+
                     // Move newMoveNetwork = NetworkMove
+                    SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
+                    MoveGamePiece(networkMove.End.col, networkMove.End.row);
                     //SelectGamePiece
                     // MoveGamePiece
                     // NetworkMove = null;
@@ -192,6 +200,13 @@ namespace GameCore {
 
                 }
             }
+        }
+
+        private Move GetNetworkMove()
+        {
+            Move newMove = new Move();
+
+            return newMove;  
         }
 
         public void SelectGamePiece(int x, int y)
