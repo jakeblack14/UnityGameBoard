@@ -165,14 +165,21 @@ namespace TechPlanet.SpaceRace
         }
         void StartGame()
         {
+            GameObject goJeff = GameObject.Find("GameBoard");
+            BoardManager jeffGo = goJeff.GetComponent<BoardManager>();
             //if (player1.getIdentity() != identity.X)
             if (player1 == null)
             {
-                player1 = new GameCore.NetworkPlayer (identity.O);
+                player1 = new GameCore.NetworkPlayer(identity.O);
                 BoardManager.firstPlayerIdentity = identity.O;
                 Debug.Log("Identity is 0");
+
+                jeffGo.ChangeFirstPlayer(false);
             }
-          
+            else
+            {
+                jeffGo.ChangeFirstPlayer(true);
+            }
 
           
         }

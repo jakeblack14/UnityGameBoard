@@ -17,7 +17,7 @@ namespace GameCore {
         public static int beginRow = 0;
         public static int endRow = 0;
         public static int endCol = 0;
-       
+        public static Boolean playerGoingFirst;
 
         public GamePieces[,] GamePiecesArray { set; get; }
 
@@ -53,7 +53,7 @@ namespace GameCore {
 
         private void setFirstPlayer()
         {
-            if (firstPlayerIdentity == identity.X)
+            if (playerGoingFirst)
             {
                 currentPlayer = PlayerX;
             }
@@ -268,7 +268,19 @@ namespace GameCore {
 
             
         }
-
+        public void ChangeFirstPlayer(Boolean whoIsFirst)
+        {
+            if (whoIsFirst)
+            {
+                playerGoingFirst = true;
+                Debug.Log("Going First!");
+            }
+            else
+            {
+                playerGoingFirst = false;
+                Debug.Log("Not Going First");
+            }
+        }
         private void UpdateSelection()
         {
             if (!Camera.main)
