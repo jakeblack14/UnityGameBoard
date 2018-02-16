@@ -124,14 +124,14 @@ namespace GameCore {
 
                     // Move newNetworkMove = GetNetworkMove();
                     // Maybe implement threading here
-                    do
-                    {
+                   // do
+                   // {
                         //do nothing
-                    } while (networkMove == null);
+                   // } while (networkMove == null);
 
                     // Move newMoveNetwork = NetworkMove
-                    SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
-                    MoveGamePiece(networkMove.End.col, networkMove.End.row);
+                   // SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
+                   // MoveGamePiece(networkMove.End.col, networkMove.End.row);
                     //SelectGamePiece
                     // MoveGamePiece
                     // NetworkMove = null;

@@ -215,8 +215,9 @@ namespace TechPlanet.SpaceRace
             Debug.Log(receivedArray[1]);
             Debug.Log(receivedArray[2]);
             Debug.Log(receivedArray[3]);
-            jeff.SelectGamePiece(receivedArray[0], receivedArray[1]);
-            jeff.MoveGamePiece(receivedArray[2], receivedArray[3]);
+            jeff.ReceiveNetworkMove(receivedArray[0], receivedArray[1], receivedArray[2], receivedArray[3]);
+            //jeff.SelectGamePiece(receivedArray[0], receivedArray[1]);
+           // jeff.MoveGamePiece(receivedArray[2], receivedArray[3]);
         }
         #endregion
     }
