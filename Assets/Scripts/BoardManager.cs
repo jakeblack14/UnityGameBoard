@@ -143,13 +143,16 @@ namespace GameCore {
                             MoveGamePiece(selectionX, selectionY);
                             endCol = selectionY;
                             endRow = selectionX;
-                           // networkMove.End.row = selectionX;
-                          //  networkMove.End.col = selectionY;
-                            GameObject goJeff = GameObject.Find("GameBoard");
-                            MultiplayerLauncher jeff = goJeff.GetComponent<MultiplayerLauncher>();
-                            if (againstNetwork)
+                            if (beginRow != endRow && beginCol != endCol)
                             {
-                                jeff.SendTheMove(7- beginRow,7- beginCol,7- endRow,7- endCol);
+                                // networkMove.End.row = selectionX;
+                                //  networkMove.End.col = selectionY;
+                                GameObject goJeff = GameObject.Find("GameBoard");
+                                MultiplayerLauncher jeff = goJeff.GetComponent<MultiplayerLauncher>();
+                                if (againstNetwork)
+                                {
+                                    jeff.SendTheMove(7 - beginRow, 7 - beginCol, 7 - endRow, 7 - endCol);
+                                }
                             }
 
                         }
