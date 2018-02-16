@@ -21,7 +21,7 @@ namespace GameCore {
 
         public GamePieces[,] GamePiecesArray { set; get; }
 
-        private GamePieces selectedGamePiece;
+        static private GamePieces selectedGamePiece;
         private GamePieces removedGamePiece;
 
         private static GameBoard game;
@@ -110,8 +110,8 @@ namespace GameCore {
                     else if (currentPlayer.hasMove())
                     {
                         Move automove = currentPlayer.getMove();
-                        SelectGamePiece(automove.Begin.col, automove.Begin.row);
-                        MoveGamePiece(automove.End.col, automove.End.row);
+                        SelectGamePiece(automove.Begin.col,automove.Begin.row);
+                        MoveGamePiece(  automove.End.col, automove.End.row);
 
                     }
                 }
@@ -149,7 +149,7 @@ namespace GameCore {
                             MultiplayerLauncher jeff = goJeff.GetComponent<MultiplayerLauncher>();
                             if (againstNetwork)
                             {
-                                jeff.SendTheMove(beginRow, beginCol, endRow, endCol);
+                                jeff.SendTheMove(7- beginRow,7- beginCol,7- endRow,7- endCol);
                             }
 
                         }
@@ -272,6 +272,8 @@ namespace GameCore {
         private void UpdateSelection()
         {
             if (!Camera.main)
+
+
                 return;
 
             RaycastHit hit;
