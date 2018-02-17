@@ -20,7 +20,7 @@ namespace TechPlanet.SpaceRace
         // public GameObject controlPanel;
         // [Tooltip("The UI Label to inform the user that the connection is in progress")]
         //  public GameObject progressLabel;
-        GameObject button;
+        //GameObject button;
         public GameCore.NetworkPlayer player1 = null;  
         #endregion
 
@@ -140,7 +140,7 @@ namespace TechPlanet.SpaceRace
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
             //player1.setPlayer(identity.X);
-            player1 = new GameCore.NetworkPlayer(identity.X);
+           // player1 = new GameCore.Player(identity.X);
             BoardManager.firstPlayerIdentity = identity.X;
 
             Debug.Log("Identity is x");
@@ -170,7 +170,7 @@ namespace TechPlanet.SpaceRace
             //if (player1.getIdentity() != identity.X)
             if (player1 == null)
             {
-                player1 = new GameCore.NetworkPlayer(identity.O);
+                //player1 = new GameCore.NetworkPlayer(identity.O);
                 BoardManager.firstPlayerIdentity = identity.O;
                 Debug.Log("Identity is 0");
 
