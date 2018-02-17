@@ -9,13 +9,12 @@ public class MenuManager : MonoBehaviour {
     public List<GameObject> MenuPanels;
     private GameObject BackButton;
     public InputField inputField;
+    public Sprite selectedImage;
+    public Sprite originalImage;
 
     private Button[] locationButtons;
     private Button[] levelButtons;
     private Button[] turnButtons;
-
-    private Color32 selectedColor = new Color32(255, 255, 255, 255);
-    private Color32 originalColor = new Color32(139, 207, 255, 255);
 
     private Button currentButton;
 
@@ -79,23 +78,6 @@ public class MenuManager : MonoBehaviour {
         {
             GameCore.BoardManager.firstPlayerIdentity = GameCore.identity.O;
         }
-
-        //currentButton = turnButtons[index];
-
-        //ColorBlock tempColorBlock = currentButton.colors;
-        //ColorBlock originalColorBlock = tempColorBlock;
-
-        //tempColorBlock.normalColor = selectedColor;
-        //tempColorBlock.highlightedColor = selectedColor;
-        //currentButton.colors = tempColorBlock;
-
-        //for (int i = 0; i < 2; i++)
-        //{
-        //    if (i != index)
-        //    {
-        //        turnButtons[i].colors = originalColorBlock;
-        //    }
-        //}
     }
 
     public void backButtonClicked()
@@ -125,13 +107,13 @@ public class MenuManager : MonoBehaviour {
     private void highlightButton(Button[] currentButtons, int index)
     {
         currentButton = currentButtons[index];
-        currentButton.image.color = selectedColor;
+        currentButton.image.sprite = selectedImage;
 
         for (int i = 0; i < currentButtons.Length; i++)
         {
             if (i != index)
             {
-                currentButtons[i].image.color = originalColor;
+                currentButtons[i].image.sprite = originalImage;
             }
         }
     }

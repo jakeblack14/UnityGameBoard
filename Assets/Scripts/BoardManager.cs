@@ -192,11 +192,11 @@ namespace GameCore {
 
                     if (currentPlayer == PlayerX)
                     {
-                        winnerText.text = "Player X wins!!";
+                        winnerText.text = GameBoardData.Name + "Wins!!";
                     }
                     else if (currentPlayer == PlayerO)
                     {
-                        winnerText.text = "Player O wins!!";
+                        winnerText.text = "Computer Wins!!";
                     }
 
                 }
