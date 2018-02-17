@@ -8,7 +8,6 @@ SceneListEnd?
 82c8c8940439d24517b71a242f62fbc3 Assembly-CSharp.dll:.HighlightOwnedGameObj
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PunTeams
 4d0187d1ee26ceba125a106f0dde0360 Assembly-CSharp.dll:.SmoothSyncMovement
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.NetworkInfoSent
 e17f92d3b13f18bef6e4629b9bff76dd Assembly-CSharp.dll:.DemoBoxesGui
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -124,7 +123,6 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 9ca6347af5ceb6b0d1c105af31b6722e UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TechPlanet.SpaceRace.NetworkGameManager
 b8abcce07a32532393e17c950c659628 Assembly-CSharp.dll:.OnCollideSwitchTeam
 4b5f5d07594ceb1b5a7c5b9c38c386d5 Assembly-CSharp.dll:.RPGMovement
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -145,7 +143,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 c2d15b04283157b00cbdbfaf16c18482 Assembly-CSharp.dll:.PickupItemSyncer
 c1df6bba7f7b35a48ac544b9017761dd Assembly-CSharp.dll:.PlayerDiamond
 090584907af2e462994cc893ced507b3 Assembly-CSharp.dll:.PhotonRigidbody2DView
-a5460b94c537d8b4ae24f6dabdb6f5eb Assembly-CSharp.dll:.MenuManager
+011076dabfe23e5a75b59890e7017e0c Assembly-CSharp.dll:.MenuManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.OnStartDelete
 1de5b0589e6fb98c8b8d7fcded724e3b Assembly-CSharp.dll:.CullArea
 fc4c581d5c780cfbc749c132df4d5008 Assembly-CSharp.dll:.NamePickGui
@@ -223,7 +221,6 @@ ea580b2edab741d1d6e6445b14097645 Assembly-CSharp.dll:.RPGCamera
 173a033cde910692227c728d6b89fedd Assembly-CSharp.dll:.OnClickCallMethod
 1356b4a6096c35c829823b7e28399030 Assembly-CSharp.dll:.IELdemo
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.GameLogic
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.NetworkMovements
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 96d0fbde9fd209878a0a291f82c9bcdd UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender

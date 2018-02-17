@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TechPlanet.SpaceRace;
+using System.Threading;
+using System.Timers;
+using System.Threading.Tasks;
 
 
 //TestChanges
@@ -75,12 +78,13 @@ namespace GameCore {
                 //Set a new network player as the opponent (O)
                 PlayerO = new NetworkPlayer(identity.O);
                 setFirstPlayer();
-
+                networkMove = null;
             }
             else if (againstAI)
             {
                 //Set a new AI player as the opponent (O)
                 PlayerO = new AIPlayer(identity.O);
+                
             }
 
             wasCreated = false;
@@ -122,20 +126,9 @@ namespace GameCore {
                 }
                 else if(currentPlayer.isNetwork())
                 {
-
-                    // Move newNetworkMove = GetNetworkMove();
-                    // Maybe implement threading here
-                   // do
-                   // {
-                        //do nothing
-                   // } while (networkMove == null);
-
-                    // Move newMoveNetwork = NetworkMove
-                   // SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
-                   // MoveGamePiece(networkMove.End.col, networkMove.End.row);
-                    //SelectGamePiece
-                    // MoveGamePiece
-                    // NetworkMove = null;
+                   Thread thread = new Thread(GetNetworkMove);
+                   thread.Start();
+                   
                 }
                 else if (Input.GetMouseButtonDown(0))
                 {
@@ -203,11 +196,18 @@ namespace GameCore {
             }
         }
 
-        private Move GetNetworkMove()
+        private void GetNetworkMove()
         {
-            Move newMove = new Move();
 
-            return newMove;  
+            do
+            {
+                System.Timers.Timer timer = new System.Timers.Timer(1000);
+                timer.Elapsed += (sender, e) => GetNetworkMove();
+            } while (networkMove == null);
+
+            SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
+            MoveGamePiece(networkMove.End.col, networkMove.End.row);
+            networkMove = null;
         }
 
         public void SelectGamePiece(int x, int y)
