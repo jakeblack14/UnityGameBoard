@@ -74,6 +74,7 @@ namespace GameCore {
             {
                 //Set a new network player as the opponent (O)
                 PlayerO = new NetworkPlayer(identity.O);
+                setFirstPlayer();
 
             }
             else if (againstAI)
@@ -88,7 +89,7 @@ namespace GameCore {
             SpawnAllGamePieces();
 
 
-            setFirstPlayer();
+            
 
             game = new GameBoard();
             game.newGameBoard(currentPlayer.getIdentity());
