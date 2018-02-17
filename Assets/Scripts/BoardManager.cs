@@ -6,15 +6,15 @@ using UnityEngine.UI;
 using TechPlanet.SpaceRace;
 using System.Threading;
 using System.Timers;
-using System.Threading.Tasks;
+
 
 
 //TestChanges
 namespace GameCore {
     public class BoardManager : MonoBehaviour {
 
-        public static identity firstPlayerIdentity = identity.X;
         public static Boolean againstNetwork = false;
+        public static Boolean waitForNetwork = false;
         public static Boolean againstAI = false;
         //MultiplayerLauncher multi = new MultiplayerLauncher();
         // private TechPlanet.SpaceRace.MultiplayerLauncher multi = null;
@@ -22,7 +22,7 @@ namespace GameCore {
         public static int beginRow = 0;
         public static int endRow = 0;
         public static int endCol = 0;
-        public static Boolean playerGoingFirst;
+        public static Boolean playerGoingFirst = true;
 
         public GamePieces[,] GamePiecesArray { set; get; }
 
@@ -59,44 +59,51 @@ namespace GameCore {
 
         private void setFirstPlayer()
         {
+            //set the current player to whichever player is going first
             if (playerGoingFirst)
             {
                 currentPlayer = PlayerX;
+                Debug.Log("PlayerX going first");
+
             }
             else
             {
                 currentPlayer = PlayerO;
+                Debug.Log("PlayerO going first");
             }
+            //update the game core
+            game.newGameBoard(currentPlayer.getIdentity());
         }
 
         private void Start()
         {
+
             networkMove = null;
             //Set the player parameters based on whether we are playing against an AI or network (or the default - against local)
             if (againstNetwork)
             {
                 //Set a new network player as the opponent (O)
                 PlayerO = new NetworkPlayer(identity.O);
-                setFirstPlayer();
                 networkMove = null;
             }
             else if (againstAI)
             {
                 //Set a new AI player as the opponent (O)
                 PlayerO = new AIPlayer(identity.O);
-                
             }
+
+
+            //Create the gameboard
+            game = new GameBoard();
+
+            //Set the initial first player
+            setFirstPlayer();
 
             wasCreated = false;
 
 
             SpawnAllGamePieces();
-
-
-            
-
-            game = new GameBoard();
-            game.newGameBoard(currentPlayer.getIdentity());
+                        
 
             currentMove = new Move();
             //SendTheMove()
@@ -119,16 +126,26 @@ namespace GameCore {
                     else if (currentPlayer.hasMove())
                     {
                         Move automove = currentPlayer.getMove();
-                        SelectGamePiece(automove.Begin.col,automove.Begin.row);
+                        SelectGamePiece(automove.Begin.col, automove.Begin.row);
                         MoveGamePiece(  automove.End.col, automove.End.row);
 
                     }
                 }
+                else if (againstNetwork && waitForNetwork)
+                {
+                    // To stop from going into the next iteration of the else if 
+                }
                 else if(currentPlayer.isNetwork())
                 {
-                   Thread thread = new Thread(GetNetworkMove);
-                   thread.Start();
+                    if (networkMove != null)
+                    {
+                        SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
+                        MoveGamePiece(networkMove.End.col, networkMove.End.row);
+                        networkMove = null;
+                    }
                    
+                   
+
                 }
                 else if (Input.GetMouseButtonDown(0))
                 {
@@ -199,15 +216,8 @@ namespace GameCore {
         private void GetNetworkMove()
         {
 
-            do
-            {
-                System.Timers.Timer timer = new System.Timers.Timer(1000);
-                timer.Elapsed += (sender, e) => GetNetworkMove();
-            } while (networkMove == null);
+            
 
-            SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
-            MoveGamePiece(networkMove.End.col, networkMove.End.row);
-            networkMove = null;
         }
 
         public void SelectGamePiece(int x, int y)
@@ -291,11 +301,15 @@ namespace GameCore {
 
             else
             {
-                if (selectedGamePiece.GetComponent<MeshRenderer>())
+                //Unhighlight the piece if we are playing locally
+                if (!currentPlayer.isAI() && !currentPlayer.isNetwork())
                 {
-                    selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
+                    if (selectedGamePiece.GetComponent<MeshRenderer>())
+                    {
+                        selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
+                    }
+                    selectedGamePiece = null;
                 }
-                selectedGamePiece = null;
             }
 
             
@@ -312,9 +326,11 @@ namespace GameCore {
                 playerGoingFirst = false;
                 Debug.Log("Not Going First");
             }
+            setFirstPlayer();
         }
         public void ReceiveNetworkMove(int beginRow, int beginCol, int endRow, int endCol)
         {
+            networkMove = new Move();
             networkMove.Begin.row = beginRow;
             networkMove.Begin.col = beginCol;
             networkMove.End.row = endRow;
@@ -386,6 +402,10 @@ namespace GameCore {
         public static Board getBoard()
         {
             return game.getBoard();
+        }
+        public void NetworkWaiting()
+        {
+            waitForNetwork = false;
         }
     }
 }

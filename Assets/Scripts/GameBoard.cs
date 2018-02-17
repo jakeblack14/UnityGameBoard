@@ -1,5 +1,6 @@
 ﻿using System;
-
+using UnityEngine;
+using UnityEngine.UI;
 //Allows use of unmanaged code (Board dll)
 using System.Runtime.InteropServices;
 
@@ -43,6 +44,8 @@ namespace GameCore
         {
             board = new Board();
             this.firstPlayer = firstPlayer;
+            Debug.Log(firstPlayer);
+            
             //printGameBoard();
         }
 

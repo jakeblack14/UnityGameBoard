@@ -59,38 +59,7 @@ namespace GameCore
 
         private void executeRequestMove()
         {
-            //Create the resulting move
-            Move result = new Move();
-
-            //Get first player identity and board
-
-            //Note: defining X as always white as always first here!
-            identity first = identity.X;
-
-            //get the board state
-            Board board = BoardManager.getBoard();
-
-            //Decide if this is whites turn or not
-            bool isWhitesTurn = (first == this.getIdentity());
-
-
-            //Get the move from the AI DLL
-            AICore.AIMove nextMove = AICore.AICore.AIGetMove(board.blackCount, board.whiteCount, board.blackRows, board.whiteRows, isWhitesTurn);
-
-            //Convert the AIMove to a Move class
-            result.Begin.row = nextMove.row;
-            result.Begin.col = nextMove.col;
-            if (isWhitesTurn)
-            {
-                result.End.row = nextMove.row + 1;
-            }
-            else
-            {
-                result.End.row = nextMove.row - 1;
-            }
-            result.End.col = nextMove.col + nextMove.target - 1;
-
-            newMove = result;
+            
         }
 
         public override Move getMove()
