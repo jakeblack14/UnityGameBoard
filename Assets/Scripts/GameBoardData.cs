@@ -13,6 +13,9 @@ public static class GameBoardData {
 
     private static string name;
 
+    private static Sprite AlienImage;
+    private static Sprite AstroImage;
+
     public static string Name
     {
         get
@@ -22,6 +25,32 @@ public static class GameBoardData {
         set
         {
             name = value;
+        }
+    }
+
+    public static Sprite Alien
+    {
+        get
+        {
+            return AlienImage;
+        }
+
+        set
+        {
+            AlienImage = value;
+        }
+    }
+
+    public static Sprite Astronaut
+    {
+        get
+        {
+            return AstroImage;
+        }
+
+        set
+        {
+            AstroImage = value;
         }
     }
 }

@@ -197,6 +197,7 @@
      <Compile Include="Assets\Scripts\AIPlayer.cs" />
      <Compile Include="Assets\Scripts\Board.cs" />
      <Compile Include="Assets\Scripts\BoardManager.cs" />
+     <Compile Include="Assets\Scripts\ChooseCharacter.cs" />
      <Compile Include="Assets\Scripts\Coord.cs" />
      <Compile Include="Assets\Scripts\EarthSpinScript.cs" />
      <Compile Include="Assets\Scripts\Enums.cs" />
@@ -204,13 +205,11 @@
      <Compile Include="Assets\Scripts\GameBoardData.cs" />
      <Compile Include="Assets\Scripts\GamePieces.cs" />
      <Compile Include="Assets\Scripts\GameTutorialDisappear.cs" />
+     <Compile Include="Assets\Scripts\GameUIManager.cs" />
      <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\MultiplayerLauncher.cs" />
-     <Compile Include="Assets\Scripts\NetworkGameManager.cs" />
-     <Compile Include="Assets\Scripts\NetworkInfoSent.cs" />
-     <Compile Include="Assets\Scripts\NetworkMovements.cs" />
      <Compile Include="Assets\Scripts\NetworkPlayer.cs" />
      <Compile Include="Assets\Scripts\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
      <Compile Include="Assets\Scripts\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
