@@ -89,7 +89,8 @@ namespace GameCore {
             else if (againstAI)
             {
                 //Set a new AI player as the opponent (O)
-                PlayerO = new AIPlayer(identity.O);
+                //second parameter is true if the player is not going first, meaning the AI is
+                PlayerO = new AIPlayer(identity.O, !playerGoingFirst);
             }
 
 
