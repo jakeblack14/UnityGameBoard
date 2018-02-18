@@ -72,21 +72,49 @@ namespace GameCore
             bool isWhitesTurn = (first == this.getIdentity());
 
 
+            //Convert to AISpace
+            uint[] AICOLUMNS = new uint[] { 1, 2, 4, 8, 16, 32, 64, 128 }; //A-H
+
+            uint[] blackRows = new uint[8];
+            uint[] whiteRows = new uint[8];
+
+
+            for (int i = 0; i < 8; i++)
+            {
+                blackRows[i] = 0;
+                whiteRows[i] = 0;
+            }
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (board.blackRows[i] % board.COLUMNS[j] == 0)
+                    {
+                        blackRows[i] += AICOLUMNS[j];
+                    }
+                    if (board.whiteRows[i] % board.COLUMNS[j] == 0)
+                    {
+                        whiteRows[i] += AICOLUMNS[j];
+                    }
+                }
+            }
+
             //Get the move from the AI DLL
-            AICore.AIMove nextMove = AICore.AICore.AIGetMove(board.blackCount, board.whiteCount, board.blackRows, board.whiteRows, isWhitesTurn);
+            AICore.AIMove nextMove = AICore.AICore.AIGetMove(board.blackCount, board.whiteCount, blackRows, whiteRows, isWhitesTurn, 0);
 
             //Convert the AIMove to a Move class
-            result.Begin.row = nextMove.row;
-            result.Begin.col = nextMove.col;
+            result.Begin.row = checked((int)nextMove.row);
+            result.Begin.col = checked((int)nextMove.col);
             if (isWhitesTurn)
             {
-                result.End.row = nextMove.row + 1;
+                result.End.row = checked((int)nextMove.row + 1);
             }
             else
             {
-                result.End.row = nextMove.row - 1;
+                result.End.row = checked((int)nextMove.row - 1);
             }
-            result.End.col = nextMove.col + nextMove.target - 1;
+            result.End.col = checked((int)nextMove.col) + checked((int)nextMove.target) - 1;
 
             newMove = result;
         }

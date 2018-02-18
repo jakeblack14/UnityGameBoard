@@ -72,11 +72,11 @@ public class MenuManager : MonoBehaviour {
 
         if (index == 0)
         {
-            GameCore.BoardManager.firstPlayerIdentity = GameCore.identity.X;
+            GameCore.BoardManager.playerGoingFirst = true;
         }
         else
         {
-            GameCore.BoardManager.firstPlayerIdentity = GameCore.identity.O;
+            GameCore.BoardManager.playerGoingFirst = false;
         }
     }
 
@@ -137,6 +137,7 @@ public class MenuManager : MonoBehaviour {
     {
         GameCore.BoardManager.againstAI = false;
         GameCore.BoardManager.againstNetwork = true;
+        GameCore.BoardManager.waitForNetwork = true;
         SceneManager.LoadScene("MultiPlayer Scene");
     }
 

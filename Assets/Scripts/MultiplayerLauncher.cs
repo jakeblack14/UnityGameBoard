@@ -46,7 +46,7 @@ namespace TechPlanet.SpaceRace
         void Awake()
         {
 
-
+            
             // #Critical
             // we don't join the lobby. There is no need to join a lobby to get the list of rooms.
             PhotonNetwork.autoJoinLobby = false;
@@ -161,18 +161,23 @@ namespace TechPlanet.SpaceRace
             {
                 StartGame();
             }
+            else
+            {
+                StartGame();
+            }
             
         }
         void StartGame()
         {
+
             GameObject goJeff = GameObject.Find("GameBoard");
             BoardManager jeffGo = goJeff.GetComponent<BoardManager>();
             //if (player1.getIdentity() != identity.X)
-            if (player1 == null)
+            if (PhotonNetwork.room.PlayerCount == 2)
             {
                 //player1 = new GameCore.NetworkPlayer(identity.O);
                 //BoardManager.firstPlayerIdentity = identity.O;
-                Debug.Log("Identity is 0");
+                Debug.Log("Going Second");
 
                 jeffGo.ChangeFirstPlayer(false);
             }
@@ -180,17 +185,17 @@ namespace TechPlanet.SpaceRace
             {
                 jeffGo.ChangeFirstPlayer(true);
             }
+            jeffGo.NetworkWaiting();
 
-          
         }
 
         public void SendTheMove(int temp1, int temp2, int temp3, int temp4)
         {
             Move sentMove = new Move();
-            sentMove.Begin.row = temp1;
-            sentMove.Begin.col = temp2;
-            sentMove.End.row = temp3;
-            sentMove.End.col = temp4;
+            sentMove.Begin.col = temp1;
+            sentMove.Begin.row = temp2;
+            sentMove.End.col = temp3;
+            sentMove.End.row = temp4;
             Debug.Log("Move is being sent");
             int[] moveArray = new int[4];
             moveArray[0] = sentMove.Begin.row;
