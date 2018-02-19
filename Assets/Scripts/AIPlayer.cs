@@ -45,7 +45,7 @@ namespace GameCore
             }
         }
 
-        
+
         public override void requestMove()
         {
             Thread thread = new Thread(executeRequestMove);
@@ -110,7 +110,7 @@ namespace GameCore
                 result.Begin.col = 7 - checked((int)nextMove.col);
                 result.End.row = 7 - checked((int)nextMove.row + 1);
                 int target;
-                switch(nextMove.target)
+                switch (nextMove.target)
                 {
                     case 0:
                         target = 2;
@@ -145,5 +145,12 @@ namespace GameCore
             return result;
 
         }
+
+        ~AIPlayer()
+        {
+            AICore.AICore.EmptyMemory();
+        }
+
+
     }
 }
