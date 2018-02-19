@@ -16,6 +16,20 @@ public static class GameBoardData {
     private static Sprite AlienImage;
     private static Sprite AstroImage;
 
+    private static bool isAlien;
+
+    public static bool IsAlien
+    {
+        get
+        {
+            return isAlien;
+        }
+        set
+        {
+            isAlien = value;
+        }
+    }
+
     public static string Name
     {
         get
