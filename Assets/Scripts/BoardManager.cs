@@ -194,6 +194,9 @@ namespace GameCore {
             }
             else
             {
+                //set playerGoingFirst back to default
+                playerGoingFirst = true;
+
                 //pull up Game Over Screen
                 if (!wasCreated)
                 {
