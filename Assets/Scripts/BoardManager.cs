@@ -89,7 +89,8 @@ namespace GameCore {
             else if (againstAI)
             {
                 //Set a new AI player as the opponent (O)
-                PlayerO = new AIPlayer(identity.O);
+                //second parameter is true if the player is not going first, meaning the AI is
+                PlayerO = new AIPlayer(identity.O, !playerGoingFirst);
             }
 
 
@@ -137,7 +138,7 @@ namespace GameCore {
                 }
                 else if(currentPlayer.isNetwork())
                 {
-                    if (networkMove != null)
+                    if (networkMove != null || (networkMove.Begin.col != networkMove.End.col && networkMove.End.row != networkMove.End.col))
                     {
                         SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
                         MoveGamePiece(networkMove.End.col, networkMove.End.row);
@@ -193,6 +194,9 @@ namespace GameCore {
             }
             else
             {
+                //set playerGoingFirst back to default
+                playerGoingFirst = true;
+
                 //pull up Game Over Screen
                 if (!wasCreated)
                 {
