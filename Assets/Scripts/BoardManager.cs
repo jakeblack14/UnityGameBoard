@@ -138,7 +138,7 @@ namespace GameCore {
                 }
                 else if(currentPlayer.isNetwork())
                 {
-                    if (networkMove != null)
+                    if (networkMove != null || (networkMove.Begin.col != networkMove.End.col && networkMove.End.row != networkMove.End.col))
                     {
                         SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
                         MoveGamePiece(networkMove.End.col, networkMove.End.row);
