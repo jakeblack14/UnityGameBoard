@@ -43,7 +43,14 @@ public class MenuManager : MonoBehaviour {
 
     public void usernameButtonClick()
     {
-        GameBoardData.Name = inputField.text;
+        if(inputField.text == "")
+        {
+            GameBoardData.Name = "Player 1";
+        }
+        else
+        {
+            GameBoardData.Name = inputField.text;
+        }
     }
 
     public void GameSettingsSetUp()

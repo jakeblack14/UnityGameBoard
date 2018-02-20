@@ -200,18 +200,18 @@ namespace GameCore {
                 //pull up Game Over Screen
                 if (!wasCreated)
                 {
-                    GameObject gameOverPanel = Instantiate(GameOverPanel) as GameObject;
-                    gameOverPanel.transform.SetParent(canvas.transform, false);
-                    wasCreated = true;
-
-                    if (currentPlayer == PlayerX)
+                    if (currentPlayer == PlayerO)
                     {
-                        winnerText.text = GameBoardData.Name + "Wins!!";
+                        winnerText.text = "You win!!";
                     }
-                    else if (currentPlayer == PlayerO)
+                    else if (currentPlayer == PlayerX)
                     {
                         winnerText.text = "Computer Wins!!";
                     }
+
+                    GameObject gameOverPanel = Instantiate(GameOverPanel) as GameObject;
+                    gameOverPanel.transform.SetParent(canvas.transform, false);
+                    wasCreated = true;
 
                 }
             }
@@ -385,21 +385,42 @@ namespace GameCore {
             activeGamePieces = new List<GameObject>();
             GamePiecesArray = new GamePieces[8, 8];
 
-            for (int i = 0; i < 2; i++)
-            {
-                for (int j = 0; j < 8; j++)
-                {
-                    SpawnGamePieces(0, j, i);
-                }
-            }
+            //if(GameBoardData.IsAlien)
+            //{
+            //    for (int i = 0; i < 2; i++)
+            //    {
+            //        for (int j = 0; j < 8; j++)
+            //        {
+            //            SpawnGamePieces(1, j, i);
+            //        }
+            //    }
 
-            for (int i = 6; i < 8; i++)
-            {
-                for (int j = 0; j < 8; j++)
+            //    for (int i = 6; i < 8; i++)
+            //    {
+            //        for (int j = 0; j < 8; j++)
+            //        {
+            //            SpawnGamePieces(0, j, i);
+            //        }
+            //    }
+            //}
+            //else
+            //{
+                for (int i = 0; i < 2; i++)
                 {
-                    SpawnGamePieces(1, j, i);
+                    for (int j = 0; j < 8; j++)
+                    {
+                        SpawnGamePieces(0, j, i);
+                    }
                 }
-            }
+
+                for (int i = 6; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        SpawnGamePieces(1, j, i);
+                    }
+                }
+            //}
         }
 
         
