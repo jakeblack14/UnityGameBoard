@@ -23,11 +23,12 @@ public class Tutorial : MonoBehaviour {
         }
 
         ScreenText = new string[5];
-        ScreenText[0] = "Whether the scrollbar should automatically be hidden when it isn’t needed, and optionally expand the viewport as well.";
-        ScreenText[1] = "TESTIONG ALL THEXSTFADKJFHSDKJF KJHF sdkfjh KJFHsk kjsdf";
-        ScreenText[2] = "STILL TESTING THE MESS OUT OF TEXT.";
-        ScreenText[3] = "PUTTING THE MESS INTO THIS TEXT";
-        ScreenText[4] = "PUTTING THE MESS INTO THIS TEXT";
+        ScreenText[0] = "To move a piece click on one of your peices. If it is a valid peice You are able to move diagonally left, diagonally right, or straight ahead one space.";
+        ScreenText[1] = "To take a peice click on the piece you want to move. In order to take an enemy piece, your piece must be able to move diagonally left or diagonally right onto" +
+            "an enemy piece.";
+        ScreenText[2] = "To win the game either take all the enemy pieces or get to the very end of the board";
+        ScreenText[3] = "Teach the user how to do other things";
+        ScreenText[4] = "teach the user how to use the settings page at any point";
         s1 = Resources.LoadAll<Sprite>("Sprites");
 
         TextBox.text = ScreenText[0];
