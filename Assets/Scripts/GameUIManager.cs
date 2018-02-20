@@ -16,6 +16,8 @@ public class GameUIManager : MonoBehaviour {
 
     public Text username;
 
+    //public Text gameOverText;
+
 	// Use this for initialization
 	void Start () {
 
