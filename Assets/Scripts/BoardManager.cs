@@ -141,11 +141,17 @@ namespace GameCore {
                 }
                 else if(currentPlayer.isNetwork())
                 {
-                    if (networkMove != null || (networkMove.Begin.col != networkMove.End.col && networkMove.End.row != networkMove.End.col))
+                    if (networkMove != null )
                     {
-                        SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
-                        MoveGamePiece(networkMove.End.col, networkMove.End.row);
+                        if (networkMove.Begin.row != networkMove.End.row)
+                        {
+                            SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
+                            MoveGamePiece(networkMove.End.col, networkMove.End.row);
+                            
+                        }
                         networkMove = null;
+
+
                     }
                    
                    
@@ -179,7 +185,7 @@ namespace GameCore {
                             MoveGamePiece(selectionX, selectionY);
                             endCol = selectionY;
                             endRow = selectionX;
-                            if (beginRow != endRow && beginCol != endCol)
+                            if (beginCol != endCol)
                             {
                                 // networkMove.End.row = selectionX;
                                 //  networkMove.End.col = selectionY;
@@ -195,16 +201,16 @@ namespace GameCore {
                     }
                 }
 
-                if(currentPlayer == PlayerX)
-                {
-                    turnImage.sprite = choicesForTurnImage[0];
-                    turnText.text = "Your turn!";
-                }
-                else if(currentPlayer == PlayerO)
-                {
-                    turnImage.sprite = choicesForTurnImage[1];
-                    turnText.text = "Computer's turn!";
-                }
+                //if(currentPlayer == PlayerX)
+                //{
+                //    turnImage.sprite = choicesForTurnImage[0];
+                //    turnText.text = "Your turn!";
+                //}
+                //else if(currentPlayer == PlayerO)
+                //{
+                //    turnImage.sprite = choicesForTurnImage[1];
+                //    turnText.text = "Computer's turn!";
+                //}
             }
             else
             {
