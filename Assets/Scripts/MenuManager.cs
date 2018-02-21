@@ -77,14 +77,14 @@ public class MenuManager : MonoBehaviour {
         highlightButton(turnButtons, index);
 
 
-        //if (index == 0)
-        //{
-        //    GameCore.BoardManager.playerGoingFirst = true;
-        //}
-        //else
-        //{
-        //    GameCore.BoardManager.playerGoingFirst = false;
-        //}
+        if (index == 0)
+        {
+            GameCore.BoardManager.playerGoingFirst = true;
+        }
+        else
+        {
+            GameCore.BoardManager.playerGoingFirst = false;
+        }
     }
 
     public void backButtonClicked()

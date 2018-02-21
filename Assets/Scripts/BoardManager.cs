@@ -201,16 +201,16 @@ namespace GameCore {
                     }
                 }
 
-                //if(currentPlayer == PlayerX)
-                //{
-                //    turnImage.sprite = choicesForTurnImage[0];
-                //    turnText.text = "Your turn!";
-                //}
-                //else if(currentPlayer == PlayerO)
-                //{
-                //    turnImage.sprite = choicesForTurnImage[1];
-                //    turnText.text = "Computer's turn!";
-                //}
+                if (currentPlayer == PlayerX)
+                {
+                    turnImage.sprite = choicesForTurnImage[0];
+                    turnText.text = "Your turn!";
+                }
+                else if (currentPlayer == PlayerO)
+                {
+                    turnImage.sprite = choicesForTurnImage[1];
+                    turnText.text = "Computer's turn!";
+                }
             }
             else
             {
