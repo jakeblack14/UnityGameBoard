@@ -99,16 +99,31 @@ public class MenuManager : MonoBehaviour {
             }
         }
 
-        if (index == 1)
+        if (index == 6 || index == 5)
         {
             MenuPanels[index].SetActive(false);
-            MenuPanels[0].SetActive(true);
+        }
+        else if (index == 4)
+        {
+            MenuPanels[index].SetActive(false);
+            MenuPanels[2].SetActive(true);
         }
         else
         {
             MenuPanels[index].SetActive(false);
-            MenuPanels[1].SetActive(true);
+            MenuPanels[index - 1].SetActive(true);
         }
+
+        //if (index == 1)
+        //{
+        //    MenuPanels[index].SetActive(false);
+        //    MenuPanels[0].SetActive(true);
+        //}
+        //else
+        //{
+        //    MenuPanels[index].SetActive(false);
+        //    MenuPanels[1].SetActive(true);
+        //}
     }
 
     private void highlightButton(Button[] currentButtons, int index)
