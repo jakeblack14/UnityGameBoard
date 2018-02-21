@@ -112,7 +112,7 @@ ebfdd2489194de73284a969277395ad0 Assembly-CSharp.dll:.DemoRPGMovement
 06a7c7079fa0a7ea37c75d6686628aec Assembly-CSharp.dll:.PhotonHandler
 6475769091568e8685a22e493bb5795b Assembly-CSharp.dll:.GUIFriendsInRoom
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.OnClickDisableObj
-d5e126aca3affbb93b7bf4d579243edd Assembly-CSharp.dll:GameCore.BoardManager
+a37d8d82ec2fa52b27d494758914a877 Assembly-CSharp.dll:GameCore.BoardManager
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 8144169769d51429c4aedc8b0f92d47b UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset

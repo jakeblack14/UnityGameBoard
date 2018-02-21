@@ -155,7 +155,7 @@ namespace TechPlanet.SpaceRace
            // Idk what goes in this yet but this seems to be the way to load a scene through photon network PhotonNetwork.InstantiateSceneObject()
            if (PhotonNetwork.isMasterClient)
             {
-                PhotonNetwork.LoadLevel("MilkyWayScene");
+                PhotonNetwork.LoadLevel("MultiPlayer Scene");
             }
            if (PhotonNetwork.room.PlayerCount == 2)
             {
