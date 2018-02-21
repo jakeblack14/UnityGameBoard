@@ -27,11 +27,11 @@ public class MenuManager : MonoBehaviour {
 
     void Update()
     {
-        if (MenuPanels[0].activeSelf)
+        if (MenuPanels[0].activeSelf && !MenuPanels[5].activeSelf && !MenuPanels[6].activeSelf)
         {
             BackButton.SetActive(false);
         }
-        else if(MenuPanels[2].activeSelf)
+        else if(MenuPanels[3].activeSelf)
         {
             GameSettingsSetUp();
         }
@@ -89,41 +89,35 @@ public class MenuManager : MonoBehaviour {
 
     public void backButtonClicked()
     {
-        int index = 0;
-
-        for (int i = 0; i < 6; i++)
+        if (MenuPanels[5].activeSelf || MenuPanels[6].activeSelf)
         {
-            if (MenuPanels[i].activeSelf)
-            {
-                index = i;
-            }
-        }
-
-        if (index == 6 || index == 5)
-        {
-            MenuPanels[index].SetActive(false);
-        }
-        else if (index == 4)
-        {
-            MenuPanels[index].SetActive(false);
-            MenuPanels[2].SetActive(true);
+            MenuPanels[5].SetActive(false);
+            MenuPanels[6].SetActive(false);
         }
         else
         {
-            MenuPanels[index].SetActive(false);
-            MenuPanels[index - 1].SetActive(true);
-        }
 
-        //if (index == 1)
-        //{
-        //    MenuPanels[index].SetActive(false);
-        //    MenuPanels[0].SetActive(true);
-        //}
-        //else
-        //{
-        //    MenuPanels[index].SetActive(false);
-        //    MenuPanels[1].SetActive(true);
-        //}
+            int index = 0;
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (MenuPanels[i].activeSelf)
+                {
+                    index = i;
+                }
+            }
+
+            if (index == 4)
+            {
+                MenuPanels[index].SetActive(false);
+                MenuPanels[2].SetActive(true);
+            }
+            else
+            {
+                MenuPanels[index].SetActive(false);
+                MenuPanels[index - 1].SetActive(true);
+            }
+        }
     }
 
     private void highlightButton(Button[] currentButtons, int index)

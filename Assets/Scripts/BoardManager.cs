@@ -49,6 +49,9 @@ namespace GameCore {
         public GameObject canvas;
         public GameObject GameOverPanel;
         public Text winnerText;
+        public Text turnText;
+        public Image turnImage;
+        public Sprite[] choicesForTurnImage;
         private static bool wasCreated;
 
         private Material previousMat;
@@ -190,6 +193,17 @@ namespace GameCore {
 
                         }
                     }
+                }
+
+                if(currentPlayer == PlayerX)
+                {
+                    turnImage.sprite = choicesForTurnImage[0];
+                    turnText.text = "Your turn!";
+                }
+                else if(currentPlayer == PlayerO)
+                {
+                    turnImage.sprite = choicesForTurnImage[1];
+                    turnText.text = "Computer's turn!";
                 }
             }
             else
