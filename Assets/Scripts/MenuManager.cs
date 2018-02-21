@@ -154,7 +154,7 @@ public class MenuManager : MonoBehaviour {
         GameCore.BoardManager.againstAI = false;
         GameCore.BoardManager.againstNetwork = true;
         GameCore.BoardManager.waitForNetwork = true;
-        SceneManager.LoadScene("MultiPlayer Scene");
+        SceneManager.LoadScene("MilkyWayScene");
     }
 
 }
