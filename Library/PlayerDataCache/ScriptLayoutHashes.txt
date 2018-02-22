@@ -228,6 +228,7 @@ ea580b2edab741d1d6e6445b14097645 Assembly-CSharp.dll:.RPGCamera
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
 cb9b23bb8d8552626640cca26addf6f1 Assembly-CSharp.dll:.FriendItem
 b9aa2dc7b2d26ae77e2f18bb7fa03528 Assembly-CSharp.dll:TechPlanet.SpaceRace.MultiplayerLauncher
+e74f7a602452fb6a67bd039287746209 Assembly-CSharp.dll:.SettingsManager
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 abe32a93cd37b12375c9475f8f38bec3 Assembly-CSharp.dll:.PunTurnManager
 50a2e6b27f1d70c11491eeed2f78fa8d Assembly-CSharp.dll:.GamePieces

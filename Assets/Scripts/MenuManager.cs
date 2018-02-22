@@ -148,14 +148,14 @@ public class MenuManager : MonoBehaviour {
     {
         GameCore.BoardManager.againstAI = true;
         GameCore.BoardManager.againstNetwork = false;
-        SceneManager.LoadScene(locationIndex + 1);
+        SceneManager.LoadScene("MilkyWayScene");
     }
 
     public void localButtonClicked()
     {
         GameCore.BoardManager.againstAI = false;
         GameCore.BoardManager.againstNetwork = false;
-        SceneManager.LoadScene(locationIndex + 1);
+        SceneManager.LoadScene("MilkyWayScene");
 
     }
 
