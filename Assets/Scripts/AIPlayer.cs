@@ -65,8 +65,6 @@ namespace GameCore
 
             //Get first player identity and board
 
-            //Note: defining X as always white as always first here!
-            identity first = identity.X;
 
             //get the board state
             Board board = BoardManager.getBoard();
