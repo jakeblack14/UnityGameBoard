@@ -219,6 +219,7 @@
      <Compile Include="Assets\Scripts\Properties\AssemblyInfo.cs" />
      <Compile Include="Assets\Scripts\QuitOnClick.cs" />
      <Compile Include="Assets\Scripts\ReloadScene.cs" />
+     <Compile Include="Assets\Scripts\SettingsManager.cs" />
      <Compile Include="Assets\Scripts\Square.cs" />
      <Compile Include="Assets\Scripts\Tutorial.cs" />
      <Compile Include="Assets\Scripts\WorldSpin.cs" />
