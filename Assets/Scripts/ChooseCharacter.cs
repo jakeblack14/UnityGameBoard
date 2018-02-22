@@ -54,7 +54,7 @@ public class ChooseCharacter : MonoBehaviour {
         Astronauts = Resources.LoadAll<Sprite>("AstronautSprites");
         Aliens = Resources.LoadAll<Sprite>("AlienSprites");
 
-        introText.text = "Welcome " + GameBoardData.Name + ", choose a team as you prepare to conquer the galaxy!!";
+        //introText.text = "Welcome " + GameBoardData.Name + ", choose a team as you prepare to conquer the galaxy!!";
 
         currentAlien = Aliens[0];
         currentAstro = Astronauts[0];
@@ -110,6 +110,8 @@ public class ChooseCharacter : MonoBehaviour {
             AlienNext.image.enabled = true;
             AlienBack.image.enabled = true;
         }
+
+        introText.text = "Welcome " + GameBoardData.Name + ", choose a team as you prepare to conquer the galaxy!!";
     }
 
     public void On_Astro_Click_Button()

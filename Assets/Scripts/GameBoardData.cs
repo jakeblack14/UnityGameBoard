@@ -11,12 +11,14 @@ public static class GameBoardData {
 
     private static bool isNetworkGame;
 
-    private static string name;
+    private static string name = "";
 
     private static Sprite AlienImage;
     private static Sprite AstroImage;
 
     private static bool isAlien;
+
+    private static bool gameWasInitialized = false;
 
     public static bool IsAlien
     {
@@ -27,6 +29,18 @@ public static class GameBoardData {
         set
         {
             isAlien = value;
+        }
+    }
+
+    public static bool GameInitialized
+    {
+        get
+        {
+            return gameWasInitialized;
+        }
+        set
+        {
+            gameWasInitialized = value;
         }
     }
 

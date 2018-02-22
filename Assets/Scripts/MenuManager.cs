@@ -23,6 +23,16 @@ public class MenuManager : MonoBehaviour {
     void Start()
     {
         BackButton = GameObject.Find("BackButtonPanel");
+
+        if(!GameBoardData.GameInitialized)
+        {
+            GameBoardData.GameInitialized = true;
+        }
+        else
+        {
+            MenuPanels[0].SetActive(false);
+            MenuPanels[2].SetActive(true);
+        }
     }
 
     void Update()
