@@ -148,7 +148,11 @@ namespace TechPlanet.SpaceRace
                 
           //  PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2 }, null);
         }
-
+        public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
+        {
+            // Do something where it basically calls the exit game function
+            //base.OnPhotonPlayerDisconnected(otherPlayer);
+        }
         public override void OnJoinedRoom()
         {
             Debug.Log("DemoAnimator/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
