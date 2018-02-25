@@ -10,6 +10,7 @@ namespace TechPlanet.SpaceRace
         /// The PUN loglevel. 
         /// </summary>
         public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
+        PhotonPlayer OtherNetworkPlayer;
         /// <summary>
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
         /// </summary>   
@@ -77,8 +78,9 @@ namespace TechPlanet.SpaceRace
             // if (rand.Next(0, 2))
             //button = GameObject.Find("Start");
         }
-
         
+
+
         #endregion
 
 
@@ -150,6 +152,7 @@ namespace TechPlanet.SpaceRace
         }
         public override void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
         {
+            Debug.Log("Player Disconnected"+ otherPlayer.NickName);
             // Do something where it basically calls the exit game function
             //base.OnPhotonPlayerDisconnected(otherPlayer);
         }
@@ -184,6 +187,10 @@ namespace TechPlanet.SpaceRace
                 Debug.Log("Going Second");
 
                 jeffGo.ChangeFirstPlayer(false);
+               // if (OtherNetworkPlayer.NickName == null)
+               // {
+               //
+               // }
             }
             else
             {
