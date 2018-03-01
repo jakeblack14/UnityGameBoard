@@ -855,6 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c93333356aae2b459d7a06e366f25c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
   gamePieces:
   - {fileID: 1794387152681008, guid: f162143aa8dfbff4598c44ec120f761d, type: 2}
   - {fileID: 1683976706644754, guid: b0ae07619b2129e4b80ab3dbf6b5f312, type: 2}

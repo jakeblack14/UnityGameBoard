@@ -34,6 +34,7 @@ namespace GameCore {
         private const float TILE_SIZE = 1.0f;
         private const float TILE_OFFSET = 0.5f;
 
+        public float speed;
       
         public static Move networkMove = new Move();
         Player PlayerX = new Player(identity.X);
@@ -306,8 +307,12 @@ namespace GameCore {
                 GamePiecesArray[currentMove.Begin.col,currentMove.Begin.row] = null;
                 //GamePiecesArray[currentMove.End.col, currentMove.End.row] = selectedGamePiece;
 
-                selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
+                StartCoroutine(AnimatePiece(selectedGamePiece, GetTileCenter(x,y).x, GetTileCenter(x,y).z));
+
+                //selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
                 GamePiecesArray[x,y] = selectedGamePiece;
+
+                
 
                 selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
                 selectedGamePiece = null;
@@ -338,6 +343,26 @@ namespace GameCore {
 
             
         }
+
+        IEnumerator AnimatePiece(GamePieces piece, float x, float z)
+        {
+            float waitTime = 0.04f;
+            Vector3 targetPosition = new Vector3(x, 0, z);
+
+            while(true)
+            {
+                yield return new WaitForSeconds(waitTime);
+
+                float step = speed * waitTime;
+                piece.transform.position = Vector3.MoveTowards(piece.transform.position, targetPosition, step);
+
+                if(piece.transform.position == targetPosition)
+                {
+                    break;
+                }
+            }
+        }
+
         public void ChangeFirstPlayer(Boolean whoIsFirst)
         {
             if (whoIsFirst)
