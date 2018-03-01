@@ -126,7 +126,7 @@ namespace TechPlanet.SpaceRace
 
         }
 
-
+        
         public override void OnDisconnectedFromPhoton()
         {
            // progressLabel.SetActive(false);
@@ -173,6 +173,11 @@ namespace TechPlanet.SpaceRace
                 StartGame();
             }
             
+        }
+
+        public void LeaveGame()
+        {
+            PhotonNetwork.Disconnect();
         }
         void StartGame()
         {
