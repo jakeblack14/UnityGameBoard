@@ -155,6 +155,7 @@ namespace TechPlanet.SpaceRace
             Debug.Log("Player Disconnected"+ otherPlayer.NickName);
             // Do something where it basically calls the exit game function
             //base.OnPhotonPlayerDisconnected(otherPlayer);
+            LeaveGame();
         }
         public override void OnJoinedRoom()
         {
