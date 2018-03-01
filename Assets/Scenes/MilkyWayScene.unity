@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -855,7 +855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c93333356aae2b459d7a06e366f25c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   gamePieces:
   - {fileID: 1794387152681008, guid: f162143aa8dfbff4598c44ec120f761d, type: 2}
   - {fileID: 1683976706644754, guid: b0ae07619b2129e4b80ab3dbf6b5f312, type: 2}
@@ -959,6 +958,7 @@ GameObject:
   - component: {fileID: 387136606}
   - component: {fileID: 387136605}
   - component: {fileID: 387136604}
+  - component: {fileID: 387136608}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -1046,6 +1046,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 387136608}
+        m_MethodName: LeaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &387136606
@@ -1081,6 +1092,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 387136602}
+--- !u!114 &387136608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 387136602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f9b7ca9b061ec4b9ff50dac15b31aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loglevel: 1
 --- !u!1001 &576587868
 Prefab:
   m_ObjectHideFlags: 0
@@ -2248,6 +2271,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1307317753}
+  - component: {fileID: 1307317754}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -2270,6 +2294,18 @@ Transform:
   m_Father: {fileID: 251837215}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1307317754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307317752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f9b7ca9b061ec4b9ff50dac15b31aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loglevel: 1
 --- !u!1 &1409197204
 GameObject:
   m_ObjectHideFlags: 0
