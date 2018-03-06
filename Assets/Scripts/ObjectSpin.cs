@@ -13,6 +13,6 @@ public class ObjectSpin : MonoBehaviour {
 	void Update () {
         //transform.Rotate(spinx, spiny, spinz);
 
-        transform.Rotate(Vector3.up * 0.06f, Space.Self);
+        transform.Rotate(Vector3.up * 0.1f, Space.Self);
 	}
 }
