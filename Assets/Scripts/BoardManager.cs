@@ -51,8 +51,10 @@ namespace GameCore {
         public GameObject GameOverPanel;
         public Text winnerText;
         public Text turnText;
-        public Image turnImage;
-        public Sprite[] choicesForTurnImage;
+        //public Image turnImage;
+        //public Sprite[] choicesForTurnImage;
+        public GameObject Rocket;
+        Animator animator;
         private static bool wasCreated;
 
         private Material previousMat;
@@ -112,9 +114,10 @@ namespace GameCore {
 
             currentMove = new Move();
             //SendTheMove()
+
+            animator = Rocket.GetComponent<Animator>();
+
         }
-
-
 
         private void Update()
         {
@@ -147,16 +150,10 @@ namespace GameCore {
                         if (networkMove.Begin.row != networkMove.End.row)
                         {
                             SelectGamePiece(networkMove.Begin.col, networkMove.Begin.row);
-                            MoveGamePiece(networkMove.End.col, networkMove.End.row);
-                            
+                            MoveGamePiece(networkMove.End.col, networkMove.End.row);   
                         }
                         networkMove = null;
-
-
                     }
-                   
-                   
-
                 }
                 else if (Input.GetMouseButtonDown(0))
                 {
@@ -204,13 +201,19 @@ namespace GameCore {
 
                 if (currentPlayer == PlayerX)
                 {
-                    turnImage.sprite = choicesForTurnImage[0];
+                    //turnImage.sprite = choicesForTurnImage[0];
                     turnText.text = "Your turn!";
+                    animator.SetBool("Player1Turn", true);
+                    animator.SetBool("Player2Turn", false);
+
+
                 }
                 else if (currentPlayer == PlayerO)
                 {
-                    turnImage.sprite = choicesForTurnImage[1];
+                    //turnImage.sprite = choicesForTurnImage[1];
                     turnText.text = "Computer's turn!";
+                    animator.SetBool("Player2Turn", true);
+                    animator.SetBool("Player1Turn", false);
                 }
             }
             else
