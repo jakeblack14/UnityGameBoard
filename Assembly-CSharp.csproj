@@ -194,8 +194,8 @@
      <Compile Include="Assets\PhotonChatApi\ChatState.cs" />
      <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
      <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
-     <Compile Include="Assets\RocketAnim.cs" />
      <Compile Include="Assets\Scripts\AIPlayer.cs" />
+     <Compile Include="Assets\Scripts\AsteroidDestruction.cs" />
      <Compile Include="Assets\Scripts\Board.cs" />
      <Compile Include="Assets\Scripts\BoardManager.cs" />
      <Compile Include="Assets\Scripts\ChooseCharacter.cs" />
@@ -207,6 +207,7 @@
      <Compile Include="Assets\Scripts\GamePieces.cs" />
      <Compile Include="Assets\Scripts\GameTutorialDisappear.cs" />
      <Compile Include="Assets\Scripts\GameUIManager.cs" />
+     <Compile Include="Assets\Scripts\InstantiateAsteroids.cs" />
      <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
@@ -220,6 +221,7 @@
      <Compile Include="Assets\Scripts\Properties\AssemblyInfo.cs" />
      <Compile Include="Assets\Scripts\QuitOnClick.cs" />
      <Compile Include="Assets\Scripts\ReloadScene.cs" />
+     <Compile Include="Assets\Scripts\RocketAnim.cs" />
      <Compile Include="Assets\Scripts\SettingsManager.cs" />
      <Compile Include="Assets\Scripts\Square.cs" />
      <Compile Include="Assets\Scripts\Tutorial.cs" />
