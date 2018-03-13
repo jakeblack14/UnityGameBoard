@@ -115,12 +115,12 @@ namespace GameCore {
             currentMove = new Move();
             //SendTheMove()
 
-<<<<<<< HEAD
-            animator = Rocket.GetComponent<Animator>();
-            animator.speed = 2.25f; // Changes how fast the rocket will fly across the screen
-=======
+
             //animator = Rocket.GetComponent<Animator>();
->>>>>>> de682f71c83796f5a9c388c37a666853c61cc160
+            //animator.speed = 2.25f; // Changes how fast the rocket will fly across the screen
+
+            //animator = Rocket.GetComponent<Animator>();
+
 
         }
 
