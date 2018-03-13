@@ -13,10 +13,9 @@ namespace GameCore
         BoardManager bd;
 
         // Use this for initialization
-        void Start()
+        void Start() 
         {
             animator = GetComponent<Animator>();
-
             bd = new BoardManager();
         }
 
