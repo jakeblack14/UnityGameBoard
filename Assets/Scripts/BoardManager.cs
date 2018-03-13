@@ -53,7 +53,7 @@ namespace GameCore {
         public Text turnText;
         //public Image turnImage;
         //public Sprite[] choicesForTurnImage;
-        public GameObject Rocket;
+        //public GameObject Rocket;
         Animator animator;
         private static bool wasCreated;
 
@@ -115,8 +115,12 @@ namespace GameCore {
             currentMove = new Move();
             //SendTheMove()
 
+<<<<<<< HEAD
             animator = Rocket.GetComponent<Animator>();
             animator.speed = 2.25f; // Changes how fast the rocket will fly across the screen
+=======
+            //animator = Rocket.GetComponent<Animator>();
+>>>>>>> de682f71c83796f5a9c388c37a666853c61cc160
 
         }
 
@@ -204,8 +208,8 @@ namespace GameCore {
                 {
                     //turnImage.sprite = choicesForTurnImage[0];
                     turnText.text = "Your turn!";
-                    animator.SetBool("Player1Turn", true);
-                    animator.SetBool("Player2Turn", false);
+                    //animator.SetBool("Player1Turn", true);
+                    //animator.SetBool("Player2Turn", false);
 
 
                 }
@@ -213,8 +217,8 @@ namespace GameCore {
                 {
                     //turnImage.sprite = choicesForTurnImage[1];
                     turnText.text = "Computer's turn!";
-                    animator.SetBool("Player2Turn", true);
-                    animator.SetBool("Player1Turn", false);
+                    //animator.SetBool("Player2Turn", true);
+                    //animator.SetBool("Player1Turn", false);
                 }
             }
             else
