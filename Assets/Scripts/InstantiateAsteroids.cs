@@ -21,9 +21,12 @@ public class InstantiateAsteroids : MonoBehaviour {
 
     IEnumerator wait()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
-            Instantiate(asteroid, transform.position, transform.rotation);
+            //Debug.Log(asteroid);
+            GameObject currentAsteroid = Instantiate(asteroid, transform.position, transform.rotation) as GameObject;
+            currentAsteroid.transform.localScale = new Vector3(20, 20, 20);
+
             yield return new WaitForSeconds(waitTime);
         }
     }

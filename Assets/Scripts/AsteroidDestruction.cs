@@ -8,8 +8,10 @@ public class AsteroidDestruction : MonoBehaviour {
 
     void OnTriggerEnter (Collider other)
     {
-        if(other.tag == "NewAsteroid")
+        if(other.tag == "NewAsteroid" && other.tag != "NotExplosive")
         {
+            Debug.Log(other.name);
+
             Instantiate(explosion, other.transform.position, other.transform.rotation);
 
             Destroy(other.gameObject);
