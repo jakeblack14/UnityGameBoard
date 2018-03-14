@@ -1766,7 +1766,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 385537732}
-  - component: {fileID: 385537731}
   - component: {fileID: 385537733}
   m_Layer: 0
   m_Name: Neptune
@@ -1775,18 +1774,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &385537731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 385537730}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d891d12ffa2537429709cadaf2b7063, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!4 &385537732
 Transform:
   m_ObjectHideFlags: 0
@@ -2150,7 +2137,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 432620727}
-  - component: {fileID: 432620726}
   - component: {fileID: 432620725}
   m_Layer: 0
   m_Name: Venus
@@ -2170,18 +2156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33eb1629f7dc1824cb4c3fbb26fac507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &432620726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 432620724}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d891d12ffa2537429709cadaf2b7063, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!4 &432620727
 Transform:
   m_ObjectHideFlags: 0
@@ -3162,7 +3136,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 718610944}
-  - component: {fileID: 718610943}
   - component: {fileID: 718610942}
   m_Layer: 0
   m_Name: Mercury
@@ -3182,18 +3155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33eb1629f7dc1824cb4c3fbb26fac507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &718610943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 718610941}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d891d12ffa2537429709cadaf2b7063, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
 --- !u!4 &718610944
 Transform:
   m_ObjectHideFlags: 0
