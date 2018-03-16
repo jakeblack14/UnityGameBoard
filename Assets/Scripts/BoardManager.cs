@@ -108,20 +108,15 @@ namespace GameCore {
 
             wasCreated = false;
 
-
-            SpawnAllGamePieces();
-                        
+            SpawnAllGamePieces();          
 
             currentMove = new Move();
             //SendTheMove()
-
 
             animator = Rocket.GetComponent<Animator>();
             animator.speed = 2.25f; // Changes how fast the rocket will fly across the screen
 
             animator = Rocket.GetComponent<Animator>();
-
-
         }
 
         private void Update()
@@ -166,6 +161,7 @@ namespace GameCore {
                     //selectionX and selectionY correspond to what square on the board the mouse is currently on
                     if (selectionX >= 0 && selectionY >= 0)
                     {
+
                         //if(GamePiecesArray[selectionX, selectionY] != null)
                         //{
                         //    SelectGamePiece(selectionX, selectionY);
@@ -255,6 +251,7 @@ namespace GameCore {
 
         public void SelectGamePiece(int x, int y)
         {
+
             //checks to see if there is a game piece on that square
             if (GamePiecesArray[x, y] == null)
                 return;
@@ -315,12 +312,12 @@ namespace GameCore {
                 GamePiecesArray[currentMove.Begin.col,currentMove.Begin.row] = null;
                 //GamePiecesArray[currentMove.End.col, currentMove.End.row] = selectedGamePiece;
 
+                Debug.Log(selectedGamePiece);
+
                 StartCoroutine(AnimatePiece(selectedGamePiece, GetTileCenter(x,y).x, GetTileCenter(x,y).z));
 
                 //selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
                 GamePiecesArray[x,y] = selectedGamePiece;
-
-                
 
                 selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
                 selectedGamePiece = null;
@@ -348,8 +345,6 @@ namespace GameCore {
                     selectedGamePiece = null;
                 }
             }
-
-            
         }
 
         IEnumerator AnimatePiece(GamePieces piece, float x, float z)
@@ -385,6 +380,7 @@ namespace GameCore {
             }
             setFirstPlayer();
         }
+
         public void ReceiveNetworkMove(int beginRow, int beginCol, int endRow, int endCol)
         {
             networkMove = new Move();
@@ -393,11 +389,10 @@ namespace GameCore {
             networkMove.End.row = endRow;
             networkMove.End.col = endCol;
         }
+
         private void UpdateSelection()
         {
             if (!Camera.main)
-
-
                 return;
 
             RaycastHit hit;
@@ -411,8 +406,6 @@ namespace GameCore {
                 selectionX = -1;
                 selectionY = -1;
             }
-
-            //Debug.Log(selectionX + " " + selectionY);
         }
 
         private void SpawnGamePieces(int index, int x, int y)
