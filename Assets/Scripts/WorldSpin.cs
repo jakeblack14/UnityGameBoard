@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class WorldSpin : MonoBehaviour {
 
-    private float Spin;
+    // Use this for initialization
+    int spinx = 0;
+    int spiny = 1;
+    int spinz = 0;
+
+    float Spin;
 
     void Start()
     {
@@ -14,6 +19,8 @@ public class WorldSpin : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //transform.Rotate(spinx, spiny, spinz);
+
         transform.Rotate(Vector3.up * Spin, Space.Self);
     }
 }

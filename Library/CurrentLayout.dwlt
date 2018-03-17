@@ -36,6 +36,7 @@ MonoBehaviour:
   m_PixelRect:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 43
     width: 1600
     height: 817
@@ -43,6 +44,15 @@ MonoBehaviour:
   m_Title: 
   m_RootView: {fileID: 9}
   m_MinSize: {x: 950, y: 392}
+=======
+    y: 45
+    width: 2560
+    height: 1391
+  m_ShowMode: 4
+  m_Title: 
+  m_RootView: {fileID: 6}
+  m_MinSize: {x: 950, y: 300}
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -52,13 +62,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Children: []
+  m_Children:
+  - {fileID: 9}
+  - {fileID: 3}
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 0
     width: 1346
     height: 714
@@ -70,6 +83,16 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &4
+=======
+    y: 30
+    width: 2560
+    height: 1341
+  m_MinSize: {x: 683, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
+  vertical: 0
+  controlID: 615
+--- !u!114 &3
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -77,9 +100,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_Children:
   - {fileID: 3}
   m_Position:
@@ -93,6 +117,23 @@ MonoBehaviour:
   vertical: 0
   controlID: 516
 --- !u!114 &5
+=======
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 2041
+    y: 0
+    width: 519
+    height: 1341
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 14}
+  m_Panes:
+  - {fileID: 14}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &4
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -100,6 +141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+<<<<<<< HEAD
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -149,6 +191,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
+=======
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -157,6 +201,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 316
     height: 464
   m_MinSize: {x: 200, y: 200}
@@ -167,6 +212,18 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &8
+=======
+    width: 505
+    height: 811
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 15}
+  m_Panes:
+  - {fileID: 15}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &5
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -181,6 +238,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 464
     width: 1276
     height: 303
@@ -193,6 +251,20 @@ MonoBehaviour:
   m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &9
+=======
+    y: 811
+    width: 2041
+    height: 530
+  m_MinSize: {x: 232, y: 271}
+  m_MaxSize: {x: 10002, y: 10021}
+  m_ActualView: {fileID: 13}
+  m_Panes:
+  - {fileID: 13}
+  - {fileID: 18}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &6
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -204,18 +276,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
+<<<<<<< HEAD
   - {fileID: 10}
   - {fileID: 5}
   - {fileID: 11}
+=======
+  - {fileID: 7}
+  - {fileID: 2}
+  - {fileID: 8}
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1600
     height: 817
   m_MinSize: {x: 950, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &10
+=======
+    width: 2560
+    height: 1391
+  m_MinSize: {x: 950, y: 300}
+  m_MaxSize: {x: 10000, y: 10000}
+--- !u!114 &7
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -231,12 +317,21 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1600
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 
 --- !u!114 &11
+=======
+    width: 2560
+    height: 30
+  m_MinSize: {x: 0, y: 0}
+  m_MaxSize: {x: 0, y: 0}
+  m_LastLoadedLayoutName: Default
+--- !u!114 &8
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -251,12 +346,20 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 797
     width: 1600
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
 --- !u!114 &12
+=======
+    y: 1371
+    width: 2560
+    height: 20
+  m_MinSize: {x: 0, y: 0}
+  m_MaxSize: {x: 0, y: 0}
+--- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -268,12 +371,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 13}
-  - {fileID: 8}
+  - {fileID: 10}
+  - {fileID: 5}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
+    width: 2041
+    height: 1341
+  m_MinSize: {x: 406, y: 492}
+  m_MaxSize: {x: 10002, y: 14042}
+  vertical: 1
+  controlID: 547
+--- !u!114 &10
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+<<<<<<< HEAD
+  - {fileID: 13}
+  - {fileID: 8}
+=======
+  - {fileID: 4}
+  - {fileID: 11}
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 0
+<<<<<<< HEAD
     width: 1276
     height: 767
   m_MinSize: {x: 406, y: 342}
@@ -305,6 +439,15 @@ MonoBehaviour:
   vertical: 0
   controlID: 11
 --- !u!114 &14
+=======
+    width: 2041
+    height: 811
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
+  vertical: 0
+  controlID: 548
+--- !u!114 &11
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -318,6 +461,7 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 316
     y: 0
     width: 960
@@ -331,6 +475,22 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &15
+=======
+    x: 505
+    y: 0
+    width: 1536
+    height: 811
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
+  m_ActualView: {fileID: 16}
+  m_Panes:
+  - {fileID: 16}
+  - {fileID: 17}
+  - {fileID: 12}
+  m_Selected: 0
+  m_LastSelected: 1
+--- !u!114 &12
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -356,8 +516,12 @@ MonoBehaviour:
     y: 181
     width: 973
     height: 501
+<<<<<<< HEAD
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &16
+=======
+--- !u!114 &13
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -380,28 +544,34 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 556
     width: 1274
     height: 282
   m_PersistentViewDataDictionary: {fileID: 0}
+=======
+    y: 905
+    width: 2039
+    height: 509
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
     m_VersionControlStates: []
-    m_SoftLockControlStates: []
     m_ReferencingInstanceIDs: 
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets
   m_LastFoldersGridSize: -1
+<<<<<<< HEAD
   m_LastProjectPath: C:\Users\softdev.SI-203-01\Documents\GitHub\UnityGameBoard
   m_IsLocked: 0
   m_FolderTreeState:
@@ -409,6 +579,15 @@ MonoBehaviour:
     m_SelectedIDs: a02d0000
     m_LastClickedID: 11680
     m_ExpandedIDs: 00000000e02b0000f42b0000bc2c0000262d0000082e0000c02f0000f83000000e310000123100007c31000030330000ea33000050340000a0360000a44c0000a64c0000a84c0000aa4c0000ac4c0000ae4c000000ca9a3bffffff7f
+=======
+  m_LastProjectPath: /Users/danielbrauer/Unity Projects/New Unity Project 20
+  m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: b0230000
+    m_LastClickedID: 9136
+    m_ExpandedIDs: 00000000b023000000ca9a3bffffff7f
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -425,18 +604,27 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 0}
+<<<<<<< HEAD
     m_SearchString: 
+=======
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
       m_Path: 
       m_Icon: {fileID: 0}
       m_ResourceFile: 
+    m_SearchString: 
+    m_ColumnWidths: []
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000e02b0000f42b0000bc2c0000262d0000082e0000c02f0000f8300000003100000e31000030330000ea33000050340000a0360000ae360000d8360000a44c0000a64c0000a84c0000aa4c0000ac4c0000ae4c0000
+=======
+    m_ExpandedIDs: 00000000b023000000ca9a3bffffff7f
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -453,17 +641,24 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 0}
-    m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
       m_Path: 
       m_Icon: {fileID: 0}
       m_ResourceFile: 
+    m_SearchString: 
+    m_ColumnWidths: []
   m_ListAreaState:
+<<<<<<< HEAD
     m_SelectedInstanceIDs: c42f0000
     m_LastClickedInstanceID: 12228
     m_HadKeyboardFocusLastEvent: 1
+=======
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -490,8 +685,13 @@ MonoBehaviour:
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
+<<<<<<< HEAD
   m_DirectoriesAreaWidth: 381
 --- !u!114 &17
+=======
+  m_DirectoriesAreaWidth: 115
+--- !u!114 &14
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -513,11 +713,18 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1278
     y: 92
     width: 322
     height: 746
   m_PersistentViewDataDictionary: {fileID: 0}
+=======
+    x: 2043
+    y: 94
+    width: 517
+    height: 1320
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
@@ -548,15 +755,25 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 92
     width: 314
     height: 443
   m_PersistentViewDataDictionary: {fileID: 0}
+=======
+    y: 94
+    width: 503
+    height: 790
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: c42f0000
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 8889fbffe4aaffff08f8ffff00000000
+=======
+    m_ExpandedIDs: 00000000
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -573,9 +790,21 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 0}
+<<<<<<< HEAD
     m_SearchString: 
   m_ExpandedScenes:
   - MainMenu
+=======
+    m_CreateAssetUtility:
+      m_EndAction: {fileID: 0}
+      m_InstanceID: 0
+      m_Path: 
+      m_Icon: {fileID: 0}
+      m_ResourceFile: 
+    m_SearchString: 
+    m_ColumnWidths: []
+  m_ExpandedScenes: []
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -601,11 +830,18 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 318
     y: 92
     width: 956
     height: 443
   m_PersistentViewDataDictionary: {fileID: 0}
+=======
+    x: 507
+    y: 94
+    width: 1532
+    height: 790
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_SceneLighting: 1
   lastFramingTime: 0
   m_2DMode: 0
@@ -616,14 +852,12 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
-  m_ValidateTrueMetals: 0
   m_SceneViewState:
     showFog: 1
     showMaterialUpdate: 0
     showSkybox: 1
     showFlares: 1
     showImageEffects: 1
-    showParticleSystems: 1
   grid:
     xGrid:
       m_Target: 0
@@ -642,14 +876,23 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_Size:
+<<<<<<< HEAD
     m_Target: 35.57526
     speed: 2
     m_Value: 35.57526
+=======
+    m_Target: 10
+    speed: 2
+    m_Value: 10
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
+<<<<<<< HEAD
   m_ShowGlobalGrid: 1
+=======
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_LastSceneViewRotation: {x: 0, y: 0, z: 0, w: 0}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
@@ -678,6 +921,7 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1607
     y: 99
     width: 1346
@@ -687,14 +931,31 @@ MonoBehaviour:
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+=======
+    x: 507
+    y: 94
+    width: 1532
+    height: 790
+  m_MaximizeOnPlay: 0
+  m_Gizmos: 0
+  m_Stats: 0
+  m_SelectedSizes: 000000000000000000000000000000000000000000000000000000000000000000000000
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
   m_TargetDisplay: 0
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
+<<<<<<< HEAD
     m_HBaseRangeMin: -673
     m_HBaseRangeMax: 673
     m_VBaseRangeMin: -337.5
     m_VBaseRangeMax: 337.5
+=======
+    m_HBaseRangeMin: -383
+    m_HBaseRangeMax: 383
+    m_VBaseRangeMin: -193.25
+    m_VBaseRangeMax: 193.25
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -711,29 +972,51 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
+<<<<<<< HEAD
       width: 1346
       height: 675
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 673, y: 337.5}
+=======
+      width: 1532
+      height: 773
+    m_Scale: {x: 2, y: 2}
+    m_Translation: {x: 766, y: 386.5}
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
       x: -673
       y: -337.5
       width: 1346
       height: 675
+=======
+      x: -383
+      y: -193.25
+      width: 766
+      height: 386.5
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
     m_MinimalGUI: 1
-  m_defaultScale: 1
+  m_defaultScale: 2
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 1
+<<<<<<< HEAD
   m_LastWindowPixelSize: {x: 1346, y: 692}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
 --- !u!114 &21
+=======
+  m_LastWindowPixelSize: {x: 3064, y: 1580}
+  m_ClearInEditMode: 1
+  m_NoCameraWarning: 1
+  m_LowResolutionForAspectRatios: 010000000001000001
+--- !u!114 &18
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -755,8 +1038,15 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 0
     y: 556
     width: 1274
     height: 282
   m_PersistentViewDataDictionary: {fileID: 0}
+=======
+    x: 8
+    y: 718
+    width: 1366
+    height: 308
+>>>>>>> parent of 6cfacb3... Commiting lab changes because someone fogot to do that

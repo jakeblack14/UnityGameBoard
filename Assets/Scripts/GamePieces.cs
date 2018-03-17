@@ -10,8 +10,9 @@ using UnityEngine;
 
         public int CurrentX { get; set; }
         public int CurrentY { get; set; }
-        //public bool isPlayerX;
-        public GameCore.identity pieceIdentity;
+    //public bool isPlayerX;
+    public GameCore.identity pieceIdentity;
+
 
         public void SetPosition(int x, int y)
         {

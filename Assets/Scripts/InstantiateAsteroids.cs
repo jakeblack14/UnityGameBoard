@@ -9,7 +9,7 @@ public class InstantiateAsteroids : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        waitTime = Random.Range(5, 8);
+        waitTime = Random.Range(2, 5);
 
         StartCoroutine(wait());
     }
@@ -21,9 +21,7 @@ public class InstantiateAsteroids : MonoBehaviour {
 
     IEnumerator wait()
     {
-
-        while(true)
-        //for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
             //Debug.Log(asteroid);
             GameObject currentAsteroid = Instantiate(asteroid, transform.position, transform.rotation) as GameObject;
