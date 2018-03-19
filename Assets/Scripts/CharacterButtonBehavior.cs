@@ -7,8 +7,9 @@ using UnityEngine.EventSystems;
 public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
 {
     private Button pb;
-    public Sprite newSprite;
-    public Sprite clickedSprite;
+    public bool isAlien;
+    public Sprite[] newSprite;
+    public Sprite[] clickedSprite;
     private Sprite oldSprite;
 
     void Start()
@@ -21,7 +22,7 @@ public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPoin
     public void OnPointerEnter(PointerEventData eventData)
     {
         oldSprite = pb.image.sprite;
-        pb.image.sprite = newSprite;
+        //pb.image.sprite = newSprite;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -31,7 +32,7 @@ public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPoin
 
     public void TaskOnClick()
     {
-        pb.image.sprite = clickedSprite;
+        //pb.image.sprite = clickedSprite;
         oldSprite = pb.image.sprite;
     }
 }

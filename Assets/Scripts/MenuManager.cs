@@ -41,7 +41,7 @@ public class MenuManager : MonoBehaviour {
         {
             BackButton.SetActive(false);
         }
-        else if(MenuPanels[3].activeSelf)
+        else if(MenuPanels[2].activeSelf)
         {
             GameSettingsSetUp();
         }
@@ -49,17 +49,42 @@ public class MenuManager : MonoBehaviour {
         {
             BackButton.SetActive(true);
         }
+
+        if(GameBoardData.IsPlayer2)
+        {
+            inputField.placeholder.GetComponent<Text>().text = "Player 2";
+        }
     }
 
     public void usernameButtonClick()
     {
-        if(inputField.text == "")
+        if (!GameBoardData.IsPlayer2)
         {
-            GameBoardData.Name = "Player 1";
+            if (inputField.text == "")
+            {
+                GameBoardData.Name = "Player 1";
+            }
+            else
+            {
+                GameBoardData.Name = inputField.text;
+            }
+
+            MenuPanels[1].SetActive(true);
+            MenuPanels[0].SetActive(false);
         }
         else
         {
-            GameBoardData.Name = inputField.text;
+            if (inputField.text == "")
+            {
+                GameBoardData.Player2Name = "Player 2";
+            }
+            else
+            {
+                GameBoardData.Player2Name = inputField.text;
+            }
+
+            MenuPanels[3].SetActive(true);
+            MenuPanels[0].SetActive(false);
         }
     }
 
@@ -146,14 +171,45 @@ public class MenuManager : MonoBehaviour {
 
     public void gamePlayButtonClicked()
     {
-        if (locationIndex == 0)
+        MenuPanels[2].SetActive(false);
+        MenuPanels[3].SetActive(true);
+    }
+
+    public void characterNextButtonClicked()
+    {
+        if(GameCore.BoardManager.againstAI)
         {
-            SceneManager.LoadScene("AsteroidScene");
+            if (locationIndex == 0)
+            {
+                SceneManager.LoadScene("AsteroidScene");
+            }
+            else if (locationIndex == 1)
+            {
+                SceneManager.LoadScene("MilkyWayScene");
+            }
         }
-        else if (locationIndex == 1)
+        //local game
+        else if(!GameCore.BoardManager.againstNetwork)
         {
-            SceneManager.LoadScene("MilkyWayScene");
+            if(!GameBoardData.IsPlayer2)
+            {
+                GameBoardData.IsPlayer2 = true;
+                MenuPanels[3].SetActive(false);
+                MenuPanels[0].SetActive(true);
+            }
+            else if(GameBoardData.IsPlayer2)
+            {
+                if (locationIndex == 0)
+                {
+                    SceneManager.LoadScene("AsteroidScene");
+                }
+                else if (locationIndex == 1)
+                {
+                    SceneManager.LoadScene("MilkyWayScene");
+                }
+            }
         }
+        //else network game
     }
 
     public void singlePlayerButtonClicked()

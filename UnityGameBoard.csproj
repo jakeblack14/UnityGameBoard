@@ -474,6 +474,7 @@
     <Compile Include="Assets\Scripts\BoardManager.cs" />
     <Compile Include="Assets\Scripts\CharacterButtonBehavior.cs" />
     <Compile Include="Assets\Scripts\ChooseCharacter.cs" />
+    <Compile Include="Assets\Scripts\ChooseCharacterForPlayer2.cs" />
     <Compile Include="Assets\Scripts\Coord.cs" />
     <Compile Include="Assets\Scripts\EarthSpinScript.cs" />
     <Compile Include="Assets\Scripts\Enums.cs" />

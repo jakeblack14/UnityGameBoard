@@ -15,6 +15,7 @@ public class GameUIManager : MonoBehaviour {
     public Sprite AstroBackground;
 
     public Text username;
+    public Text player2Username;
 
     //public Text gameOverText;
 
