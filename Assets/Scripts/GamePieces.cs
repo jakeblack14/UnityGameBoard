@@ -5,23 +5,32 @@ using UnityEngine;
 //namespace GameCore
 
 
-    public class GamePieces : MonoBehaviour
-    {
+public class GamePieces : MonoBehaviour
+{
 
-        public int CurrentX { get; set; }
-        public int CurrentY { get; set; }
+    public int CurrentX { get; set; }
+    public int CurrentY { get; set; }
     //public bool isPlayerX;
     public GameCore.identity pieceIdentity;
+    private GameObject currentPiece;
 
-
-        public void SetPosition(int x, int y)
+    void Start()
+    {
+        currentPiece = GetComponent<GameObject>();
+        if(GameBoardData.IsAlien)
         {
-            CurrentX = x;
-            CurrentY = y;
-        }
 
-        public bool isMoveValid(int x, int y)
-        {
-            return true;
         }
     }
+
+    public void SetPosition(int x, int y)
+    {
+        CurrentX = x;
+        CurrentY = y;
+    }
+
+    public bool isMoveValid(int x, int y)
+    {
+        return true;
+    }
+}

@@ -146,17 +146,26 @@ public class MenuManager : MonoBehaviour {
 
     public void gamePlayButtonClicked()
     {
+        if (locationIndex == 0)
+        {
+            SceneManager.LoadScene("AsteroidScene");
+        }
+        else if (locationIndex == 1)
+        {
+            SceneManager.LoadScene("MilkyWayScene");
+        }
+    }
+
+    public void singlePlayerButtonClicked()
+    {
         GameCore.BoardManager.againstAI = true;
         GameCore.BoardManager.againstNetwork = false;
-        SceneManager.LoadScene("MilkyWayScene");
     }
 
     public void localButtonClicked()
     {
         GameCore.BoardManager.againstAI = false;
         GameCore.BoardManager.againstNetwork = false;
-        SceneManager.LoadScene("MilkyWayScene");
-
     }
 
     public void networkButtonClicked()

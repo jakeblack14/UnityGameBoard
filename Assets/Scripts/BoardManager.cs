@@ -16,6 +16,8 @@ namespace GameCore {
         public static Boolean againstNetwork = false;
         public static Boolean waitForNetwork = false;
         public static Boolean againstAI = false;
+        public Material green;
+        public Material white;
         //MultiplayerLauncher multi = new MultiplayerLauncher();
         // private TechPlanet.SpaceRace.MultiplayerLauncher multi = null;
         public static int beginCol = 0;
@@ -53,7 +55,7 @@ namespace GameCore {
         public Text turnText;
         //public Image turnImage;
         //public Sprite[] choicesForTurnImage;
-        //public GameObject Rocket;
+        public GameObject Rocket;
         Animator animator;
         private static bool wasCreated;
 
@@ -83,6 +85,12 @@ namespace GameCore {
 
         private void Start()
         {
+            if(GameBoardData.IsAlien)
+            {
+                gamePieces[0].GetComponent<Renderer>().material = green;
+                gamePieces[1].GetComponent<Renderer>().material = white;
+
+            }
 
             networkMove = null;
             //Set the player parameters based on whether we are playing against an AI or network (or the default - against local)
@@ -108,20 +116,15 @@ namespace GameCore {
 
             wasCreated = false;
 
-
-            SpawnAllGamePieces();
-                        
+            SpawnAllGamePieces();          
 
             currentMove = new Move();
             //SendTheMove()
 
+            animator = Rocket.GetComponent<Animator>();
+            animator.speed = 2.25f; // Changes how fast the rocket will fly across the screen
 
-            //animator = Rocket.GetComponent<Animator>();
-            //animator.speed = 2.25f; // Changes how fast the rocket will fly across the screen
-
-            //animator = Rocket.GetComponent<Animator>();
-
-
+            animator = Rocket.GetComponent<Animator>();
         }
 
         private void Update()
@@ -166,6 +169,7 @@ namespace GameCore {
                     //selectionX and selectionY correspond to what square on the board the mouse is currently on
                     if (selectionX >= 0 && selectionY >= 0)
                     {
+
                         //if(GamePiecesArray[selectionX, selectionY] != null)
                         //{
                         //    SelectGamePiece(selectionX, selectionY);
@@ -208,8 +212,8 @@ namespace GameCore {
                 {
                     //turnImage.sprite = choicesForTurnImage[0];
                     turnText.text = "Your turn!";
-                    //animator.SetBool("Player1Turn", true);
-                    //animator.SetBool("Player2Turn", false);
+                    animator.SetBool("Player1Turn", true);
+                    animator.SetBool("Player2Turn", false);
 
 
                 }
@@ -217,8 +221,8 @@ namespace GameCore {
                 {
                     //turnImage.sprite = choicesForTurnImage[1];
                     turnText.text = "Computer's turn!";
-                    //animator.SetBool("Player2Turn", true);
-                    //animator.SetBool("Player1Turn", false);
+                    animator.SetBool("Player2Turn", true);
+                    animator.SetBool("Player1Turn", false);
                 }
             }
             else
@@ -255,6 +259,7 @@ namespace GameCore {
 
         public void SelectGamePiece(int x, int y)
         {
+
             //checks to see if there is a game piece on that square
             if (GamePiecesArray[x, y] == null)
                 return;
@@ -315,12 +320,12 @@ namespace GameCore {
                 GamePiecesArray[currentMove.Begin.col,currentMove.Begin.row] = null;
                 //GamePiecesArray[currentMove.End.col, currentMove.End.row] = selectedGamePiece;
 
+                Debug.Log(selectedGamePiece);
+
                 StartCoroutine(AnimatePiece(selectedGamePiece, GetTileCenter(x,y).x, GetTileCenter(x,y).z));
 
                 //selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
                 GamePiecesArray[x,y] = selectedGamePiece;
-
-                
 
                 selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
                 selectedGamePiece = null;
@@ -348,8 +353,6 @@ namespace GameCore {
                     selectedGamePiece = null;
                 }
             }
-
-            
         }
 
         IEnumerator AnimatePiece(GamePieces piece, float x, float z)
@@ -385,6 +388,7 @@ namespace GameCore {
             }
             setFirstPlayer();
         }
+
         public void ReceiveNetworkMove(int beginRow, int beginCol, int endRow, int endCol)
         {
             networkMove = new Move();
@@ -393,11 +397,10 @@ namespace GameCore {
             networkMove.End.row = endRow;
             networkMove.End.col = endCol;
         }
+
         private void UpdateSelection()
         {
             if (!Camera.main)
-
-
                 return;
 
             RaycastHit hit;
@@ -411,8 +414,6 @@ namespace GameCore {
                 selectionX = -1;
                 selectionY = -1;
             }
-
-            //Debug.Log(selectionX + " " + selectionY);
         }
 
         private void SpawnGamePieces(int index, int x, int y)
@@ -438,26 +439,6 @@ namespace GameCore {
             activeGamePieces = new List<GameObject>();
             GamePiecesArray = new GamePieces[8, 8];
 
-            //if(GameBoardData.IsAlien)
-            //{
-            //    for (int i = 0; i < 2; i++)
-            //    {
-            //        for (int j = 0; j < 8; j++)
-            //        {
-            //            SpawnGamePieces(1, j, i);
-            //        }
-            //    }
-
-            //    for (int i = 6; i < 8; i++)
-            //    {
-            //        for (int j = 0; j < 8; j++)
-            //        {
-            //            SpawnGamePieces(0, j, i);
-            //        }
-            //    }
-            //}
-            //else
-            //{
                 for (int i = 0; i < 2; i++)
                 {
                     for (int j = 0; j < 8; j++)
@@ -473,7 +454,7 @@ namespace GameCore {
                         SpawnGamePieces(1, j, i);
                     }
                 }
-            //}
+            
         }
 
         

@@ -9,11 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d4a5bff4b5930344e9eb5f798a96681e
   - enabled: 1
-    path: Assets/Scenes/AsteroidScene.unity
-    guid: 97c7cf964c7751944a81e5cdb9cbb482
-  - enabled: 1
     path: Assets/Scenes/MilkyWayScene.unity
     guid: 2150e2e1269e4134e9a1418379062555
   - enabled: 1
-    path: Assets/Scenes/MultiPlayer Scene.unity
-    guid: f608ee7a5512df14ead481eddd4e63aa
+    path: Assets/Scenes/AsteroidScene.unity
+    guid: 97c7cf964c7751944a81e5cdb9cbb482

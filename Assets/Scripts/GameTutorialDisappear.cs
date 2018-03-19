@@ -5,17 +5,25 @@ using UnityEngine.UI;
 
 public class GameTutorialDisappear : MonoBehaviour
 {
-    public GameObject Tutorial;
+    public GameObject[] ToolPanelMenus;
 
-    public void CheckHelpMenu()
+    public void CheckHelpMenu(int index)
     {
-        if (Tutorial.activeSelf)
+        if (ToolPanelMenus[index].activeSelf)
         {
-            Tutorial.SetActive(false);
+            ToolPanelMenus[index].SetActive(false);
         }
         else
         {
-            Tutorial.SetActive(true);
+            ToolPanelMenus[index].SetActive(true);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (i != index)
+            {
+                ToolPanelMenus[i].SetActive(false);
+            }
         }
     }
 }
