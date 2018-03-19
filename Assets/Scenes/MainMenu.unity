@@ -7582,7 +7582,7 @@ MonoBehaviour:
   ScreenText: []
   TitleText: []
   TextBox: {fileID: 1593774895}
-  TitleBox: {fileID: 0}
+  TitleBox: {fileID: 562356227}
 --- !u!1 &736058181
 GameObject:
   m_ObjectHideFlags: 0
@@ -11827,7 +11827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1489385629
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11902,7 +11902,7 @@ MonoBehaviour:
   ScreenText: []
   TitleText: []
   TextBox: {fileID: 1593774895}
-  TitleBox: {fileID: 0}
+  TitleBox: {fileID: 562356227}
 --- !u!114 &1489385633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13288,7 +13288,7 @@ MonoBehaviour:
   ScreenText: []
   TitleText: []
   TextBox: {fileID: 1593774895}
-  TitleBox: {fileID: 0}
+  TitleBox: {fileID: 562356227}
 --- !u!1 &1736605629
 GameObject:
   m_ObjectHideFlags: 0

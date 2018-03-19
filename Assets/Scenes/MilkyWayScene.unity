@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 86747432}
   - component: {fileID: 86747431}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1384,7 +1384,7 @@ MonoBehaviour:
   ScreenText: []
   TitleText: []
   TextBox: {fileID: 1667429115}
-  TitleBox: {fileID: 0}
+  TitleBox: {fileID: 86747431}
 --- !u!114 &340722307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4634,7 +4634,7 @@ MonoBehaviour:
   ScreenText: []
   TitleText: []
   TextBox: {fileID: 1667429115}
-  TitleBox: {fileID: 0}
+  TitleBox: {fileID: 86747431}
 --- !u!114 &1004014901
 MonoBehaviour:
   m_ObjectHideFlags: 0
