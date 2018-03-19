@@ -91,6 +91,11 @@ namespace GameCore {
                 gamePieces[1].GetComponent<Renderer>().material = white;
 
             }
+            else
+            {
+                gamePieces[1].GetComponent<Renderer>().material = green;
+                gamePieces[0].GetComponent<Renderer>().material = white;
+            }
 
             networkMove = null;
             //Set the player parameters based on whether we are playing against an AI or network (or the default - against local)
