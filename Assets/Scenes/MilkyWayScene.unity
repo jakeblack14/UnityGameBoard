@@ -5781,7 +5781,7 @@ MonoBehaviour:
   ScreenText: []
   TitleText: []
   TextBox: {fileID: 1667429115}
-  TitleBox: {fileID: 0}
+  TitleBox: {fileID: 86747431}
 --- !u!114 &1409197207
 MonoBehaviour:
   m_ObjectHideFlags: 0
