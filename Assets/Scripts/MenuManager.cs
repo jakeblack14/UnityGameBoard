@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
@@ -38,7 +39,6 @@ public class MenuManager : MonoBehaviour
             MenuPanels[0].SetActive(false);
             MenuPanels[1].SetActive(true);
         }
-
     }
 
     void Update()
@@ -280,4 +280,8 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("MilkyWayScene");
     }
 
+    public void OnSelect(BaseEventData eventData)
+    {
+        throw new System.NotImplementedException();
+    }
 }
