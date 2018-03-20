@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using GameCore;
+using UnityEngine.SceneManagement;
+using System.Timers;
+using System.Net;
+using System;
 
 namespace TechPlanet.SpaceRace
 {
@@ -55,13 +59,28 @@ namespace TechPlanet.SpaceRace
 
             // #Critical
             // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
-            PhotonNetwork.automaticallySyncScene = true;
+           // PhotonNetwork.automaticallySyncScene = true;
             // #NotImportant
             // Force LogLevel
             PhotonNetwork.logLevel = Loglevel;
-            
+            Timer connection = new Timer();
+            connection.Interval = (1000) * (1); // Ticks every second
+            connection.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            connection.Enabled = true;
             
             PhotonNetwork.OnEventCall += OnEvent;
+        }
+
+        private void OnTimedEvent(object sender, ElapsedEventArgs e)
+        {
+          if(  CheckForInternetConnection())
+            {
+                //You have internet do nothing
+            }
+            else
+            {
+                LeaveGame();
+            }
         }
 
 
@@ -78,14 +97,34 @@ namespace TechPlanet.SpaceRace
             // if (rand.Next(0, 2))
             //button = GameObject.Find("Start");
         }
-        
+        private void Update()
+        {
+            
+        }
 
 
         #endregion
 
 
         #region Public Methods
-
+        public static bool CheckForInternetConnection()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    using (client.OpenRead("http://clients3.google.com/generate_204"))
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        
+    }
 
         /// <summary>
         /// Start the connection process. 
@@ -179,6 +218,7 @@ namespace TechPlanet.SpaceRace
         public void LeaveGame()
         {
             PhotonNetwork.Disconnect();
+            SceneManager.LoadScene("MainMenu");
         }
         void StartGame()
         {
