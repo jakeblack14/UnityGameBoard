@@ -35,7 +35,7 @@ public class ChooseCharacter : MonoBehaviour
 
     void Update()
     {
-        introText.text = "Welcome " + GameBoardData.Name + ", choose a team as you prepare to conquer the galaxy!!";
+        introText.text = "Hello " + GameBoardData.Name + ", please choose a character!";
     }
 
     public void On_Next_Click_Button()

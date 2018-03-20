@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour {
+public class MenuManager : MonoBehaviour
+{
 
     public List<GameObject> MenuPanels;
     private GameObject BackButton;
@@ -21,6 +22,9 @@ public class MenuManager : MonoBehaviour {
 
     private int locationIndex;
 
+    private bool player1NameInitialized = false;
+    private bool player2NameInitialized = false;
+
     void Start()
     {
         BackButton = GameObject.Find("BackButtonPanel");
@@ -35,7 +39,6 @@ public class MenuManager : MonoBehaviour {
             MenuPanels[1].SetActive(true);
         }
 
-        usernameText.enabled = false;
     }
 
     void Update()
@@ -55,6 +58,31 @@ public class MenuManager : MonoBehaviour {
         {
             BackButton.SetActive(true);
         }
+
+        if(!GameBoardData.IsPlayer2)
+        {
+            usernameText.enabled = false;
+            if(player1NameInitialized)
+            {
+                inputField.placeholder.GetComponent<Text>().text = GameBoardData.Name;
+            }
+            else
+            {
+                inputField.placeholder.GetComponent<Text>().text = "Player 1";
+            }
+        }
+        else
+        {
+            usernameText.enabled = true;
+            if (player2NameInitialized)
+            {
+                inputField.placeholder.GetComponent<Text>().text = GameBoardData.Player2Name;
+            }
+            else
+            {
+                inputField.placeholder.GetComponent<Text>().text = "Player 2";
+            }
+        }
     }
 
     public void usernameButtonClick()
@@ -64,13 +92,14 @@ public class MenuManager : MonoBehaviour {
         {
             if (inputField.text == "")
             {
-                GameBoardData.Name = "Player 1";
+                GameBoardData.Name = inputField.placeholder.GetComponent<Text>().text;
             }
             else
             {
                 GameBoardData.Name = inputField.text;
             }
 
+            player1NameInitialized = true;
             MenuPanels[1].SetActive(true);
             MenuPanels[0].SetActive(false);
         }
@@ -79,13 +108,15 @@ public class MenuManager : MonoBehaviour {
         {
             if (inputField.text == "")
             {
-                GameBoardData.Player2Name = "Player 2";
+                GameBoardData.Player2Name = inputField.placeholder.GetComponent<Text>().text;
             }
             else
             {
                 GameBoardData.Player2Name = inputField.text;
             }
 
+            inputField.text = "";
+            player2NameInitialized = true;
             MenuPanels[5].SetActive(true);
             MenuPanels[0].SetActive(false);
         }
@@ -159,6 +190,7 @@ public class MenuManager : MonoBehaviour {
             {
                 MenuPanels[index].SetActive(false);
                 MenuPanels[3].SetActive(true);
+                GameBoardData.IsPlayer2 = false;
             }
             else
             {
@@ -204,9 +236,7 @@ public class MenuManager : MonoBehaviour {
         else
         {
             GameBoardData.IsPlayer2 = true;
-            usernameText.enabled = true;
             inputField.text = "";
-            inputField.placeholder.GetComponent<Text>().text = "Player 2";
             MenuPanels[3].SetActive(false);
             MenuPanels[0].SetActive(true);
         }
@@ -217,24 +247,14 @@ public class MenuManager : MonoBehaviour {
         //local game
         if (!GameCore.BoardManager.againstNetwork)
         {
-            //if (!GameBoardData.IsPlayer2)
-            //{
-            //    GameBoardData.IsPlayer2 = true;
-            //    inputField.text = "";
-            //    MenuPanels[3].SetActive(false);
-            //    MenuPanels[0].SetActive(true);
-            //}
-            //else if (GameBoardData.IsPlayer2)
-            //{
-                if (locationIndex == 0)
-                {
-                    SceneManager.LoadScene("AsteroidScene");
-                }
-                else if (locationIndex == 1)
-                {
-                    SceneManager.LoadScene("MilkyWayScene");
-                }
-        //    }
+            if (locationIndex == 0)
+            {
+                SceneManager.LoadScene("AsteroidScene");
+            }
+            else if (locationIndex == 1)
+            {
+                SceneManager.LoadScene("MilkyWayScene");
+            }
         }
         //else network game
     }

@@ -73,7 +73,7 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     void Update()
     {
-        introText.text = "Welcome " + GameBoardData.Player2Name + ", please choose a character";
+        introText.text = "Hello " + GameBoardData.Player2Name + ", please choose a character!";
     }
 
     public void On_Next_Click_Button()

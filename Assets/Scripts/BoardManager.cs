@@ -224,8 +224,8 @@ namespace GameCore {
                 }
                 else if (currentPlayer == PlayerO)
                 {
-                    //turnImage.sprite = choicesForTurnImage[1];
-                    turnText.text = "Computer's turn!";
+                    
+                    turnText.text = GameBoardData.Player2Name + "'s turn!";
                     animator.SetBool("Player2Turn", true);
                     animator.SetBool("Player1Turn", false);
                 }
