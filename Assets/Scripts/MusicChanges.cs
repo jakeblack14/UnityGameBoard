@@ -9,14 +9,17 @@ public class MusicChanges : MonoBehaviour {
     AudioSource Music;
     public Button MyButton;
     public Slider slider;
-    public Text MyText;
     
 	// Use this for initialization
 	void Start () {
         Button btn = MyButton.GetComponent<Button>();
-        Text text = MyText.GetComponent<Text>();
         btn.onClick.AddListener(TaskOnClick);
         Music = GetComponent<AudioSource>();
+    }
+
+    public void Update()
+    {
+        Music.volume = slider.value;
     }
 
     void TaskOnClick()
@@ -24,12 +27,10 @@ public class MusicChanges : MonoBehaviour {
         if(Music.mute == false)
         {
             Music.mute = true;
-            MyText.text = "Off";
         }
         else
         {
             Music.mute = false;
-            MyText.text = "On";
         }
     }
 
