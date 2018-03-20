@@ -7,9 +7,13 @@ using UnityEngine.EventSystems;
 public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
 {
     private Button pb;
+
     public bool isAlien;
-    public Sprite[] newSprite;
+    public Sprite[] hoverSprite;
     public Sprite[] clickedSprite;
+
+    private Sprite currentHoverSprite; //hover background
+    private Sprite currentClickedSprite;
     private Sprite oldSprite;
 
     void Start()
@@ -17,12 +21,28 @@ public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPoin
         pb = GetComponent<Button>();
         pb.onClick.AddListener(TaskOnClick);
         oldSprite = pb.image.sprite;
+
+        if(GameBoardData.IsAlien)
+        {
+            isAlien = true;
+        }
+
+        if(isAlien)
+        {
+            currentHoverSprite = hoverSprite[1];
+            currentClickedSprite = clickedSprite[1];
+        }
+        else
+        {
+            currentHoverSprite = hoverSprite[0];
+            currentClickedSprite = clickedSprite[0];
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         oldSprite = pb.image.sprite;
-        //pb.image.sprite = newSprite;
+        pb.image.sprite = currentHoverSprite;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -32,7 +52,7 @@ public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPoin
 
     public void TaskOnClick()
     {
-        //pb.image.sprite = clickedSprite;
+        pb.image.sprite = currentClickedSprite;
         oldSprite = pb.image.sprite;
     }
 }

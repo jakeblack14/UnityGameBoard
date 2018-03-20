@@ -40,6 +40,7 @@ public class GameUIManager : MonoBehaviour {
         }
 
         username.text = GameBoardData.Name;
+        player2Username.text = GameBoardData.Player2Name;
     }
 
     private void Update()

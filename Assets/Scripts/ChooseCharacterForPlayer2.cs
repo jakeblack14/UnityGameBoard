@@ -11,6 +11,9 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     public Text typeOfCharacter;
     private Sprite[] Characters;
     public Button[] CharacterButtons;
+
+    public Image[] CharacterImages;
+
     private Sprite currentCharacter;
 
 
@@ -36,6 +39,13 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
             currentBackground = AstroBackground;
             currentDisabledBackground = AstroDisabledBackground;
 
+            CharacterButtons[0].image.sprite = AstroBackground;
+
+            for (int i=1; i<3; i++)
+            {
+                CharacterButtons[i].image.sprite = AstroDisabledBackground;
+            }
+
         }
         else
         {
@@ -45,9 +55,20 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
             currentBackground = AlienBackground;
             currentDisabledBackground = AlienDisabledBackground;
+
+            CharacterButtons[0].image.sprite = AlienBackground;
+
+            for (int i = 1; i < 3; i++)
+            {
+                CharacterButtons[i].image.sprite = AlienDisabledBackground;
+            }
         }
 
         currentCharacter = Characters[0];
+        for (int i = 0; i < 3; i++)
+        {
+            CharacterImages[i].sprite = Characters[i];
+        }
     }
 
     void Update()

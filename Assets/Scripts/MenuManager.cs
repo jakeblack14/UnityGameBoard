@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour {
 
     public List<GameObject> MenuPanels;
     private GameObject BackButton;
+    public Text usernameText;
     public InputField inputField;
     public Sprite selectedImage;
     public Sprite originalImage;
@@ -31,15 +32,20 @@ public class MenuManager : MonoBehaviour {
         else
         {
             MenuPanels[0].SetActive(false);
-            MenuPanels[2].SetActive(true);
+            MenuPanels[1].SetActive(true);
         }
+
+        usernameText.enabled = false;
     }
 
     void Update()
     {
         if (MenuPanels[0].activeSelf && !MenuPanels[5].activeSelf && !MenuPanels[6].activeSelf)
         {
-            BackButton.SetActive(false);
+            if (!GameBoardData.IsPlayer2)
+            {
+                BackButton.SetActive(false);
+            }
         }
         else if(MenuPanels[2].activeSelf)
         {
@@ -49,15 +55,11 @@ public class MenuManager : MonoBehaviour {
         {
             BackButton.SetActive(true);
         }
-
-        if(GameBoardData.IsPlayer2)
-        {
-            inputField.placeholder.GetComponent<Text>().text = "Player 2";
-        }
     }
 
     public void usernameButtonClick()
     {
+        //player 1 just entered their name
         if (!GameBoardData.IsPlayer2)
         {
             if (inputField.text == "")
@@ -72,6 +74,7 @@ public class MenuManager : MonoBehaviour {
             MenuPanels[1].SetActive(true);
             MenuPanels[0].SetActive(false);
         }
+        //player 2 just entered their name
         else
         {
             if (inputField.text == "")
@@ -83,7 +86,7 @@ public class MenuManager : MonoBehaviour {
                 GameBoardData.Player2Name = inputField.text;
             }
 
-            MenuPanels[3].SetActive(true);
+            MenuPanels[5].SetActive(true);
             MenuPanels[0].SetActive(false);
         }
     }
@@ -124,10 +127,10 @@ public class MenuManager : MonoBehaviour {
 
     public void backButtonClicked()
     {
-        if (MenuPanels[5].activeSelf || MenuPanels[6].activeSelf)
+        if (MenuPanels[6].activeSelf || MenuPanels[7].activeSelf)
         {
-            MenuPanels[5].SetActive(false);
             MenuPanels[6].SetActive(false);
+            MenuPanels[7].SetActive(false);
         }
         else
         {
@@ -145,7 +148,17 @@ public class MenuManager : MonoBehaviour {
             if (index == 4)
             {
                 MenuPanels[index].SetActive(false);
-                MenuPanels[2].SetActive(true);
+                MenuPanels[1].SetActive(true);
+            }
+            else if(index == 5)
+            {
+                MenuPanels[index].SetActive(false);
+                MenuPanels[0].SetActive(true);
+            }
+            else if(index == 0)
+            {
+                MenuPanels[index].SetActive(false);
+                MenuPanels[3].SetActive(true);
             }
             else
             {
@@ -177,7 +190,7 @@ public class MenuManager : MonoBehaviour {
 
     public void characterNextButtonClicked()
     {
-        if(GameCore.BoardManager.againstAI)
+        if (GameCore.BoardManager.againstAI)
         {
             if (locationIndex == 0)
             {
@@ -188,17 +201,31 @@ public class MenuManager : MonoBehaviour {
                 SceneManager.LoadScene("MilkyWayScene");
             }
         }
-        //local game
-        else if(!GameCore.BoardManager.againstNetwork)
+        else
         {
-            if(!GameBoardData.IsPlayer2)
-            {
-                GameBoardData.IsPlayer2 = true;
-                MenuPanels[3].SetActive(false);
-                MenuPanels[0].SetActive(true);
-            }
-            else if(GameBoardData.IsPlayer2)
-            {
+            GameBoardData.IsPlayer2 = true;
+            usernameText.enabled = true;
+            inputField.text = "";
+            inputField.placeholder.GetComponent<Text>().text = "Player 2";
+            MenuPanels[3].SetActive(false);
+            MenuPanels[0].SetActive(true);
+        }
+    }
+
+    public void characterForPlayer2NextButtonClicked()
+    {
+        //local game
+        if (!GameCore.BoardManager.againstNetwork)
+        {
+            //if (!GameBoardData.IsPlayer2)
+            //{
+            //    GameBoardData.IsPlayer2 = true;
+            //    inputField.text = "";
+            //    MenuPanels[3].SetActive(false);
+            //    MenuPanels[0].SetActive(true);
+            //}
+            //else if (GameBoardData.IsPlayer2)
+            //{
                 if (locationIndex == 0)
                 {
                     SceneManager.LoadScene("AsteroidScene");
@@ -207,7 +234,7 @@ public class MenuManager : MonoBehaviour {
                 {
                     SceneManager.LoadScene("MilkyWayScene");
                 }
-            }
+        //    }
         }
         //else network game
     }
@@ -216,6 +243,7 @@ public class MenuManager : MonoBehaviour {
     {
         GameCore.BoardManager.againstAI = true;
         GameCore.BoardManager.againstNetwork = false;
+        GameBoardData.Player2Name = "Computer";
     }
 
     public void localButtonClicked()
