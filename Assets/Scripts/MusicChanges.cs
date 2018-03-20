@@ -6,15 +6,20 @@ using System.Collections;
 
 public class MusicChanges : MonoBehaviour {
 
-
     AudioSource Music;
     public Button MyButton;
+    public Slider slider;
     
 	// Use this for initialization
 	void Start () {
         Button btn = MyButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
         Music = GetComponent<AudioSource>();
+    }
+
+    public void Update()
+    {
+        Music.volume = slider.value;
     }
 
     void TaskOnClick()
@@ -27,5 +32,10 @@ public class MusicChanges : MonoBehaviour {
         {
             Music.mute = false;
         }
+    }
+
+   public void VolumeController()
+    {
+        Music.volume = slider.value;
     }
 }
