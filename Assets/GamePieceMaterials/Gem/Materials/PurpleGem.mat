@@ -35,13 +35,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Emission: 2
+    - _Emission: 1
     - _Emissive: 0
-    - _EnvironmentLight: 2
+    - _EnvironmentLight: 0
     - _IndexOfRefraction: 2.14
-    - _ReflectionStrength: 2
+    - _ReflectionStrength: 0
     m_Colors:
-    - _Color: {r: 0.9460446, g: 1, b: 0.022058845, a: 1}
+    - _Color: {r: 0.3764706, g: 0.22352941, b: 0.44705883, a: 1}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6

@@ -13073,6 +13073,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorBlindModeProfile: {fileID: 11400000, guid: 246f11fc3a7a013469f17972a4f9aad1,
     type: 2}
+  buttonText: {fileID: 1657368891}
 --- !u!1001 &515621618
 Prefab:
   m_ObjectHideFlags: 0
@@ -43286,7 +43287,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: On
+  m_Text: Off
 --- !u!222 &1657368892
 CanvasRenderer:
   m_ObjectHideFlags: 0

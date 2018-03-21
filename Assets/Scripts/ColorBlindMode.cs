@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
+using UnityEngine.UI;
 
 public class ColorBlindMode : MonoBehaviour {
 
     public PostProcessingProfile colorBlindModeProfile;
     private bool inColorBlindMode = false;
+    public Text buttonText;
 
     public void SetHue()
     {
@@ -17,12 +19,14 @@ public class ColorBlindMode : MonoBehaviour {
             HueShiftValue.basic.hueShift = 0;
             colorBlindModeProfile.colorGrading.settings = HueShiftValue;
             inColorBlindMode = false;
+            buttonText.text = "Off";
         }
         else
         {
             HueShiftValue.basic.hueShift = -89;
             colorBlindModeProfile.colorGrading.settings = HueShiftValue;
             inColorBlindMode = true;
+            buttonText.text = "On";
         }
     }
 }
