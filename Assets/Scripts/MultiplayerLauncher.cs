@@ -138,6 +138,11 @@ namespace TechPlanet.SpaceRace
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
             PhotonNetwork.CreateRoom(GameName, roomOptions, null);
+            RoomInfo[]arrayOfRooms = PhotonNetwork.GetRoomList();
+            string Room1Name = arrayOfRooms[0].Name;
+            Debug.Log(Room1Name);
+            Debug.Log("check to see if room name matches up from here");
+
         }
         /// <summary>
         /// Start the connection process. 
