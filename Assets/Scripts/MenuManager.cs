@@ -43,7 +43,7 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (MenuPanels[0].activeSelf && !MenuPanels[5].activeSelf && !MenuPanels[6].activeSelf)
+        if (MenuPanels[0].activeSelf && !MenuPanels[8].activeSelf && !MenuPanels[9].activeSelf)
         {
             if (!GameBoardData.IsPlayer2)
             {
@@ -158,10 +158,10 @@ public class MenuManager : MonoBehaviour
 
     public void backButtonClicked()
     {
-        if (MenuPanels[6].activeSelf || MenuPanels[7].activeSelf)
+        if (MenuPanels[8].activeSelf || MenuPanels[9].activeSelf)
         {
-            MenuPanels[6].SetActive(false);
-            MenuPanels[7].SetActive(false);
+            MenuPanels[8].SetActive(false);
+            MenuPanels[9].SetActive(false);
         }
         else
         {
@@ -278,6 +278,24 @@ public class MenuManager : MonoBehaviour
         GameCore.BoardManager.againstNetwork = true;
         GameCore.BoardManager.waitForNetwork = true;
         SceneManager.LoadScene("MilkyWayScene");
+    }
+
+    public void networkCharacterChosen(bool isAlien)
+    {
+        if(isAlien)
+        {
+            GameBoardData.IsAlien = true;
+        }
+        else
+        {
+            GameBoardData.IsAlien = false;
+        }
+    }
+
+    public void startNetworkGame()
+    {
+        MenuPanels[7].SetActive(true);
+        locationButtons = GameObject.Find("NetworkLocationButtons").GetComponentsInChildren<Button>();
     }
 
     public void OnSelect(BaseEventData eventData)
