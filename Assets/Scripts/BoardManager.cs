@@ -405,6 +405,7 @@ namespace GameCore {
         public void ReceiveNetworkPlayerName(string otherPlayerName)
         {
             //Do something with otherPlayerName
+            GameBoardData.Player2Name = otherPlayerName;
         }
         private void UpdateSelection()
         {

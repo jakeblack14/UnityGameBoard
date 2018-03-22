@@ -129,8 +129,16 @@ namespace TechPlanet.SpaceRace
                 
             }
         
-    }
+        }
 
+
+        public void CreateNewGame(String GameName, String Scene)
+        {
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.IsVisible = true;
+            roomOptions.MaxPlayers = 2;
+            PhotonNetwork.CreateRoom(GameName, roomOptions, null);
+        }
         /// <summary>
         /// Start the connection process. 
         /// - If already connected, we attempt joining a random room
@@ -242,7 +250,8 @@ namespace TechPlanet.SpaceRace
                 Debug.Log("Going Second");
 
                 jeffGo.ChangeFirstPlayer(false);
-
+                String ourName = GameBoardData.Name;
+                jeffGo.ReceiveNetworkPlayerName(ourName);
               
             }
             else
