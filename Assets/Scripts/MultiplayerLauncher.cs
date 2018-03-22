@@ -144,6 +144,10 @@ namespace TechPlanet.SpaceRace
             Debug.Log("check to see if room name matches up from here");
 
         }
+        public void JoinCreatedGame(String GameName, String Scene)
+        {
+            PhotonNetwork.JoinRoom(GameName);
+        }
         /// <summary>
         /// Start the connection process. 
         /// - If already connected, we attempt joining a random room
