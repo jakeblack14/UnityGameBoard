@@ -15,6 +15,7 @@ namespace TechPlanet.SpaceRace
         /// </summary>
         public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
         PhotonPlayer OtherNetworkPlayer;
+        Timer connection = new Timer();
         /// <summary>
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
         /// </summary>   
@@ -63,10 +64,10 @@ namespace TechPlanet.SpaceRace
             // #NotImportant
             // Force LogLevel
             PhotonNetwork.logLevel = Loglevel;
-            Timer connection = new Timer();
-            connection.Interval = (1000) * (1); // Ticks every second
-            connection.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            connection.Enabled = true;
+            //Timer connection = new Timer();
+           // connection.Interval = (1000) * (1); // Ticks every second
+           // connection.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+           // connection.Enabled = true;
             
             PhotonNetwork.OnEventCall += OnEvent;
         }
@@ -79,7 +80,10 @@ namespace TechPlanet.SpaceRace
             }
             else
             {
+                connection.Enabled = false;
                 LeaveGame();
+                Debug.Log("Game should of left");
+           
             }
         }
 
@@ -99,7 +103,7 @@ namespace TechPlanet.SpaceRace
         }
         private void Update()
         {
-            
+          
         }
 
 
@@ -122,6 +126,7 @@ namespace TechPlanet.SpaceRace
             catch
             {
                 return false;
+                
             }
         
     }
@@ -171,6 +176,7 @@ namespace TechPlanet.SpaceRace
            // progressLabel.SetActive(false);
            // controlPanel.SetActive(true);
             Debug.LogWarning("DemoAnimator/Launcher: OnDisconnectedFromPhoton() was called by PUN");
+            LeaveGame();
         }
 
         public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
@@ -222,7 +228,10 @@ namespace TechPlanet.SpaceRace
         }
         void StartGame()
         {
-
+            //Timer connection = new Timer();
+            connection.Interval = (1000) * (1); // Ticks every second
+            connection.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            connection.Enabled = true;
             GameObject goJeff = GameObject.Find("GameBoard");
             BoardManager jeffGo = goJeff.GetComponent<BoardManager>();
             //if (player1.getIdentity() != identity.X)
