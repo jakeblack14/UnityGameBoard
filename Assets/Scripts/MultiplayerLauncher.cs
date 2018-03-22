@@ -242,10 +242,8 @@ namespace TechPlanet.SpaceRace
                 Debug.Log("Going Second");
 
                 jeffGo.ChangeFirstPlayer(false);
-               // if (OtherNetworkPlayer.NickName == null)
-               // {
-               //
-               // }
+
+              
             }
             else
             {
@@ -273,22 +271,30 @@ namespace TechPlanet.SpaceRace
        
         void OnEvent(byte eventCode, object content, int senderId)
         {
-            Debug.Log("it works now you hoe");
-            PhotonPlayer sender = PhotonPlayer.Find(senderId); // This shows who sent the message
-            int[] receivedArray = new int[4];
-            receivedArray = (int[])content;
-            //GameCore.Move move = (GameCore.Move)content;
-            //  MakeMove(tempPlayer.getMove);
             GameObject go = GameObject.Find("GameBoard");
             BoardManager jeff = go.GetComponent<BoardManager>();
-            Debug.Log("ReceivedArray");
-            Debug.Log(receivedArray[0]);
-            Debug.Log(receivedArray[1]);
-            Debug.Log(receivedArray[2]);
-            Debug.Log(receivedArray[3]);
-            jeff.ReceiveNetworkMove(receivedArray[0], receivedArray[1], receivedArray[2], receivedArray[3]);
-            //jeff.SelectGamePiece(receivedArray[0], receivedArray[1]);
-           // jeff.MoveGamePiece(receivedArray[2], receivedArray[3]);
+            if (eventCode == 1)
+            {
+                Debug.Log("it works now you hoe");
+                PhotonPlayer sender = PhotonPlayer.Find(senderId); // This shows who sent the message
+                int[] receivedArray = new int[4];
+                receivedArray = (int[])content;
+                //GameCore.Move move = (GameCore.Move)content;
+                //  MakeMove(tempPlayer.getMove);
+              //  GameObject go = GameObject.Find("GameBoard");
+               // BoardManager jeff = go.GetComponent<BoardManager>();
+                Debug.Log("ReceivedArray");
+                Debug.Log(receivedArray[0]);
+                Debug.Log(receivedArray[1]);
+                Debug.Log(receivedArray[2]);
+                Debug.Log(receivedArray[3]);
+                jeff.ReceiveNetworkMove(receivedArray[0], receivedArray[1], receivedArray[2], receivedArray[3]);
+            }
+            else
+            {
+                string otherPlayer = (string)content;
+                jeff.ReceiveNetworkPlayerName(otherPlayer);
+            }
         }
         #endregion
     }

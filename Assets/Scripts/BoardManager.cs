@@ -402,7 +402,10 @@ namespace GameCore {
             networkMove.End.row = endRow;
             networkMove.End.col = endCol;
         }
-
+        public void ReceiveNetworkPlayerName(string otherPlayerName)
+        {
+            //Do something with otherPlayerName
+        }
         private void UpdateSelection()
         {
             if (!Camera.main)
