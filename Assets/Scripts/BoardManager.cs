@@ -127,26 +127,21 @@ namespace GameCore {
             currentMove = new Move();
             //SendTheMove()
 
-            //animator = Rocket.GetComponent<Animator>();
-            //animator.speed = 2.25f; // Changes how fast the rocket will fly across the screen
-
-            //animator = Rocket.GetComponent<Animator>();
-
             if(playerGoingFirst)
             {
-                //Rocket.transform.position = new Vector3(8, 2, 8);
-                //Rocket.transform.Rotate(0, -90, 0);
-                //animator.SetBool("Player1Turn", false);
-                //animator.SetBool("Player2Turn", true);
-
                 currentRocket = Instantiate(Rocket, new Vector3(0, 2, 8), Quaternion.Euler(new Vector3(0, 90, 0)));
-                currentRocket.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
             else
             {
                 currentRocket = Instantiate(Rocket, new Vector3(8, 2, 8), Quaternion.Euler(new Vector3(0, -90, 0)));
-                currentRocket.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
+
+            currentRocket.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+            animator = currentRocket.GetComponent<Animator>();
+            animator.speed = 2.25f; // Changes how fast the rocket will fly across the screen
+
+            animator = currentRocket.GetComponent<Animator>();
         }
 
         private void Update()
@@ -216,6 +211,8 @@ namespace GameCore {
                                 }
                             }
 
+                            animator.SetBool("AfterFirstTurn", true);
+
                         }
                     }
                 }
@@ -232,8 +229,8 @@ namespace GameCore {
                         turnText.text = "Your turn!";
                     }
 
-                    //animator.SetBool("Player1Turn", true);
-                    //animator.SetBool("Player2Turn", false);
+                    animator.SetBool("Player1Turn", true);
+                    animator.SetBool("Player2Turn", false);
 
 
                 }
@@ -241,8 +238,8 @@ namespace GameCore {
                 {
                     
                     turnText.text = GameBoardData.Player2Name + "'s turn!";
-                    //animator.SetBool("Player2Turn", true);
-                    //animator.SetBool("Player1Turn", false);
+                    animator.SetBool("Player2Turn", true);
+                    animator.SetBool("Player1Turn", false);
                 }
             }
             else
