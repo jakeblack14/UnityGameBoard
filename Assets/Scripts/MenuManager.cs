@@ -139,6 +139,7 @@ public class MenuManager : MonoBehaviour
     public void levelSelected(int index)
     {
         highlightButton(levelButtons, index);
+        GameCore.AIPlayer.setMode(index);
     }
 
     public void turnSelected(int index)
