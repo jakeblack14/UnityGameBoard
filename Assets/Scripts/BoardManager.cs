@@ -215,8 +215,16 @@ namespace GameCore {
 
                 if (currentPlayer == PlayerX)
                 {
-                    //turnImage.sprite = choicesForTurnImage[0];
-                    turnText.text = "Your turn!";
+                    if(!againstAI && !againstNetwork)
+                    {
+                        //local game
+                        turnText.text = GameBoardData.Name + "'s turn!";
+                    }
+                    else
+                    {
+                        turnText.text = "Your turn!";
+                    }
+
                     animator.SetBool("Player1Turn", true);
                     animator.SetBool("Player2Turn", false);
 
@@ -244,7 +252,7 @@ namespace GameCore {
                     }
                     else if (currentPlayer == PlayerX)
                     {
-                        winnerText.text = "Computer Wins!!";
+                        winnerText.text = GameBoardData.Player2Name + " Wins!!";
                     }
 
                     GameObject gameOverPanel = Instantiate(GameOverPanel) as GameObject;
