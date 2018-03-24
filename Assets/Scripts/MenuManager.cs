@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     private Button[] locationButtons;
     private Button[] levelButtons;
     private Button[] turnButtons;
+    private Button[] networkCharacterButtons;
 
     private Button currentButton;
 
@@ -25,6 +26,15 @@ public class MenuManager : MonoBehaviour
 
     private bool player1NameInitialized = false;
     private bool player2NameInitialized = false;
+
+    private string networkGameName;
+    private string networkNumPlayers;
+    private string networkGameLocation;
+
+    public InputField networkGameInputField;
+
+    public Button networkGameButton;
+    public GameObject ParentOfButtons;
 
     void Start()
     {
@@ -281,9 +291,14 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("MilkyWayScene");
     }
 
+    public void highlightNetworkCharacterButton(int index)
+    {
+        highlightButton(networkCharacterButtons, index);
+    }
+
     public void networkCharacterChosen(bool isAlien)
     {
-        if(isAlien)
+        if (isAlien)
         {
             GameBoardData.IsAlien = true;
         }
@@ -297,6 +312,39 @@ public class MenuManager : MonoBehaviour
     {
         MenuPanels[7].SetActive(true);
         locationButtons = GameObject.Find("NetworkLocationButtons").GetComponentsInChildren<Button>();
+        networkCharacterButtons = GameObject.Find("TeamButtons").GetComponentsInChildren<Button>();
+    }
+
+    public void createNetworkGame()
+    {
+        networkGameName = networkGameInputField.text;
+
+        if (locationIndex == 0)
+        {
+            networkGameLocation = "Asteroid Belt";
+        }
+        else if (locationIndex == 1)
+        {
+            networkGameLocation = "Milky Way";
+        }
+
+        networkNumPlayers = "1/2";
+
+        MenuPanels[7].SetActive(false);
+
+        SpawnNetworkGameButtons(networkGameName, networkNumPlayers, networkGameLocation);
+    }
+
+    private void SpawnNetworkGameButtons(string name, string count, string location)
+    {
+        Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        newButton.transform.SetParent(ParentOfButtons.transform, false);
+
+        Text[] buttonText = newButton.GetComponentsInChildren<Text>();
+
+        buttonText[0].text = name;
+        buttonText[1].text = count;
+        buttonText[2].text = location;
     }
 
     public void OnSelect(BaseEventData eventData)
