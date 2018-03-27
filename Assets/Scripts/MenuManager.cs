@@ -38,8 +38,6 @@ public class MenuManager : MonoBehaviour
     public Button networkGameButton;
     public GameObject ParentOfButtons;
 
-    private bool networkIsAlien;
-
     void Start()
     {
         BackButton = GameObject.Find("BackButtonPanel");

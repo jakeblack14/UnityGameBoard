@@ -16,18 +16,20 @@ public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPoin
     private Sprite currentClickedSprite;
     private Sprite oldSprite;
 
+    //private bool isActivated = false;
+
     void Start()
     {
         pb = GetComponent<Button>();
         pb.onClick.AddListener(TaskOnClick);
         oldSprite = pb.image.sprite;
 
-        if(GameBoardData.IsAlien)
+        if (GameBoardData.IsAlien)
         {
             isAlien = true;
         }
 
-        if(isAlien)
+        if (isAlien)
         {
             currentHoverSprite = hoverSprite[1];
             currentClickedSprite = clickedSprite[1];
@@ -36,6 +38,23 @@ public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPoin
         {
             currentHoverSprite = hoverSprite[0];
             currentClickedSprite = clickedSprite[0];
+        }
+    }
+
+    void Update()
+    {
+        if(GameCore.BoardManager.againstNetwork)
+        {
+            if (GameBoardData.IsAlien)
+            {
+                currentHoverSprite = hoverSprite[1];
+                currentClickedSprite = clickedSprite[1];
+            }
+            else
+            {
+                currentHoverSprite = hoverSprite[0];
+                currentClickedSprite = clickedSprite[0];
+            }
         }
     }
 

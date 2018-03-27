@@ -30,7 +30,46 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        if (GameBoardData.IsAlien)
+        {
+            //Player 1 is an alien so player 2 will be an astronaut
 
+            Characters = Resources.LoadAll<Sprite>("AstronautSprites");
+            typeOfCharacter.text = "ASTRONAUT";
+
+            currentBackground = AstroBackground;
+            currentDisabledBackground = AstroDisabledBackground;
+
+            CharacterButtons[0].image.sprite = AstroBackground;
+
+            for (int i = 1; i < 3; i++)
+            {
+                CharacterButtons[i].image.sprite = AstroDisabledBackground;
+            }
+
+        }
+        else
+        {
+            //player 2 is an alien
+            Characters = Resources.LoadAll<Sprite>("AlienSprites");
+            typeOfCharacter.text = "ALIEN";
+
+            currentBackground = AlienBackground;
+            currentDisabledBackground = AlienDisabledBackground;
+
+            CharacterButtons[0].image.sprite = AlienBackground;
+
+            for (int i = 1; i < 3; i++)
+            {
+                CharacterButtons[i].image.sprite = AlienDisabledBackground;
+            }
+        }
+
+        currentCharacter = Characters[0];
+        for (int i = 0; i < 3; i++)
+        {
+            CharacterImages[i].sprite = Characters[i];
+        }
     }
 
     void Activate()
