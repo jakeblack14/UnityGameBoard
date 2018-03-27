@@ -20,6 +20,8 @@ public class MenuManager : MonoBehaviour
     private Button[] turnButtons;
     private Button[] networkCharacterButtons;
 
+    public GameObject levelObject;
+
     private Button currentButton;
 
     private int locationIndex;
@@ -135,8 +137,16 @@ public class MenuManager : MonoBehaviour
     public void GameSettingsSetUp()
     {
         locationButtons = GameObject.Find("LocationButtons").GetComponentsInChildren<Button>();
-        levelButtons = GameObject.Find("LevelButtons").GetComponentsInChildren<Button>();
         turnButtons = GameObject.Find("TurnButtons").GetComponentsInChildren<Button>();
+
+        if (!GameCore.BoardManager.againstAI && !GameCore.BoardManager.againstNetwork)
+        {
+            levelObject.SetActive(false);
+        }
+        else
+        {
+            levelButtons = GameObject.Find("LevelButtons").GetComponentsInChildren<Button>();
+        }
     }
 
     public void locationSelected(int index)
