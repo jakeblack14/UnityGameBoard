@@ -7277,13 +7277,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 294127381}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f2971a4852d086428298311489e942c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyButton: {fileID: 0}
-  slider: {fileID: 0}
+  MenuMusic: {fileID: 8300000, guid: 2abddd58d5cb0054f8c6ff7cc752f51f, type: 3}
+  AsteroidMusic: {fileID: 8300000, guid: 6857b5bea928c7d4295aea8e912484bf, type: 3}
+  MilkyMusic: {fileID: 8300000, guid: a38ba43ba54f9384aa87244462d02cfd, type: 3}
+  source: {fileID: 294127387}
 --- !u!1 &296321706 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1166615005892324, guid: 2c2fa2878e4800a41aaa7ad09c327b6b,
@@ -13280,8 +13282,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2971a4852d086428298311489e942c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyButton: {fileID: 974444512}
-  slider: {fileID: 518882673}
+  MenuMusic: {fileID: 0}
+  AsteroidMusic: {fileID: 0}
+  MilkyMusic: {fileID: 0}
+  source: {fileID: 0}
 --- !u!114 &518882673
 MonoBehaviour:
   m_ObjectHideFlags: 0
