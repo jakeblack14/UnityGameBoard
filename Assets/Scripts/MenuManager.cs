@@ -179,46 +179,7 @@ public class MenuManager : MonoBehaviour
 
     public void backButtonClicked()
     {
-        if (MenuPanels[8].activeSelf || MenuPanels[9].activeSelf)
-        {
-            MenuPanels[8].SetActive(false);
-            MenuPanels[9].SetActive(false);
-        }
-        else
-        {
-
-            int index = 0;
-
-            for (int i = 0; i < 6; i++)
-            {
-                if (MenuPanels[i].activeSelf)
-                {
-                    index = i;
-                }
-            }
-
-            if (index == 4)
-            {
-                MenuPanels[index].SetActive(false);
-                MenuPanels[1].SetActive(true);
-            }
-            else if(index == 5)
-            {
-                MenuPanels[index].SetActive(false);
-                MenuPanels[0].SetActive(true);
-            }
-            else if(index == 0)
-            {
-                MenuPanels[index].SetActive(false);
-                MenuPanels[3].SetActive(true);
-                GameBoardData.IsPlayer2 = false;
-            }
-            else
-            {
-                MenuPanels[index].SetActive(false);
-                MenuPanels[index - 1].SetActive(true);
-            }
-        }
+        MenuPanels[10].SetActive(true);
     }
 
     private void highlightButton(Button[] currentButtons, int index)
