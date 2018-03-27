@@ -40,18 +40,18 @@ public class ChooseCharacter : MonoBehaviour
 
     public void On_Next_Click_Button()
     {
-        if(GameBoardData.IsPlayer2)
-        {
-            if(GameBoardData.IsAlien)
-            {
+        //if(GameBoardData.IsPlayer2)
+        //{
+        //    if(GameBoardData.IsAlien)
+        //    {
 
-            }
-        }
-        else
-        {
+        //    }
+        //}
+        //else
+        //{
             GameBoardData.Astronaut = currentAstro;
             GameBoardData.Alien = currentAlien;
-        }
+        //}
     }
 
     public void SelectAstronaut(int index)

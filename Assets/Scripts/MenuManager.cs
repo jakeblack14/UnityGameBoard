@@ -38,6 +38,8 @@ public class MenuManager : MonoBehaviour
     public Button networkGameButton;
     public GameObject ParentOfButtons;
 
+    private bool networkIsAlien;
+
     void Start()
     {
         BackButton = GameObject.Find("BackButtonPanel");
@@ -277,7 +279,11 @@ public class MenuManager : MonoBehaviour
                 SceneManager.LoadScene("MilkyWayScene");
             }
         }
-        //else network game
+        else
+        {
+            MenuPanels[5].SetActive(false);
+            MenuPanels[6].SetActive(true);
+        }
     }
 
     public void singlePlayerButtonClicked()
@@ -298,7 +304,7 @@ public class MenuManager : MonoBehaviour
         GameCore.BoardManager.againstAI = false;
         GameCore.BoardManager.againstNetwork = true;
         GameCore.BoardManager.waitForNetwork = true;
-        SceneManager.LoadScene("MilkyWayScene");
+        //SceneManager.LoadScene("MilkyWayScene");
     }
 
     public void highlightNetworkCharacterButton(int index)
@@ -321,8 +327,10 @@ public class MenuManager : MonoBehaviour
     public void startNetworkGame()
     {
         MenuPanels[7].SetActive(true);
+        MenuPanels[6].SetActive(false);
         locationButtons = GameObject.Find("NetworkLocationButtons").GetComponentsInChildren<Button>();
         networkCharacterButtons = GameObject.Find("TeamButtons").GetComponentsInChildren<Button>();
+        GameBoardData.IsAlien = true;
     }
 
     public void createNetworkGame()
@@ -341,6 +349,7 @@ public class MenuManager : MonoBehaviour
         networkNumPlayers = "1/2";
 
         MenuPanels[7].SetActive(false);
+        MenuPanels[5].SetActive(true);
 
         SpawnNetworkGameButtons(networkGameName, networkNumPlayers, networkGameLocation);
     }

@@ -49,8 +49,8 @@ public class MusicChanges : MonoBehaviour
         if (instance == null)
         {
             // Register as singleton if first
-            instance = this;
-            DontDestroyOnLoad(this);
+            instance.source = source;
+            DontDestroyOnLoad(instance);
         }
         else
         {

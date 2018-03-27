@@ -16,7 +16,6 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     private Sprite currentCharacter;
 
-
     public Sprite AlienBackground;
     public Sprite AstroBackground;
 
@@ -26,10 +25,17 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     private Sprite currentBackground;
     private Sprite currentDisabledBackground;
 
+    private bool isActivated = false;
+
     // Use this for initialization
     void Start()
     {
-        if(GameBoardData.IsAlien)
+
+    }
+
+    void Activate()
+    {
+        if (GameBoardData.IsAlien)
         {
             //Player 1 is an alien so player 2 will be an astronaut
 
@@ -41,7 +47,7 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
             CharacterButtons[0].image.sprite = AstroBackground;
 
-            for (int i=1; i<3; i++)
+            for (int i = 1; i < 3; i++)
             {
                 CharacterButtons[i].image.sprite = AstroDisabledBackground;
             }
@@ -74,6 +80,12 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     void Update()
     {
         introText.text = "Hello " + GameBoardData.Player2Name + ", please choose a character!";
+
+        if(!isActivated)
+        {
+            Activate();
+            isActivated = true;
+        }
     }
 
     public void On_Next_Click_Button()
@@ -86,6 +98,8 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
         {
             GameBoardData.Alien = currentCharacter;
         }
+
+        isActivated = false;
     }
 
     public void SelectCharacter(int index)
@@ -100,46 +114,4 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
             }
         }
     }
-
-    //public void SelectAstronaut(int index)
-    //{
-
-    //    GameBoardData.IsAlien = false;
-    //    //AstronautButtons[index].image.sprite = AstroBackground;
-    //    currentAstro = Astronauts[index];
-
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        if (i != index)
-    //        {
-    //            AstronautButtons[i].image.sprite = AstroDisabledBackground;
-    //        }
-    //    }
-
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        AlienButtons[i].image.sprite = AlienDisabledBackground;
-    //    }
-    //}
-
-    //public void SelectAlien(int index)
-    //{
-    //    GameBoardData.IsAlien = true;
-
-    //    //AlienButtons[index].image.sprite = AlienBackground;
-    //    currentAlien = Aliens[index];
-
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        if (i != index)
-    //        {
-    //            AlienButtons[i].image.sprite = AlienDisabledBackground;
-    //        }
-    //    }
-
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        AstronautButtons[i].image.sprite = AstroDisabledBackground;
-    //    }
-    //}
 }

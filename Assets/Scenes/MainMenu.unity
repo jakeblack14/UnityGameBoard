@@ -5195,7 +5195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 700.3801, y: -848}
+  m_AnchoredPosition: {x: 700.3801, y: -729.42645}
   m_SizeDelta: {x: 848.5, y: 275.90002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &313080740
@@ -6053,7 +6053,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 700.3801, y: -1035.8}
+  m_AnchoredPosition: {x: 700.3801, y: -917.22644}
   m_SizeDelta: {x: 249.8, y: 59.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &450318760
@@ -6665,7 +6665,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 793312534}
-        m_MethodName: Connect
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9686,7 +9686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 700.3801, y: -249.94997}
+  m_AnchoredPosition: {x: 700.3801, y: -131.37643}
   m_SizeDelta: {x: 371.4, y: 60.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &832067570
@@ -10232,7 +10232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 700.3801, y: -454.49997}
+  m_AnchoredPosition: {x: 700.3801, y: -335.92645}
   m_SizeDelta: {x: 860.80005, y: 308.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918548008
@@ -14208,7 +14208,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 203865856}
         m_MethodName: highlightNetworkCharacterButton
@@ -14302,7 +14302,7 @@ GameObject:
   - component: {fileID: 1501812516}
   - component: {fileID: 1501812515}
   m_Layer: 5
-  m_Name: AsteroidButton
+  m_Name: AstronautButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14375,7 +14375,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 203865856}
         m_MethodName: highlightNetworkCharacterButton
@@ -15394,7 +15394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 700.3801, y: -167.04997}
+  m_AnchoredPosition: {x: 700.3801, y: -48.47643}
   m_SizeDelta: {x: 919.6, y: 65.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1610209442
@@ -16534,7 +16534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 700.3801, y: -659.44995}
+  m_AnchoredPosition: {x: 700.3801, y: -540.8764}
   m_SizeDelta: {x: 335.1, y: 61.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736605631
