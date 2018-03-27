@@ -11,14 +11,14 @@ public class GameTutorialDisappear : MonoBehaviour
     {
         if (ToolPanelMenus[index].activeSelf)
         {
-            ToolPanelMenus[index].SetActive(false);
+            //ToolPanelMenus[index].SetActive(false);
         }
         else
         {
             ToolPanelMenus[index].SetActive(true);
         }
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (i != index)
             {

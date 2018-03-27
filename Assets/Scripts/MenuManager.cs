@@ -33,6 +33,8 @@ public class MenuManager : MonoBehaviour
     private string networkNumPlayers;
     private string networkGameLocation;
 
+    private int currentPanelIndex;
+
     public InputField networkGameInputField;
 
     public Button networkGameButton;
@@ -95,6 +97,27 @@ public class MenuManager : MonoBehaviour
                 inputField.placeholder.GetComponent<Text>().text = "Player 2";
             }
         }
+
+        if(MenuPanels[8].activeSelf || MenuPanels[9].activeSelf || MenuPanels[10].activeSelf || MenuPanels[11].activeSelf)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                if(MenuPanels[i].activeSelf)
+                {
+                    currentPanelIndex = i;
+                }
+            }
+
+            for (int i=0; i<7; i++)
+            {
+                MenuPanels[i].SetActive(false);
+            }
+        }
+    }
+
+    public void restoreCurrentPanel()
+    {
+        MenuPanels[currentPanelIndex].SetActive(true);
     }
 
     public void usernameButtonClick()
@@ -175,11 +198,6 @@ public class MenuManager : MonoBehaviour
         {
             GameCore.BoardManager.playerGoingFirst = false;
         }
-    }
-
-    public void backButtonClicked()
-    {
-        MenuPanels[10].SetActive(true);
     }
 
     private void highlightButton(Button[] currentButtons, int index)

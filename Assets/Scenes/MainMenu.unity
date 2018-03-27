@@ -4844,6 +4844,7 @@ MonoBehaviour:
   - {fileID: 1489385628}
   - {fileID: 1757042955}
   - {fileID: 1960083496}
+  - {fileID: 1661829431}
   usernameText: {fileID: 641483892}
   inputField: {fileID: 575585313}
   selectedImage: {fileID: 21300000, guid: d8e0571ff8a6c5a4c921e0ef8a90ec8a, type: 3}
@@ -7227,6 +7228,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 203865856}
+        m_MethodName: restoreCurrentPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &554231432
@@ -8176,6 +8188,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1661829431}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 203865856}
+        m_MethodName: restoreCurrentPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12666,17 +12689,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 203865856}
-        m_MethodName: backButtonClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 693755108}
         m_MethodName: CheckHelpMenu
         m_Mode: 3
@@ -13992,6 +14004,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 203865856}
+        m_MethodName: restoreCurrentPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1457859128
@@ -14334,8 +14357,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.18758331, y: 0.06745987}
   m_AnchorMax: {x: 0.8472917, y: 0.93254006}
-  m_AnchoredPosition: {x: 0.7380066, y: 1.6100006}
-  m_SizeDelta: {x: -6.699997, y: -8.5}
+  m_AnchoredPosition: {x: -1.3059998, y: 2.9300003}
+  m_SizeDelta: {x: -2.611992, y: -5.8600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1489385630
 MonoBehaviour:
@@ -15725,6 +15748,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 203865856}
+        m_MethodName: restoreCurrentPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1605537617
@@ -16337,7 +16371,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1661829431}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1.0000026, y: 1.0000026, z: 1.0000026}
   m_Children:
   - {fileID: 1020503315}
@@ -16346,10 +16380,10 @@ RectTransform:
   m_Father: {fileID: 203865855}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3124375, y: 0.31411576}
-  m_AnchorMax: {x: 0.721, y: 0.6725757}
-  m_AnchoredPosition: {x: 2.1179504, y: 2.8429508}
-  m_SizeDelta: {x: -4, y: 1.800003}
+  m_AnchorMin: {x: 0.29677084, y: 0.31411576}
+  m_AnchorMax: {x: 0.7032917, y: 0.684}
+  m_AnchoredPosition: {x: 0, y: 1}
+  m_SizeDelta: {x: 0, y: -9.200012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661829433
 MonoBehaviour:
@@ -17086,8 +17120,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3546042, y: 0.11936822}
   m_AnchorMax: {x: 0.68043745, y: 0.86800003}
-  m_AnchoredPosition: {x: 0.5379944, y: 2.5000076}
-  m_SizeDelta: {x: -3.2600098, y: -5.6000004}
+  m_AnchoredPosition: {x: -0.54600525, y: 2.650004}
+  m_SizeDelta: {x: -1.0920105, y: -5.300008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1757042957
 MonoBehaviour:
@@ -17889,6 +17923,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1757042955}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 203865856}
+        m_MethodName: restoreCurrentPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19111,10 +19156,10 @@ RectTransform:
   m_Father: {fileID: 203865855}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3124375, y: 0.31411576}
-  m_AnchorMax: {x: 0.721, y: 0.6725757}
-  m_AnchoredPosition: {x: 2.1261013, y: 2.8459845}
-  m_SizeDelta: {x: -4, y: 1.7999878}
+  m_AnchorMin: {x: 0.29677084, y: 0.31411576}
+  m_AnchorMax: {x: 0.7032917, y: 0.684}
+  m_AnchoredPosition: {x: 0, y: 1}
+  m_SizeDelta: {x: 0, y: -9.200012}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1960083498
 MonoBehaviour:
@@ -20907,6 +20952,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1960083496}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 203865856}
+        m_MethodName: restoreCurrentPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
