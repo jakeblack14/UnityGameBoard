@@ -16,6 +16,8 @@ namespace TechPlanet.SpaceRace
         public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
         PhotonPlayer OtherNetworkPlayer;
         Timer connection = new Timer();
+        bool waiting = true;
+        bool initializing = true;
         /// <summary>
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
         /// </summary>   
@@ -103,7 +105,12 @@ namespace TechPlanet.SpaceRace
         }
         private void Update()
         {
-          
+          if (PhotonNetwork.room.PlayerCount == 2)
+            {
+                
+                SceneManager.LoadScene("MilkyWayScene");
+                initializing = true;
+            }
         }
 
 
@@ -137,9 +144,18 @@ namespace TechPlanet.SpaceRace
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
+            roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
+            roomOptions.CustomRoomProperties.Add("name", GameName);
+            roomOptions.CustomRoomProperties.Add("scene", Scene);
+            roomOptions.CustomRoomPropertiesForLobby = new string[] { "name" }; //makes name accessible in a room list in the lobby
+            roomOptions.CustomRoomPropertiesForLobby = new string[] { "scene" }; // Makes scene name accessible in a room list in the lobby
             PhotonNetwork.CreateRoom(GameName, roomOptions, null);
             RoomInfo[]arrayOfRooms = PhotonNetwork.GetRoomList();
-            string Room1Name = arrayOfRooms[0].Name;
+            int i = arrayOfRooms.Length;
+            string Room1Name = arrayOfRooms[i].Name;
+            
+            Debug.Log("which room number in array");
+            Debug.Log(i);
             Debug.Log(Room1Name);
             Debug.Log("check to see if room name matches up from here");
 
@@ -147,6 +163,23 @@ namespace TechPlanet.SpaceRace
         public void JoinCreatedGame(String GameName, String Scene)
         {
             PhotonNetwork.JoinRoom(GameName);
+        }
+        public void OnJoinedCreatedGame()
+        {
+            //loading screen
+            waiting = true;
+            if (PhotonNetwork.room.PlayerCount == 2)
+            {
+                initializing = false;
+                waiting = false;
+            }
+            else
+            {
+                initializing = true;
+                
+            }
+            //show the loading popup thing here
+
         }
         /// <summary>
         /// Start the connection process. 
@@ -311,6 +344,8 @@ namespace TechPlanet.SpaceRace
             else
             {
                 string otherPlayer = (string)content;
+                //int character = jeff.characterNumber thing here
+                // Pass character with otherPlayer name 
                 jeff.ReceiveNetworkPlayerName(otherPlayer);
             }
         }
