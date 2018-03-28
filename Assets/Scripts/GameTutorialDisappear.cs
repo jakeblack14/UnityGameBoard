@@ -9,11 +9,7 @@ public class GameTutorialDisappear : MonoBehaviour
 
     public void CheckHelpMenu(int index)
     {
-        if (ToolPanelMenus[index].activeSelf)
-        {
-            //ToolPanelMenus[index].SetActive(false);
-        }
-        else
+        if(!ToolPanelMenus[index].activeSelf)
         {
             ToolPanelMenus[index].SetActive(true);
         }

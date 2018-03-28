@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
 
     public List<GameObject> MenuPanels;
     private GameObject BackButton;
+    private GameObject HomeButton;
     public Text usernameText;
     public InputField inputField;
     public Sprite selectedImage;
@@ -43,6 +44,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         BackButton = GameObject.Find("BackButtonPanel");
+        HomeButton = GameObject.Find("HomeButtonPanel");
 
         if(!GameBoardData.GameInitialized)
         {
@@ -57,23 +59,31 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (MenuPanels[0].activeSelf && !MenuPanels[8].activeSelf && !MenuPanels[9].activeSelf)
+        if (MenuPanels[0].activeSelf) //&& !MenuPanels[8].activeSelf && !MenuPanels[9].activeSelf)
         {
             if (!GameBoardData.IsPlayer2)
             {
                 BackButton.SetActive(false);
+                HomeButton.SetActive(false);
             }
         }
-        else if(MenuPanels[2].activeSelf)
+        else if(MenuPanels[1].activeSelf)
         {
-            GameSettingsSetUp();
+            BackButton.SetActive(true);
+            HomeButton.SetActive(false);
         }
         else
         {
-            BackButton.SetActive(true);
+            HomeButton.SetActive(true);
+            BackButton.SetActive(false);
         }
 
-        if(!GameBoardData.IsPlayer2)
+        if (MenuPanels[2].activeSelf)
+        {
+            GameSettingsSetUp();
+        }
+
+        if (!GameBoardData.IsPlayer2)
         {
             usernameText.enabled = false;
             if(player1NameInitialized)
