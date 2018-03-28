@@ -139,11 +139,6 @@ public class MusicChanges : MonoBehaviour
         Button btn = MyButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
         source = GetComponent<AudioSource>();
-
-        if (SceneManager.GetActiveScene().name == "MainMenu")
-        {
-            source.Play();
-        }
     }
 
     public void Update()
