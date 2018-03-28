@@ -21,8 +21,8 @@ public class MusicChanges : MonoBehaviour
 
     void Start()
     {
-        Button btn = MyButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        MyButton = MyButton.GetComponent<Button>();
+        MyButton.onClick.AddListener(TaskOnClick);
     }
 
     public void Update()
@@ -32,13 +32,19 @@ public class MusicChanges : MonoBehaviour
 
     void TaskOnClick()
     {
+        Text text = MyButton.GetComponentInChildren<Text>();
         if (source.mute == false)
         {
             source.mute = true;
+            text.text = "Off";
+            slider.value = 0;
+            
         }
         else
         {
             source.mute = false;
+            text.text = "On";
+            slider.value = .5f;
         }
     }
 }
