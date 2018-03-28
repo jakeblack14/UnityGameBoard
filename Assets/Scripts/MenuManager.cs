@@ -43,6 +43,9 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        inputField.characterLimit = 13;
+        networkGameInputField.characterLimit = 15;
+
         BackButton = GameObject.Find("BackButtonPanel");
         HomeButton = GameObject.Find("HomeButtonPanel");
 
