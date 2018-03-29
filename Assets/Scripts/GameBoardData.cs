@@ -13,6 +13,12 @@ public static class GameBoardData {
     private static Sprite AlienImage;
     private static Sprite AstroImage;
 
+    //character this computer chose
+    private static int characterIndexLocal;
+
+    //character other computer chose
+    private static int characterIndexNetwork;
+
     private static bool isAlien;
 
     private static bool isPlayer2 = false;
@@ -102,6 +108,32 @@ public static class GameBoardData {
         set
         {
             AstroImage = value;
+        }
+    }
+
+    public static int CharacterIndexLocal
+    {
+        get
+        {
+            return characterIndexLocal;
+        }
+
+        set
+        {
+            characterIndexLocal = value;
+        }
+    }
+
+    public static int CharacterIndexNetwork
+    {
+        get
+        {
+            return characterIndexNetwork;
+        }
+
+        set
+        {
+            characterIndexNetwork = value;
         }
     }
 }

@@ -27,6 +27,8 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     private bool isActivated = false;
 
+    private int currentIndex;
+
     // Use this for initialization
     void Start()
     {
@@ -129,21 +131,36 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     public void On_Next_Click_Button()
     {
-        if(GameBoardData.IsAlien)
+        if (GameCore.BoardManager.againstNetwork)
         {
-            GameBoardData.Astronaut = currentCharacter;
+            if(GameBoardData.IsAlien)
+            {
+                GameBoardData.CharacterIndexLocal = currentIndex + 1;
+            }
+            else
+            {
+                GameBoardData.CharacterIndexLocal = currentIndex + 4;
+            }
         }
         else
         {
-            GameBoardData.Alien = currentCharacter;
-        }
+            if (GameBoardData.IsAlien)
+            {
+                GameBoardData.Astronaut = currentCharacter;
+            }
+            else
+            {
+                GameBoardData.Alien = currentCharacter;
+            }
 
-        isActivated = false;
+            isActivated = false;
+        }
     }
 
     public void SelectCharacter(int index)
     {
         currentCharacter = Characters[index];
+        currentIndex = index;
 
         for (int i = 0; i < 3; i++)
         {

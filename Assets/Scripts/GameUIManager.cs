@@ -17,30 +17,66 @@ public class GameUIManager : MonoBehaviour {
     public Text username;
     public Text player2Username;
 
+    private Sprite[] Astronauts;
+    private Sprite[] Aliens;
+
     //public Text gameOverText;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
-        if(GameBoardData.IsAlien)
+        if (GameCore.BoardManager.againstNetwork)
         {
-            Player1.sprite = GameBoardData.Alien;
-            Player2.sprite = GameBoardData.Astronaut;
+            Astronauts = Resources.LoadAll<Sprite>("AstronautSprites");
+            Aliens = Resources.LoadAll<Sprite>("AlienSprites");
 
-            Player1Background.sprite = AlienBackground;
-            Player2Background.sprite = AstroBackground;
+            //1-3 astronaut
+            //4-6 alien
+
+            if(GameBoardData.CharacterIndexLocal < 4)
+            {
+                //player 1 is an astronaut
+
+                Player1.sprite = Astronauts[GameBoardData.CharacterIndexLocal - 1];
+                Player2.sprite = Aliens[GameBoardData.CharacterIndexNetwork - 4];
+
+                Player2Background.sprite = AlienBackground;
+                Player1Background.sprite = AstroBackground;
+            }
+            else
+            {
+                //player 2 is an astronaut
+
+                Player1.sprite = Aliens[GameBoardData.CharacterIndexNetwork - 4];
+                Player2.sprite = Astronauts[GameBoardData.CharacterIndexLocal - 1];
+
+                Player1Background.sprite = AlienBackground;
+                Player2Background.sprite = AstroBackground;
+            }
         }
         else
         {
-            Player1.sprite = GameBoardData.Astronaut;
-            Player2.sprite = GameBoardData.Alien;
 
-            Player2Background.sprite = AlienBackground;
-            Player1Background.sprite = AstroBackground;
+            if (GameBoardData.IsAlien)
+            {
+                Player1.sprite = GameBoardData.Alien;
+                Player2.sprite = GameBoardData.Astronaut;
+
+                Player1Background.sprite = AlienBackground;
+                Player2Background.sprite = AstroBackground;
+            }
+            else
+            {
+                Player1.sprite = GameBoardData.Astronaut;
+                Player2.sprite = GameBoardData.Alien;
+
+                Player2Background.sprite = AlienBackground;
+                Player1Background.sprite = AstroBackground;
+            }
+
+            username.text = GameBoardData.Name;
+            player2Username.text = GameBoardData.Player2Name;
         }
-
-        username.text = GameBoardData.Name;
-        player2Username.text = GameBoardData.Player2Name;
     }
 
     private void Update()

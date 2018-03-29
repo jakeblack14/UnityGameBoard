@@ -272,7 +272,7 @@ public class MenuManager : MonoBehaviour
         else
         {
             MenuPanels[5].SetActive(false);
-            MenuPanels[6].SetActive(true);
+            MenuPanels[12].SetActive(true);
         }
     }
 
@@ -346,14 +346,24 @@ public class MenuManager : MonoBehaviour
 
     private void SpawnNetworkGameButtons(string name, string count, string location)
     {
-        Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-        newButton.transform.SetParent(ParentOfButtons.transform, false);
+        List<List<string>> networkRooms = new List<List<string>>();
 
-        Text[] buttonText = newButton.GetComponentsInChildren<Text>();
+        foreach(Transform child in ParentOfButtons.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
 
-        buttonText[0].text = name;
-        buttonText[1].text = count;
-        buttonText[2].text = location;
+        foreach(List<string> room in networkRooms)
+        {
+            Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            newButton.transform.SetParent(ParentOfButtons.transform, false);
+
+            Text[] buttonText = newButton.GetComponentsInChildren<Text>();
+
+            buttonText[0].text = room[0];
+            buttonText[1].text = room[1];
+            buttonText[2].text = room[2];
+        }
     }
 
     public void OnSelect(BaseEventData eventData)

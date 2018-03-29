@@ -18,6 +18,7 @@ namespace TechPlanet.SpaceRace
         Timer connection = new Timer();
         bool waiting = true;
         bool initializing = true;
+        string passedSceneName;
         /// <summary>
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
         /// </summary>   
@@ -105,12 +106,7 @@ namespace TechPlanet.SpaceRace
         }
         private void Update()
         {
-          if (PhotonNetwork.room.PlayerCount == 2)
-            {
-                
-                SceneManager.LoadScene("MilkyWayScene");
-                initializing = true;
-            }
+          
         }
 
 
@@ -141,6 +137,7 @@ namespace TechPlanet.SpaceRace
 
         public void CreateNewGame(String GameName, String Scene)
         {
+            passedSceneName = Scene;
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
@@ -167,16 +164,19 @@ namespace TechPlanet.SpaceRace
         public void OnJoinedCreatedGame()
         {
             //loading screen
-            waiting = true;
+            //waiting = true;
             if (PhotonNetwork.room.PlayerCount == 2)
             {
-                initializing = false;
-                waiting = false;
+               // initializing = false;
+               // waiting = false;
             }
             else
             {
-                initializing = true;
+                bool order = false;
+                StartGame(order, passedSceneName);
                 
+                PhotonNetwork.RaiseEvent(3, passedSceneName, true, null);
+
             }
             //show the loading popup thing here
 
@@ -262,11 +262,11 @@ namespace TechPlanet.SpaceRace
             }
            if (PhotonNetwork.room.PlayerCount == 2)
             {
-                StartGame();
+              //  StartGame();
             }
             else
             {
-                StartGame();
+                //StartGame();
             }
             
         }
@@ -276,7 +276,7 @@ namespace TechPlanet.SpaceRace
             PhotonNetwork.Disconnect();
             SceneManager.LoadScene("MainMenu");
         }
-        void StartGame()
+        void StartGame(bool order, string sceneName)
         {
             //Timer connection = new Timer();
             connection.Interval = (1000) * (1); // Ticks every second
@@ -285,7 +285,7 @@ namespace TechPlanet.SpaceRace
             GameObject goJeff = GameObject.Find("GameBoard");
             BoardManager jeffGo = goJeff.GetComponent<BoardManager>();
             //if (player1.getIdentity() != identity.X)
-            if (PhotonNetwork.room.PlayerCount == 2)
+            if (!order)
             {
                 //player1 = new GameCore.NetworkPlayer(identity.O);
                 //BoardManager.firstPlayerIdentity = identity.O;
@@ -293,13 +293,20 @@ namespace TechPlanet.SpaceRace
 
                 jeffGo.ChangeFirstPlayer(false);
                 String ourName = GameBoardData.Name;
-                jeffGo.ReceiveNetworkPlayerName(ourName);
-              
+                PhotonNetwork.RaiseEvent(2, ourName, true, null);
+                // jeffGo.ReceiveNetworkPlayerName(ourName);
+                SceneManager.LoadScene(sceneName);
             }
             else
             {
                 jeffGo.ChangeFirstPlayer(true);
+                String ourName = GameBoardData.Name;
+                PhotonNetwork.RaiseEvent(2, ourName, true, null);
+                
             }
+            // Load Scene here
+            int characterIndexNumber = GameBoardData.CharacterIndexLocal;
+            PhotonNetwork.RaiseEvent(4, characterIndexNumber, true, null);
             jeffGo.NetworkWaiting();
 
         }
@@ -341,108 +348,134 @@ namespace TechPlanet.SpaceRace
                 Debug.Log(receivedArray[3]);
                 jeff.ReceiveNetworkMove(receivedArray[0], receivedArray[1], receivedArray[2], receivedArray[3]);
             }
-            else
+            else if (eventCode == 2)
             {
+                
                 string otherPlayer = (string)content;
                 //int character = jeff.characterNumber thing here
                 // Pass character with otherPlayer name 
+                //int character = GameBoardData.CharacterIndexLocal;
                 jeff.ReceiveNetworkPlayerName(otherPlayer);
             }
+            else if (eventCode == 3)
+            {
+                bool first = true;
+                StartGame(first, (string)content);
+            }
+            else if (eventCode == 4)
+            {
+                GameBoardData.CharacterIndexNetwork = (int)content;
+            }
+                 
         }
         #endregion
     }
     // Code to populate the server list thing needs to be modified.
-    /*private Transform panel;
-    private List<GameObject> serverList;
-    private GameObject scroll;
-    private GameObject selectedObject;
-    private Color unselectedColor;
+    /*  private Transform panel;
+      private List<GameObject> serverList;
+      private GameObject scroll;
+      private GameObject selectedObject;
+      private Color unselectedColor;
 
-    public void OnEnable()
-    {
-        if (serverList == null)
-        {
-            panel = transform.FindChild("Area/Panel");
-            scroll = transform.FindChild("Scrollbar").gameObject;
-            serverList = new List<GameObject>();
-            unselectedColor = new Color(171 / 255.0f, 174 / 255.0f, 182 / 255.0f, 1);
-        }
-        InvokeRepeating("PopulateServerList", 0, 2);
-    }
+      public void OnEnable()
+      {
+          if (serverList == null)
+          {
+              panel = transform.FindChild("Area/Panel");
+              scroll = transform.FindChild("Scrollbar").gameObject;
+              serverList = new List<GameObject>();
+              unselectedColor = new Color(171 / 255.0f, 174 / 255.0f, 182 / 255.0f, 1);
+          }
+          InvokeRepeating("PopulateServerList", 0, 2);
+      }
 
-    public void OnDisable()
-    {
-        CancelInvoke();
-    }
+      public void OnDisable()
+      {
+          CancelInvoke();
+      }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            GameObject server = EventSystem.current.currentSelectedGameObject;
-            if (server != null)
-            {
-                if (server.name == "ServerButton")
-                {
-                    if (selectedObject != null)
-                        selectedObject.transform.FindChild("Image").GetComponent<Image>().color = unselectedColor;
+      public void Update()
+      {
+          if (Input.GetKeyDown(KeyCode.Mouse0))
+          {
+              GameObject server = EventSystem.current.currentSelectedGameObject;
+              if (server != null)
+              {
+                  if (server.name == "ServerButton")
+                  {
+                      if (selectedObject != null)
+                          selectedObject.transform.FindChild("Image").GetComponent<Image>().color = unselectedColor;
 
-                    selectedObject = server.transform.parent.gameObject;
-                    selectedObject.transform.FindChild("Image").GetComponent<Image>().color = Color.white;
-                }
-            }
-        }
-    }
+                      selectedObject = server.transform.parent.gameObject;
+                      selectedObject.transform.FindChild("Image").GetComponent<Image>().color = Color.white;
+                  }
+              }
+          }
+      }
 
-    public void PopulateServerList()
-    {
-        int i = 0;
-        RoomInfo[] hostData = PhotonNetwork.GetRoomList();
+      public void PopulateServerList()
+      {
+          int i = 0;
+          RoomInfo[] hostData = PhotonNetwork.GetRoomList();
 
-        int selected = serverList.IndexOf(selectedObject);
+          int selected = serverList.IndexOf(selectedObject);
 
-        for (int j = 0; j < serverList.Count; j++)
-        {
-            Destroy(serverList[j]);
-        }
-        serverList.Clear();
+          for (int j = 0; j < serverList.Count; j++)
+          {
+              Destroy(serverList[j]);
+          }
+          serverList.Clear();
 
-        if (null != hostData)
-        {
-            for (i = 0; i < hostData.Length; i++)
-            {
-                if (!hostData[i].open)
-                    continue;
+          if (null != hostData)
+          {
+              for (i = 0; i < hostData.Length; i++)
+              {
+                  if (!hostData[i].open)
+                      continue;
 
-                GameObject text = (GameObject)Instantiate(Resources.Load("ServerObject"));
-                serverList.Add(text);
-                text.transform.SetParent(panel, false);
-                text.transform.FindChild("ServerText").GetComponent<Text>().text = hostData[i].name;
-                text.transform.FindChild("PlayerText").GetComponent<Text>().text = hostData[i].playerCount + "/" + hostData[i].maxPlayers;
-                text.transform.FindChild("MapText").GetComponent<Text>().text = hostData[i].customProperties["map"].ToString();
-                text.transform.FindChild("GMText").GetComponent<Text>().text = hostData[i].customProperties["gm"].ToString();
-                text.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, (i * -25), 0);
-            }
-        }
-        if ((i * -25) < -290)
-        {
-            panel.GetComponent<RectTransform>().sizeDelta = new Vector2(400, (i * 25) + 30);
-            scroll.SetActive(true);
-        }
-        else
-        {
-            panel.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 320);
-            scroll.SetActive(false);
-        }
-        if (selected >= 0 && selected < serverList.Count)
-        {
-            selectedObject = serverList[selected];
-            selectedObject.transform.FindChild("Image").GetComponent<Image>().color = Color.white;
-        }
-    }
+                  GameObject text = (GameObject)Instantiate(Resources.Load("ServerObject"));
+                  serverList.Add(text);
+                  text.transform.SetParent(panel, false);
+                  text.transform.FindChild("ServerText").GetComponent<Text>().text = hostData[i].name;
+                  text.transform.FindChild("PlayerText").GetComponent<Text>().text = hostData[i].playerCount + "/" + hostData[i].maxPlayers;
+                  text.transform.FindChild("MapText").GetComponent<Text>().text = hostData[i].customProperties["map"].ToString();
+                  text.transform.FindChild("GMText").GetComponent<Text>().text = hostData[i].customProperties["gm"].ToString();
+                  text.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, (i * -25), 0);
+              }
+          }
+          if ((i * -25) < -290)
+          {
+              panel.GetComponent<RectTransform>().sizeDelta = new Vector2(400, (i * 25) + 30);
+              scroll.SetActive(true);
+          }
+          else
+          {
+              panel.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 320);
+              scroll.SetActive(false);
+          }
+          if (selected >= 0 && selected < serverList.Count)
+          {
+              selectedObject = serverList[selected];
+              selectedObject.transform.FindChild("Image").GetComponent<Image>().color = Color.white;
+          }
+      }
+
+
+
+
+
+      // other things that might help
+      void OnGUI(){
+          GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+
+          foreach (RoomInfo game in PhotonNetwork.GetRoomList())
+          {
+              if(GUILayout.Button (game.name + " " + game.playerCount + "/" + game.maxPlayers)) {
+                  PhotonNetwork.JoinRoom(game.name);
+              }
+
+          }
     */
-
-  
 
 
 }
