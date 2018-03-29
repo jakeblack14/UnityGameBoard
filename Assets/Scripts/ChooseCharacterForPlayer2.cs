@@ -40,9 +40,9 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
             currentBackground = AstroBackground;
             currentDisabledBackground = AstroDisabledBackground;
 
-            CharacterButtons[0].image.sprite = AstroBackground;
+            //CharacterButtons[0].image.sprite = AstroBackground;
 
-            for (int i = 1; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 CharacterButtons[i].image.sprite = AstroDisabledBackground;
             }
@@ -57,9 +57,9 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
             currentBackground = AlienBackground;
             currentDisabledBackground = AlienDisabledBackground;
 
-            CharacterButtons[0].image.sprite = AlienBackground;
+            //CharacterButtons[0].image.sprite = AlienBackground;
 
-            for (int i = 1; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 CharacterButtons[i].image.sprite = AlienDisabledBackground;
             }
@@ -84,9 +84,9 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
             currentBackground = AstroBackground;
             currentDisabledBackground = AstroDisabledBackground;
 
-            CharacterButtons[0].image.sprite = AstroBackground;
+            //CharacterButtons[0].image.sprite = AstroBackground;
 
-            for (int i = 1; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 CharacterButtons[i].image.sprite = AstroDisabledBackground;
             }
@@ -101,9 +101,9 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
             currentBackground = AlienBackground;
             currentDisabledBackground = AlienDisabledBackground;
 
-            CharacterButtons[0].image.sprite = AlienBackground;
+            //CharacterButtons[0].image.sprite = AlienBackground;
 
-            for (int i = 1; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 CharacterButtons[i].image.sprite = AlienDisabledBackground;
             }
@@ -120,7 +120,7 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     {
         introText.text = "Hello " + GameBoardData.Player2Name + ", please choose a character!";
 
-        if(!isActivated)
+        if (!isActivated)
         {
             Activate();
             isActivated = true;
