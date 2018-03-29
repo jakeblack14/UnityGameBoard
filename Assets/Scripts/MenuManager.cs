@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TechPlanet.SpaceRace;
 
 public class MenuManager : MonoBehaviour
 {
@@ -340,11 +341,13 @@ public class MenuManager : MonoBehaviour
 
         MenuPanels[7].SetActive(false);
         MenuPanels[5].SetActive(true);
-
-        SpawnNetworkGameButtons(networkGameName, networkNumPlayers, networkGameLocation);
+        GameObject goJeff = GameObject.Find("Canvas");
+        MultiplayerLauncher jeffGo = goJeff.GetComponent<MultiplayerLauncher>();
+        jeffGo.CreateNewGame(networkGameName, networkGameLocation);
+        //SpawnNetworkGameButtons(networkGameName, networkNumPlayers, networkGameLocation);
     }
 
-    public void SpawnNetworkGameButtons(List<List<string>> networkRooms)
+    public void SpawnNetworkGameButtons(string[] networkRooms)
     {
         //List<List<string>> networkRooms = new List<List<string>>();
 
@@ -353,17 +356,18 @@ public class MenuManager : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
 
-        foreach(List<string> room in networkRooms)
-        {
+        
+        
             Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             newButton.transform.SetParent(ParentOfButtons.transform, false);
 
             Text[] buttonText = newButton.GetComponentsInChildren<Text>();
-
-            buttonText[0].text = room[0];
-            buttonText[1].text = room[1];
-            buttonText[2].text = room[2];
-        }
+            Debug.Log(networkRooms[0]);
+            //name, scene, character index
+            buttonText[0].text = networkRooms[0];
+            buttonText[1].text = networkRooms[1];
+            buttonText[2].text = networkRooms[2];
+        
     }
 
     public void OnSelect(BaseEventData eventData)

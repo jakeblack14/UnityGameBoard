@@ -20,6 +20,7 @@ namespace TechPlanet.SpaceRace
         bool waiting = true;
         bool initializing = true;
         string passedSceneName;
+        RoomInfo[] roomsList =  new RoomInfo[10];
         /// <summary>
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
         /// </summary>   
@@ -105,10 +106,7 @@ namespace TechPlanet.SpaceRace
             // if (rand.Next(0, 2))
             //button = GameObject.Find("Start");
         }
-        private void Update()
-        {
-          
-        }
+        
 
 
         #endregion
@@ -134,7 +132,36 @@ namespace TechPlanet.SpaceRace
             }
         
         }
+        public override void OnReceivedRoomListUpdate()
+        {
+            Debug.Log("Received the RoomList");
+            roomsList = PhotonNetwork.GetRoomList();
+            for (int i = 0; i < roomsList.Length; i++)
+            {
+                Debug.LogFormat(this, "[{0}] - {1}", i, roomsList[i].Name);
+            }
+            List<List<string>> networkRooms = new List<List<string>>();
+            int x = 0;
+            foreach (RoomInfo game in roomsList)
+            {
+                if (game != null)
+                {
+                    //populate list of lists here
+                    Debug.Log(game.Name);
+                    Debug.Log("YESSSSSSSSSSSSSSS");
+                    string name = game.Name;
+                    string scene = (string)game.CustomProperties[1];
+                    string index = (string)game.CustomProperties[0];
+                    List<string> listname = new List<string>();
+                    networkRooms.Add(listname);
 
+                    x++;
+                }
+            }
+            GameObject goJeff = GameObject.Find("Canvas");
+            MenuManager jeffGo = goJeff.GetComponent<MenuManager>();
+           //jeffGo.SpawnNetworkGameButtons(networkRooms);
+        }
 
         public void CreateNewGame(String GameName, String Scene)
         {
@@ -143,41 +170,36 @@ namespace TechPlanet.SpaceRace
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
             roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
-           // roomOptions.CustomRoomProperties.Add("name", GameName);
+            roomOptions.CustomRoomProperties.Add("index", GameBoardData.CharacterIndexLocal.ToString());
             roomOptions.CustomRoomProperties.Add("scene", Scene);
-            //roomOptions.CustomRoomPropertiesForLobby = new string[] { "name" }; //makes name accessible in a room list in the lobby
+            roomOptions.CustomRoomPropertiesForLobby = new string[] { "name" }; //makes name accessible in a room list in the lobby
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "scene" }; // Makes scene name accessible in a room list in the lobby
             PhotonNetwork.CreateRoom(GameName, roomOptions, null);
-            RoomInfo[] arrayOfRooms = PhotonNetwork.GetRoomList();
-            int i = arrayOfRooms.Length;
-            string Room1Name = arrayOfRooms[i].Name;
-
-            Debug.Log("which room number in array");
-            Debug.Log(i);
-            Debug.Log(Room1Name);
-            Debug.Log("check to see if room name matches up from here");
-
-            List<List<string>> networkRooms = new List<List<string>>();
-            int x = 0;
-            foreach (RoomInfo game in PhotonNetwork.GetRoomList())
-            {
-                //populate list of lists here
-                string name = game.Name;
-                string scene = (string)game.CustomProperties[0];
-                List<string> listname = new List<string>();
+            Debug.Log(GameName);
+            Debug.Log("jEFfllksl");
+            //RoomInfo[] arrayOfRooms = PhotonNetwork.GetRoomList();
 
 
-                x++;
-            }
+
+
+
+
+            string[] newGameToAdd = new string[3];
+            newGameToAdd[0] = GameName;
+            newGameToAdd[1] = Scene;
+            newGameToAdd[2] = GameBoardData.CharacterIndexLocal.ToString();
             //send list of list
-            GameObject goJeff = GameObject.Find("Canvas");
-            MenuManager jeffGo = goJeff.GetComponent<MenuManager>();
-           jeffGo.SpawnNetworkGameButtons(networkRooms);
+            // GameObject goJeff = GameObject.Find("Canvas");
+            //MenuManager jeffGo = goJeff.GetComponent<MenuManager>();
+            // jeffGo.SpawnNetworkGameButtons(newGameToAdd);
+            PhotonNetwork.RaiseEvent(5, newGameToAdd, true, null);
+            Debug.Log("GameCreated");
         }
         public void JoinCreatedGame(String GameName, String Scene)
         {
             PhotonNetwork.JoinRoom(GameName);
         }
+        
         public void OnJoinedCreatedGame()
         {
             //loading screen
@@ -192,7 +214,7 @@ namespace TechPlanet.SpaceRace
                 bool order = false;
                 StartGame(order, passedSceneName);
                 
-                PhotonNetwork.RaiseEvent(3, passedSceneName, true, null);
+                //PhotonNetwork.RaiseEvent(3, passedSceneName, true, null);
 
             }
             //show the loading popup thing here
@@ -205,14 +227,14 @@ namespace TechPlanet.SpaceRace
         /// </summary>
         public void Connect()
         {
-
+            
           //  progressLabel.SetActive(true);
            // controlPanel.SetActive(false);
             // we check if we are connected or not, we join if we are , else we initiate the connection to the server.
             if (PhotonNetwork.connected)
             {
                 // #Critical we need at this point to attempt joining a Random Room. If it fails, we'll get notified in OnPhotonRandomJoinFailed() and we'll create one.
-                PhotonNetwork.JoinRandomRoom();
+               // PhotonNetwork.JoinRandomRoom();
             }
             else
             {
@@ -227,7 +249,7 @@ namespace TechPlanet.SpaceRace
 
         #region Photon.PunBehaviour CallBacks
 
-
+       
         public override void OnConnectedToMaster()
         {
             Debug.Log("DemoAnimator/Launcher: OnConnectedToMaster() was called by PUN");
@@ -253,12 +275,13 @@ namespace TechPlanet.SpaceRace
             RoomOptions roomOptions = new RoomOptions();
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
+            Debug.Log("THis shoulD NOT BE CALLED");
             //player1.setPlayer(identity.X);
            // player1 = new GameCore.Player(identity.X);
             //BoardManager.firstPlayerIdentity = identity.X;
 
             Debug.Log("Identity is x");
-            PhotonNetwork.CreateRoom("Room1", roomOptions, null);
+          //  PhotonNetwork.CreateRoom("Room1", roomOptions, null);
                 
           //  PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2 }, null);
         }
@@ -275,7 +298,7 @@ namespace TechPlanet.SpaceRace
            // Idk what goes in this yet but this seems to be the way to load a scene through photon network PhotonNetwork.InstantiateSceneObject()
            if (PhotonNetwork.isMasterClient)
             {
-                PhotonNetwork.LoadLevel("MilkyWayScene");
+                //PhotonNetwork.LoadLevel("MilkyWayScene");
             }
            if (PhotonNetwork.room.PlayerCount == 2)
             {
@@ -382,6 +405,13 @@ namespace TechPlanet.SpaceRace
             else if (eventCode == 4)
             {
                 GameBoardData.CharacterIndexNetwork = (int)content;
+            }
+            else if (eventCode == 5)
+            {
+                GameObject goJeff = GameObject.Find("Canvas");
+                MenuManager jeffGo = goJeff.GetComponent<MenuManager>();
+                jeffGo.SpawnNetworkGameButtons((string[])content);
+                Debug.Log("sends the new game to add");
             }
                  
         }
