@@ -4796,6 +4796,7 @@ GameObject:
   - component: {fileID: 203865852}
   - component: {fileID: 203865856}
   - component: {fileID: 203865857}
+  - component: {fileID: 203865858}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4948,6 +4949,18 @@ MonoBehaviour:
   TitleText: []
   TextBox: {fileID: 1593774895}
   TitleBox: {fileID: 562356227}
+--- !u!114 &203865858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203865851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f9b7ca9b061ec4b9ff50dac15b31aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Loglevel: 1
 --- !u!1 &255673252
 GameObject:
   m_ObjectHideFlags: 0
@@ -12823,7 +12836,7 @@ Prefab:
     - target: {fileID: 224279224005152442, guid: 1034ec14670736247a9221a316154a43,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -259.9
       objectReference: {fileID: 0}
     - target: {fileID: 224279224005152442, guid: 1034ec14670736247a9221a316154a43,
         type: 2}

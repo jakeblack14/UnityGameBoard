@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Timers;
 using System.Net;
 using System;
+using System.Collections.Generic;
 
 namespace TechPlanet.SpaceRace
 {
@@ -142,20 +143,36 @@ namespace TechPlanet.SpaceRace
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
             roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
-            roomOptions.CustomRoomProperties.Add("name", GameName);
+           // roomOptions.CustomRoomProperties.Add("name", GameName);
             roomOptions.CustomRoomProperties.Add("scene", Scene);
-            roomOptions.CustomRoomPropertiesForLobby = new string[] { "name" }; //makes name accessible in a room list in the lobby
+            //roomOptions.CustomRoomPropertiesForLobby = new string[] { "name" }; //makes name accessible in a room list in the lobby
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "scene" }; // Makes scene name accessible in a room list in the lobby
             PhotonNetwork.CreateRoom(GameName, roomOptions, null);
-            RoomInfo[]arrayOfRooms = PhotonNetwork.GetRoomList();
+            RoomInfo[] arrayOfRooms = PhotonNetwork.GetRoomList();
             int i = arrayOfRooms.Length;
             string Room1Name = arrayOfRooms[i].Name;
-            
+
             Debug.Log("which room number in array");
             Debug.Log(i);
             Debug.Log(Room1Name);
             Debug.Log("check to see if room name matches up from here");
 
+            List<List<string>> networkRooms = new List<List<string>>();
+            int x = 0;
+            foreach (RoomInfo game in PhotonNetwork.GetRoomList())
+            {
+                //populate list of lists here
+                string name = game.Name;
+                string scene = (string)game.CustomProperties[0];
+                List<string> listname = new List<string>();
+
+
+                x++;
+            }
+            //send list of list
+            GameObject goJeff = GameObject.Find("Canvas");
+            MenuManager jeffGo = goJeff.GetComponent<MenuManager>();
+           jeffGo.SpawnNetworkGameButtons(networkRooms);
         }
         public void JoinCreatedGame(String GameName, String Scene)
         {
@@ -215,7 +232,7 @@ namespace TechPlanet.SpaceRace
         {
             Debug.Log("DemoAnimator/Launcher: OnConnectedToMaster() was called by PUN");
             // #Critical: The first we try to do is to join a potential existing room. If there is, good, else, we'll be called back with OnPhotonRandomJoinFailed()  
-            PhotonNetwork.JoinRandomRoom();
+           // PhotonNetwork.JoinRandomRoom();
 
 
         }

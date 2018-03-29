@@ -344,9 +344,9 @@ public class MenuManager : MonoBehaviour
         SpawnNetworkGameButtons(networkGameName, networkNumPlayers, networkGameLocation);
     }
 
-    private void SpawnNetworkGameButtons(string name, string count, string location)
+    public void SpawnNetworkGameButtons(List<List<string>> networkRooms)
     {
-        List<List<string>> networkRooms = new List<List<string>>();
+        //List<List<string>> networkRooms = new List<List<string>>();
 
         foreach(Transform child in ParentOfButtons.transform)
         {
