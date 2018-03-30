@@ -18,6 +18,7 @@ namespace TechPlanet.SpaceRace
         //PhotonPlayer OtherNetworkPlayer;
         Timer connection = new Timer();
         //bool waiting = true;
+        static int passedCharacter = 0;
         //bool initializing = true;
         string passedSceneName;
         RoomInfo[] roomsList =  new RoomInfo[10];
@@ -139,11 +140,18 @@ namespace TechPlanet.SpaceRace
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
             roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
+            string testing = GameBoardData.CharacterIndexLocal.ToString();
+            string cat = Scene + testing;
             roomOptions.CustomRoomProperties.Add("index", GameBoardData.CharacterIndexLocal.ToString());
             roomOptions.CustomRoomProperties.Add("scene", Scene);
+            roomOptions.CustomRoomProperties.Add("joe", cat);
+            Debug.Log(roomOptions.CustomRoomProperties["index"]);
+            
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "index" }; //makes name accessible in a room list in the lobby
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "scene" }; // Makes scene name accessible in a room list in the lobby
-          
+            roomOptions.CustomRoomPropertiesForLobby = new string[] { "joe" };
+            Debug.Log("testing 123");
+            Debug.Log(roomOptions.CustomRoomProperties["index"]);
             
             PhotonNetwork.CreateRoom(GameName, roomOptions, TypedLobby.Default);
             Debug.Log(GameName);

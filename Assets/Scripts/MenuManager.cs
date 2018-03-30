@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TechPlanet.SpaceRace;
 using System.Timers;
+using System;
 
 public class MenuManager : MonoBehaviour
 {
@@ -29,12 +30,11 @@ public class MenuManager : MonoBehaviour
     private Button currentButton;
 
     private int locationIndex;
-
+    private bool updateLobby = false;
     private bool player1NameInitialized = false;
     private bool player2NameInitialized = false;
 
     private string networkGameName;
-    private string networkNumPlayers;
     private string networkGameLocation;
 
     private int currentPanelIndex;
@@ -129,7 +129,10 @@ public class MenuManager : MonoBehaviour
                 MenuPanels[i].SetActive(false);
             }
         }
-        SpawnNetworkGameButtons();
+        if (updateLobby)
+        {
+            SpawnNetworkGameButtons();
+        }
     }
 
     public void restoreCurrentPanel()
@@ -273,10 +276,13 @@ public class MenuManager : MonoBehaviour
                 SceneManager.LoadScene("MilkyWayScene");
             }
         }
+        //network game
         else
         {
             MenuPanels[5].SetActive(false);
             MenuPanels[12].SetActive(true);
+
+            createNetworkGame();
         }
     }
 
@@ -298,6 +304,8 @@ public class MenuManager : MonoBehaviour
         GameCore.BoardManager.againstAI = false;
         GameCore.BoardManager.againstNetwork = true;
         GameCore.BoardManager.waitForNetwork = true;
+        //Does the update for the lobby system
+        updateLobby = true;
         //SceneManager.LoadScene("MilkyWayScene");
     //    connection.Interval = (1000) * (1); // Ticks every second
     //    connection.Elapsed += new ElapsedEventHandler(OnTimedEvent);
@@ -348,10 +356,8 @@ public class MenuManager : MonoBehaviour
             networkGameLocation = "Milky Way";
         }
 
-        networkNumPlayers = "1/2";
-
-        MenuPanels[7].SetActive(false);
-        MenuPanels[5].SetActive(true);
+        //MenuPanels[7].SetActive(false);
+        //MenuPanels[5].SetActive(true);
         GameObject goJeff = GameObject.Find("Canvas");
         MultiplayerLauncher jeffGo = goJeff.GetComponent<MultiplayerLauncher>();
         jeffGo.CreateNewGame(networkGameName, networkGameLocation);
@@ -380,31 +386,26 @@ public class MenuManager : MonoBehaviour
             Debug.Log("WE did IT");
                 foreach (RoomInfo room in GameBoardData.lobbyRoomInfo)
                 {
-                Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                newButton.transform.SetParent(ParentOfButtons.transform, false);
+                    Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                    newButton.transform.SetParent(ParentOfButtons.transform, false);
 
-                Text[] buttonText = newButton.GetComponentsInChildren<Text>();
-                Debug.Log(room.CustomProperties[0]);
-                //name, scene, character index
-                buttonText[0].text = room.Name;
-                buttonText[1].text = (string)room.CustomProperties["scene"];
-                buttonText[2].text = (string)room.CustomProperties["index"];
+                    Text[] buttonText = newButton.GetComponentsInChildren<Text>();
+                    Debug.Log(room.CustomProperties[0]);
+                    //name, scene, character index
+                    string SceneAndCharacter = (string)room.CustomProperties["joe"];
+                    string characterIndex = SceneAndCharacter.Substring(SceneAndCharacter.Length - 1);
+                    string sceneName = SceneAndCharacter.TrimEnd(SceneAndCharacter[SceneAndCharacter.Length - 1]);
+           
+                    buttonText[0].text = room.Name;
+                    buttonText[1].text = sceneName;
+
+                    GameBoardData.CharacterIndexNetwork = Convert.ToInt32(characterIndex);
                 }
             }
             else
         {
-            Debug.Log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+            
         }
-        //Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-        //newButton.transform.SetParent(ParentOfButtons.transform, false);
-
-        //Text[] buttonText = newButton.GetComponentsInChildren<Text>();
-        //Debug.Log(networkRooms[0]);
-        ////name, scene, character index
-        //buttonText[0].text = networkRooms[0];
-        //buttonText[1].text = networkRooms[1];
-        //buttonText[2].text = networkRooms[2];
-      //  PhotonNetwork.RaiseEvent(5, null, true, null);
 
     }
 

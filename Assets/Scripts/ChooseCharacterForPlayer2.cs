@@ -133,14 +133,14 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     {
         if (GameCore.BoardManager.againstNetwork)
         {
-            if(GameBoardData.IsAlien)
-            {
-                GameBoardData.CharacterIndexLocal = currentIndex + 1;
-            }
-            else
-            {
-                GameBoardData.CharacterIndexLocal = currentIndex + 4;
-            }
+            //if(GameBoardData.IsAlien)
+            //{
+            //    GameBoardData.CharacterIndexLocal = currentIndex + 1;
+            //}
+            //else
+            //{
+            //    GameBoardData.CharacterIndexLocal = currentIndex + 4;
+            //}
         }
         else
         {
@@ -160,7 +160,15 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     public void SelectCharacter(int index)
     {
         currentCharacter = Characters[index];
-        currentIndex = index;
+
+        if (GameBoardData.IsAlien)
+        {
+            GameBoardData.CharacterIndexLocal = index + 1;
+        }
+        else
+        {
+            GameBoardData.CharacterIndexLocal = index + 4;
+        }
 
         for (int i = 0; i < 3; i++)
         {
