@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TechPlanet.SpaceRace;
+using System.Timers;
 
 public class MenuManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class MenuManager : MonoBehaviour
     private Button[] networkCharacterButtons;
 
     public GameObject levelObject;
+    Timer connection = new Timer();
 
     private Button currentButton;
 
@@ -127,6 +129,7 @@ public class MenuManager : MonoBehaviour
                 MenuPanels[i].SetActive(false);
             }
         }
+        SpawnNetworkGameButtons();
     }
 
     public void restoreCurrentPanel()
@@ -296,6 +299,14 @@ public class MenuManager : MonoBehaviour
         GameCore.BoardManager.againstNetwork = true;
         GameCore.BoardManager.waitForNetwork = true;
         //SceneManager.LoadScene("MilkyWayScene");
+    //    connection.Interval = (1000) * (1); // Ticks every second
+    //    connection.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+    //    connection.Enabled = true;
+    }
+
+    private void OnTimedEvent(object sender, ElapsedEventArgs e)
+    {
+       // SpawnNetworkGameButtons();
     }
 
     public void highlightNetworkCharacterButton(int index)
@@ -344,30 +355,55 @@ public class MenuManager : MonoBehaviour
         GameObject goJeff = GameObject.Find("Canvas");
         MultiplayerLauncher jeffGo = goJeff.GetComponent<MultiplayerLauncher>();
         jeffGo.CreateNewGame(networkGameName, networkGameLocation);
-        //SpawnNetworkGameButtons(networkGameName, networkNumPlayers, networkGameLocation);
+        SpawnNetworkGameButtons();
     }
 
-    public void SpawnNetworkGameButtons(string[] networkRooms)
+    public void SpawnNetworkGameButtons()
     {
+        
+        PhotonNetwork.autoJoinLobby = true;
         //List<List<string>> networkRooms = new List<List<string>>();
+        Debug.Log("count how many times this is called");
+        //foreach(Transform child in ParentOfButtons.transform)
+       // {
+      //      GameObject.Destroy(child.gameObject);
+       // }
 
-        foreach(Transform child in ParentOfButtons.transform)
+            
+            //RoomInfo[] roomsList = PhotonNetwork.GetRoomList();
+        Debug.Log(GameBoardData.lobbyRoomInfo.Length);
+        Debug.Log(GameBoardData.lobbyRoomInfo[0].Name);
+            if (GameBoardData.lobbyRoomInfo.Length != 0)
+            {
+            Debug.Log("WE did IT");
+                foreach (RoomInfo room in GameBoardData.lobbyRoomInfo)
+                {
+                Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                newButton.transform.SetParent(ParentOfButtons.transform, false);
+
+                Text[] buttonText = newButton.GetComponentsInChildren<Text>();
+                Debug.Log(room.CustomProperties[0]);
+                //name, scene, character index
+                buttonText[0].text = room.Name;
+               // buttonText[1].text = (string)room.CustomProperties[1];
+               // buttonText[2].text = (string)room.CustomProperties[0];
+                }
+            }
+            else
         {
-            GameObject.Destroy(child.gameObject);
+            Debug.Log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
         }
+        //Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        //newButton.transform.SetParent(ParentOfButtons.transform, false);
 
-        
-        
-            Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-            newButton.transform.SetParent(ParentOfButtons.transform, false);
+        //Text[] buttonText = newButton.GetComponentsInChildren<Text>();
+        //Debug.Log(networkRooms[0]);
+        ////name, scene, character index
+        //buttonText[0].text = networkRooms[0];
+        //buttonText[1].text = networkRooms[1];
+        //buttonText[2].text = networkRooms[2];
+      //  PhotonNetwork.RaiseEvent(5, null, true, null);
 
-            Text[] buttonText = newButton.GetComponentsInChildren<Text>();
-            Debug.Log(networkRooms[0]);
-            //name, scene, character index
-            buttonText[0].text = networkRooms[0];
-            buttonText[1].text = networkRooms[1];
-            buttonText[2].text = networkRooms[2];
-        
     }
 
     public void OnSelect(BaseEventData eventData)

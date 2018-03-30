@@ -5,6 +5,7 @@ using UnityEngine;
 
 public static class GameBoardData {
 
+    public static RoomInfo[] lobbyRoomInfo = new RoomInfo[10];
     private static bool isNetworkGame;
 
     private static string name = "";

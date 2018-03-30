@@ -15,10 +15,10 @@ namespace TechPlanet.SpaceRace
         /// The PUN loglevel. 
         /// </summary>
         public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
-        PhotonPlayer OtherNetworkPlayer;
+        //PhotonPlayer OtherNetworkPlayer;
         Timer connection = new Timer();
-        bool waiting = true;
-        bool initializing = true;
+        //bool waiting = true;
+        //bool initializing = true;
         string passedSceneName;
         RoomInfo[] roomsList =  new RoomInfo[10];
         /// <summary>
@@ -60,7 +60,7 @@ namespace TechPlanet.SpaceRace
             
             // #Critical
             // we don't join the lobby. There is no need to join a lobby to get the list of rooms.
-            PhotonNetwork.autoJoinLobby = false;
+            PhotonNetwork.autoJoinLobby = true;
 
 
             // #Critical
@@ -69,11 +69,8 @@ namespace TechPlanet.SpaceRace
             // #NotImportant
             // Force LogLevel
             PhotonNetwork.logLevel = Loglevel;
-            //Timer connection = new Timer();
-           // connection.Interval = (1000) * (1); // Ticks every second
-           // connection.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-           // connection.Enabled = true;
-            
+           
+         
             PhotonNetwork.OnEventCall += OnEvent;
         }
 
@@ -100,11 +97,7 @@ namespace TechPlanet.SpaceRace
         {
             
             
-            // progressLabel.SetActive(false);
-            //  controlPanel.SetActive(true);
-            //Random rand = new Random();
-            // if (rand.Next(0, 2))
-            //button = GameObject.Find("Start");
+            
         }
         
 
@@ -134,35 +127,11 @@ namespace TechPlanet.SpaceRace
         }
         public override void OnReceivedRoomListUpdate()
         {
-            Debug.Log("Received the RoomList");
-            roomsList = PhotonNetwork.GetRoomList();
-            for (int i = 0; i < roomsList.Length; i++)
-            {
-                Debug.LogFormat(this, "[{0}] - {1}", i, roomsList[i].Name);
-            }
-            List<List<string>> networkRooms = new List<List<string>>();
-            int x = 0;
-            foreach (RoomInfo game in roomsList)
-            {
-                if (game != null)
-                {
-                    //populate list of lists here
-                    Debug.Log(game.Name);
-                    Debug.Log("YESSSSSSSSSSSSSSS");
-                    string name = game.Name;
-                    string scene = (string)game.CustomProperties[1];
-                    string index = (string)game.CustomProperties[0];
-                    List<string> listname = new List<string>();
-                    networkRooms.Add(listname);
-
-                    x++;
-                }
-            }
-            GameObject goJeff = GameObject.Find("Canvas");
-            MenuManager jeffGo = goJeff.GetComponent<MenuManager>();
-           //jeffGo.SpawnNetworkGameButtons(networkRooms);
+            GameBoardData.lobbyRoomInfo = PhotonNetwork.GetRoomList();
         }
+        
 
+       
         public void CreateNewGame(String GameName, String Scene)
         {
             passedSceneName = Scene;
@@ -174,15 +143,12 @@ namespace TechPlanet.SpaceRace
             roomOptions.CustomRoomProperties.Add("scene", Scene);
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "name" }; //makes name accessible in a room list in the lobby
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "scene" }; // Makes scene name accessible in a room list in the lobby
-            PhotonNetwork.CreateRoom(GameName, roomOptions, null);
+          
+            
+            PhotonNetwork.CreateRoom(GameName, roomOptions, TypedLobby.Default);
             Debug.Log(GameName);
             Debug.Log("jEFfllksl");
             //RoomInfo[] arrayOfRooms = PhotonNetwork.GetRoomList();
-
-
-
-
-
 
             string[] newGameToAdd = new string[3];
             newGameToAdd[0] = GameName;
@@ -202,18 +168,16 @@ namespace TechPlanet.SpaceRace
         
         public void OnJoinedCreatedGame()
         {
-            //loading screen
-            //waiting = true;
+           
             if (PhotonNetwork.room.PlayerCount == 2)
             {
-               // initializing = false;
-               // waiting = false;
+            
             }
             else
             {
                 bool order = false;
                 StartGame(order, passedSceneName);
-                
+                Debug.Log("You Joined CreatedGAME");
                 //PhotonNetwork.RaiseEvent(3, passedSceneName, true, null);
 
             }
@@ -295,7 +259,8 @@ namespace TechPlanet.SpaceRace
         public override void OnJoinedRoom()
         {
             Debug.Log("DemoAnimator/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
-           // Idk what goes in this yet but this seems to be the way to load a scene through photon network PhotonNetwork.InstantiateSceneObject()
+            // Idk what goes in this yet but this seems to be the way to load a scene through photon network PhotonNetwork.InstantiateSceneObject()
+            OnJoinedCreatedGame();
            if (PhotonNetwork.isMasterClient)
             {
                 //PhotonNetwork.LoadLevel("MilkyWayScene");
@@ -410,7 +375,7 @@ namespace TechPlanet.SpaceRace
             {
                 GameObject goJeff = GameObject.Find("Canvas");
                 MenuManager jeffGo = goJeff.GetComponent<MenuManager>();
-                jeffGo.SpawnNetworkGameButtons((string[])content);
+               jeffGo.SpawnNetworkGameButtons();
                 Debug.Log("sends the new game to add");
             }
                  
