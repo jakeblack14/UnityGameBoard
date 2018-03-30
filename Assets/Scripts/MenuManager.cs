@@ -373,6 +373,8 @@ public class MenuManager : MonoBehaviour
             //RoomInfo[] roomsList = PhotonNetwork.GetRoomList();
         Debug.Log(GameBoardData.lobbyRoomInfo.Length);
         Debug.Log(GameBoardData.lobbyRoomInfo[0].Name);
+        Debug.Log(GameBoardData.lobbyRoomInfo[0].CustomProperties["index"]);
+        Debug.Log(GameBoardData.lobbyRoomInfo[0].CustomProperties["scene"]);
             if (GameBoardData.lobbyRoomInfo.Length != 0)
             {
             Debug.Log("WE did IT");
@@ -385,8 +387,8 @@ public class MenuManager : MonoBehaviour
                 Debug.Log(room.CustomProperties[0]);
                 //name, scene, character index
                 buttonText[0].text = room.Name;
-               // buttonText[1].text = (string)room.CustomProperties[1];
-               // buttonText[2].text = (string)room.CustomProperties[0];
+                buttonText[1].text = (string)room.CustomProperties["scene"];
+                buttonText[2].text = (string)room.CustomProperties["index"];
                 }
             }
             else

@@ -141,7 +141,7 @@ namespace TechPlanet.SpaceRace
             roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
             roomOptions.CustomRoomProperties.Add("index", GameBoardData.CharacterIndexLocal.ToString());
             roomOptions.CustomRoomProperties.Add("scene", Scene);
-            roomOptions.CustomRoomPropertiesForLobby = new string[] { "name" }; //makes name accessible in a room list in the lobby
+            roomOptions.CustomRoomPropertiesForLobby = new string[] { "index" }; //makes name accessible in a room list in the lobby
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "scene" }; // Makes scene name accessible in a room list in the lobby
           
             
