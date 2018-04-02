@@ -47,7 +47,7 @@ public class GameUIManager : MonoBehaviour {
             {
                 //player 2 is an astronaut
 
-                Player1.sprite = Aliens[GameBoardData.CharacterIndexNetwork - 3];
+                Player1.sprite = Aliens[GameBoardData.CharacterIndexNetwork - 4];
                 Player2.sprite = Astronauts[GameBoardData.CharacterIndexLocal - 1];
 
                 Player1Background.sprite = AlienBackground;

@@ -195,7 +195,7 @@ namespace TechPlanet.SpaceRace
             }
             else
             {
-                SceneManager.LoadScene("AsteroidScene");
+              //  SceneManager.LoadScene("AsteroidScene");
                // bool order = false;
                // StartGame(order, passedSceneName);
                // Debug.Log("You Joined CreatedGAME");
@@ -367,6 +367,7 @@ namespace TechPlanet.SpaceRace
                 BoardManager.waitForNetwork = true;
             }
             int characterIndexNumber = GameBoardData.CharacterIndexLocal;
+
             PhotonNetwork.RaiseEvent(4, characterIndexNumber, true, null);
             BoardManager.waitForNetwork = false;
             //jeffGo.NetworkWaiting();
@@ -391,10 +392,11 @@ namespace TechPlanet.SpaceRace
        
         void OnEvent(byte eventCode, object content, int senderId)
         {
-            GameObject go = GameObject.Find("GameBoard");
-            BoardManager jeff = go.GetComponent<BoardManager>();
+           
             if (eventCode == 1)
             {
+                GameObject go = GameObject.Find("GameBoard");
+                BoardManager jeff = go.GetComponent<BoardManager>();
                 Debug.Log("it works now you hoe");
                 PhotonPlayer sender = PhotonPlayer.Find(senderId); // This shows who sent the message
                 int[] receivedArray = new int[4];
@@ -412,7 +414,8 @@ namespace TechPlanet.SpaceRace
             }
             else if (eventCode == 2)
             {
-                
+                GameObject go = GameObject.Find("GameBoard");
+                BoardManager jeff = go.GetComponent<BoardManager>();
                 string otherPlayer = (string)content;
                 //int character = jeff.characterNumber thing here
                 // Pass character with otherPlayer name 
@@ -421,8 +424,17 @@ namespace TechPlanet.SpaceRace
             }
             else if (eventCode == 3)
             {
+                string fixIT;
                 bool first = true;
-                StartGame(first, (string)content);
+                if ((string)content == "Asteroid Belt")
+                {
+                    fixIT = "AsteroidScene";
+                }
+                else
+                {
+                    fixIT = "MilkyWayScene";
+                }
+                StartGame(first, fixIT);
             }
             else if (eventCode == 4)
             {
