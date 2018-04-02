@@ -279,10 +279,22 @@ public class MenuManager : MonoBehaviour
         //network game
         else
         {
-            MenuPanels[5].SetActive(false);
-            MenuPanels[12].SetActive(true);
+            if (!GameBoardData.NetworkGameSelected)
+            {
+                //create network game
+                MenuPanels[5].SetActive(false);
+                MenuPanels[12].SetActive(true);
 
-            createNetworkGame();
+                createNetworkGame();
+            }
+            else
+            {
+                //join network game
+                GameObject goJeff = GameObject.Find("Canvas");
+                MultiplayerLauncher jeffGo = goJeff.GetComponent<MultiplayerLauncher>();
+                jeffGo.JoinCreatedGame(GameBoardData.CurrentNetworkGameName, GameBoardData.CurrentNetworkGameScene);
+            }
+
         }
     }
 
@@ -341,6 +353,16 @@ public class MenuManager : MonoBehaviour
         locationButtons = GameObject.Find("NetworkLocationButtons").GetComponentsInChildren<Button>();
         networkCharacterButtons = GameObject.Find("TeamButtons").GetComponentsInChildren<Button>();
         GameBoardData.IsAlien = true;
+        GameBoardData.NetworkGameSelected = false;
+    }
+
+    public void joinNetworkGame()
+    {
+        if (GameBoardData.NetworkGameSelected)
+        {
+            MenuPanels[5].SetActive(true);
+            MenuPanels[6].SetActive(false);
+        }
     }
 
     public void createNetworkGame()
@@ -355,7 +377,7 @@ public class MenuManager : MonoBehaviour
         {
             networkGameLocation = "Milky Way";
         }
-
+        GameBoardData.CurrentNetworkGameScene = networkGameLocation;
         //MenuPanels[7].SetActive(false);
         //MenuPanels[5].SetActive(true);
         GameObject goJeff = GameObject.Find("Canvas");
@@ -386,20 +408,26 @@ public class MenuManager : MonoBehaviour
             Debug.Log("WE did IT");
                 foreach (RoomInfo room in GameBoardData.lobbyRoomInfo)
                 {
-                    Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                    newButton.transform.SetParent(ParentOfButtons.transform, false);
+                    if (!GameBoardData.networkGameNames.Contains(room.Name))
+                    {
 
-                    Text[] buttonText = newButton.GetComponentsInChildren<Text>();
-                    Debug.Log(room.CustomProperties[0]);
-                    //name, scene, character index
-                    string SceneAndCharacter = (string)room.CustomProperties["joe"];
-                    string characterIndex = SceneAndCharacter.Substring(SceneAndCharacter.Length - 1);
-                    string sceneName = SceneAndCharacter.TrimEnd(SceneAndCharacter[SceneAndCharacter.Length - 1]);
-           
-                    buttonText[0].text = room.Name;
-                    buttonText[1].text = sceneName;
+                        Button newButton = Instantiate(networkGameButton, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                        newButton.transform.SetParent(ParentOfButtons.transform, false);
 
-                    GameBoardData.CharacterIndexNetwork = Convert.ToInt32(characterIndex);
+                        Text[] buttonText = newButton.GetComponentsInChildren<Text>();
+                        Debug.Log(room.CustomProperties[0]);
+                        //name, scene, character index
+                        string SceneAndCharacter = (string)room.CustomProperties["joe"];
+                        string characterIndex = SceneAndCharacter.Substring(SceneAndCharacter.Length - 1);
+                        string sceneName = SceneAndCharacter.TrimEnd(SceneAndCharacter[SceneAndCharacter.Length - 1]);
+
+                        buttonText[0].text = room.Name;
+                        buttonText[1].text = sceneName;
+
+                        GameBoardData.CharacterIndexNetwork = Convert.ToInt32(characterIndex);
+
+                        GameBoardData.networkGameNames.Add(room.Name);
+                    }
                 }
             }
             else

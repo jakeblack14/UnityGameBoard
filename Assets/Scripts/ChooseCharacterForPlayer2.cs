@@ -76,9 +76,11 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     void Activate()
     {
-        if (GameBoardData.IsAlien)
+        if (GameBoardData.IsAlien || GameBoardData.CharacterIndexNetwork > 3)
         {
             //Player 1 is an alien so player 2 will be an astronaut
+
+            Debug.Log("player should be an astronaut");
 
             Characters = Resources.LoadAll<Sprite>("AstronautSprites");
             typeOfCharacter.text = "ASTRONAUT";
@@ -97,6 +99,8 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
         else
         {
             //player 2 is an alien
+            Debug.Log("player should be an alien");
+
             Characters = Resources.LoadAll<Sprite>("AlienSprites");
             typeOfCharacter.text = "ALIEN";
 
@@ -131,16 +135,9 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     public void On_Next_Click_Button()
     {
-        if (GameCore.BoardManager.againstNetwork)
+        if (GameBoardData.NetworkGameSelected)
         {
-            //if(GameBoardData.IsAlien)
-            //{
-            //    GameBoardData.CharacterIndexLocal = currentIndex + 1;
-            //}
-            //else
-            //{
-            //    GameBoardData.CharacterIndexLocal = currentIndex + 4;
-            //}
+            //
         }
         else
         {
@@ -152,16 +149,16 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
             {
                 GameBoardData.Alien = currentCharacter;
             }
-
-            isActivated = false;
         }
+
+        isActivated = false;
     }
 
     public void SelectCharacter(int index)
     {
         currentCharacter = Characters[index];
 
-        if (GameBoardData.IsAlien)
+        if (GameBoardData.IsAlien || GameBoardData.CharacterIndexNetwork > 3)
         {
             GameBoardData.CharacterIndexLocal = index + 1;
         }

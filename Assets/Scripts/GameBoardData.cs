@@ -6,7 +6,14 @@ using UnityEngine;
 public static class GameBoardData {
 
     public static RoomInfo[] lobbyRoomInfo = new RoomInfo[10];
+    public static List<string> networkGameNames = new List<string>();
+
     private static bool isNetworkGame;
+
+    private static bool networkGameSelected = false;
+    public static bool goingFirst = false;
+    private static string currentNetworkGameName;
+    private static string currentNetworkGameScene;
 
     private static string name = "";
     private static string player2Name = "";
@@ -135,6 +142,42 @@ public static class GameBoardData {
         set
         {
             characterIndexNetwork = value;
+        }
+    }
+
+    public static bool NetworkGameSelected
+    {
+        get
+        {
+            return networkGameSelected;
+        }
+        set
+        {
+            networkGameSelected = value;
+        }
+    }
+
+    public static string CurrentNetworkGameName
+    {
+        get
+        {
+            return currentNetworkGameName;
+        }
+        set
+        {
+            currentNetworkGameName = value;
+        }
+    }
+
+    public static string CurrentNetworkGameScene
+    {
+        get
+        {
+            return currentNetworkGameScene;
+        }
+        set
+        {
+            currentNetworkGameScene = value;
         }
     }
 }

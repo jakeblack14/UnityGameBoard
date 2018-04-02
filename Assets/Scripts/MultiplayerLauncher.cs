@@ -17,11 +17,12 @@ namespace TechPlanet.SpaceRace
         public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
         //PhotonPlayer OtherNetworkPlayer;
         Timer connection = new Timer();
-        //bool waiting = true;
+        bool waiting = true;
         static int passedCharacter = 0;
         //bool initializing = true;
         string passedSceneName;
         RoomInfo[] roomsList =  new RoomInfo[10];
+        string random;
         /// <summary>
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
         /// </summary>   
@@ -100,9 +101,28 @@ namespace TechPlanet.SpaceRace
             
             
         }
-        
 
 
+        private void Update()
+       {
+        //    if (waiting)
+        //    {
+        //        if (PhotonNetwork.room.PlayerCount == 2)
+        //        {
+        //            if (GameBoardData.CurrentNetworkGameScene == "Asteroid Belt")
+        //            {
+        //                random = "AsteroidScene";
+        //            }
+        //            else
+        //            {
+        //                random = "MilkyWayScene";
+        //            }
+        //            StartGame(true, random);
+        //           // SceneManager.LoadScene(random);
+        //            waiting = false;
+        //        }
+        //    }
+        }
         #endregion
 
 
@@ -159,6 +179,7 @@ namespace TechPlanet.SpaceRace
         }
         public void JoinCreatedGame(String GameName, String Scene)
         {
+            passedSceneName = Scene;
             PhotonNetwork.JoinRoom(GameName);
 
         }
@@ -174,6 +195,7 @@ namespace TechPlanet.SpaceRace
             }
             else
             {
+                SceneManager.LoadScene("AsteroidScene");
                // bool order = false;
                // StartGame(order, passedSceneName);
                // Debug.Log("You Joined CreatedGAME");
@@ -280,38 +302,74 @@ namespace TechPlanet.SpaceRace
             PhotonNetwork.Disconnect();
             SceneManager.LoadScene("MainMenu");
         }
+        public bool LoadOurGame(string name)
+        {
+            SceneManager.LoadScene(name);
+            return true;
+        }
         void StartGame(bool order, string sceneName)
         {
+            waiting = false;
+            string ourScene;
             //Timer connection = new Timer();
             connection.Interval = (1000) * (1); // Ticks every second
             connection.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             connection.Enabled = true;
-            GameObject goJeff = GameObject.Find("GameBoard");
-            BoardManager jeffGo = goJeff.GetComponent<BoardManager>();
+            if (GameBoardData.CurrentNetworkGameScene == "Asteroid Belt")
+            {
+                ourScene = "AsteroidScene";
+            }
+            else
+            {
+                ourScene = "MilkyWayScene";
+            }
+           if (LoadOurGame(ourScene))
+            {
+
+            }
+            
             //if (player1.getIdentity() != identity.X)
             if (!order)
             {
+                
                 //player1 = new GameCore.NetworkPlayer(identity.O);
                 //BoardManager.firstPlayerIdentity = identity.O;
                 Debug.Log("Going Second");
 
-                jeffGo.ChangeFirstPlayer(false);
+               // jeffGo.ChangeFirstPlayer(false);
                 String ourName = GameBoardData.Name;
+                BoardManager.playerGoingFirst = false;
                 PhotonNetwork.RaiseEvent(2, ourName, true, null);
                 // jeffGo.ReceiveNetworkPlayerName(ourName);
-                SceneManager.LoadScene(sceneName);
+               // SceneManager.LoadScene(sceneName);
             }
             else
             {
-                jeffGo.ChangeFirstPlayer(true);
+                BoardManager.playerGoingFirst = true;
+                //jeffGo.ChangeFirstPlayer(true);
                 String ourName = GameBoardData.Name;
-                PhotonNetwork.RaiseEvent(2, ourName, true, null);
+               // PhotonNetwork.RaiseEvent(2, ourName, true, null);
                 
             }
             // Load Scene here
+           // GameObject goJeff = GameObject.Find("GameBoard");
+            //BoardManager jeffGo = goJeff.GetComponent<BoardManager>();
+            if (!order)
+            {
+                GameBoardData.goingFirst = false;
+                // jeffGo.ChangeFirstPlayer(false);
+                BoardManager.waitForNetwork = false;
+            }
+            else
+            {
+                GameBoardData.goingFirst = true;
+                //jeffGo.ChangeFirstPlayer(true);
+                BoardManager.waitForNetwork = true;
+            }
             int characterIndexNumber = GameBoardData.CharacterIndexLocal;
             PhotonNetwork.RaiseEvent(4, characterIndexNumber, true, null);
-            jeffGo.NetworkWaiting();
+            BoardManager.waitForNetwork = false;
+            //jeffGo.NetworkWaiting();
 
         }
 
@@ -368,7 +426,7 @@ namespace TechPlanet.SpaceRace
             }
             else if (eventCode == 4)
             {
-                GameBoardData.CharacterIndexNetwork = (int)content;
+               
             }
             else if (eventCode == 5)
             {
