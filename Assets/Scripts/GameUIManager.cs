@@ -27,28 +27,30 @@ public class GameUIManager : MonoBehaviour {
 
         if (GameCore.BoardManager.againstNetwork)
         {
+            Debug.Log("Local character index: " + GameBoardData.CharacterIndexLocal + " network character index: " + GameBoardData.CharacterIndexNetwork);
+
             Astronauts = Resources.LoadAll<Sprite>("AstronautSprites");
             Aliens = Resources.LoadAll<Sprite>("AlienSprites");
 
             //1-3 astronaut
             //4-6 alien
 
-            if(GameBoardData.CharacterIndexLocal < 4)
+            if(GameBoardData.CharacterIndexLocal < 3)
             {
-                //player 1 is an astronaut
+                Debug.Log("player 1 is an astronaut");
 
-                Player1.sprite = Astronauts[GameBoardData.CharacterIndexLocal - 1];
-                Player2.sprite = Aliens[GameBoardData.CharacterIndexNetwork - 4];
+                Player1.sprite = Astronauts[GameBoardData.CharacterIndexLocal];
+                Player2.sprite = Aliens[GameBoardData.CharacterIndexNetwork - 3];
 
                 Player2Background.sprite = AlienBackground;
                 Player1Background.sprite = AstroBackground;
             }
             else
             {
-                //player 2 is an astronaut
+                Debug.Log("player 2 is an astronaut");
 
-                Player1.sprite = Aliens[GameBoardData.CharacterIndexNetwork - 4];
-                Player2.sprite = Astronauts[GameBoardData.CharacterIndexLocal - 1];
+                Player1.sprite = Aliens[GameBoardData.CharacterIndexLocal - 3];
+                Player2.sprite = Astronauts[GameBoardData.CharacterIndexNetwork];
 
                 Player1Background.sprite = AlienBackground;
                 Player2Background.sprite = AstroBackground;

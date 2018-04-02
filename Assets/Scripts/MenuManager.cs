@@ -44,6 +44,8 @@ public class MenuManager : MonoBehaviour
     public Button networkGameButton;
     public GameObject ParentOfButtons;
 
+    private List<Button> networkButtons;
+
     void Start()
     {
         inputField.characterLimit = 13;
@@ -285,6 +287,8 @@ public class MenuManager : MonoBehaviour
                 MenuPanels[5].SetActive(false);
                 MenuPanels[12].SetActive(true);
 
+                Debug.Log("Network game created. Local character index is " + GameBoardData.CharacterIndexLocal);
+
                 createNetworkGame();
             }
             else
@@ -293,8 +297,17 @@ public class MenuManager : MonoBehaviour
                 GameObject goJeff = GameObject.Find("Canvas");
                 MultiplayerLauncher jeffGo = goJeff.GetComponent<MultiplayerLauncher>();
                 jeffGo.JoinCreatedGame(GameBoardData.CurrentNetworkGameName, GameBoardData.CurrentNetworkGameScene);
-            }
 
+                foreach (Transform b in ParentOfButtons.transform)
+                {
+                    Text[] text = b.GetComponentsInChildren<Text>();
+
+                    if (text[0].text.ToString() == GameBoardData.CurrentNetworkGameName)
+                    {
+                        Destroy(b.gameObject);
+                    }
+                }
+            }
         }
     }
 
@@ -318,10 +331,6 @@ public class MenuManager : MonoBehaviour
         GameCore.BoardManager.waitForNetwork = true;
         //Does the update for the lobby system
         updateLobby = true;
-        //SceneManager.LoadScene("MilkyWayScene");
-    //    connection.Interval = (1000) * (1); // Ticks every second
-    //    connection.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-    //    connection.Enabled = true;
     }
 
     private void OnTimedEvent(object sender, ElapsedEventArgs e)
@@ -390,22 +399,10 @@ public class MenuManager : MonoBehaviour
     {
         
         PhotonNetwork.autoJoinLobby = true;
-        //List<List<string>> networkRooms = new List<List<string>>();
-        Debug.Log("count how many times this is called");
-        //foreach(Transform child in ParentOfButtons.transform)
-       // {
-      //      GameObject.Destroy(child.gameObject);
-       // }
-
-            
-            //RoomInfo[] roomsList = PhotonNetwork.GetRoomList();
-        Debug.Log(GameBoardData.lobbyRoomInfo.Length);
-        Debug.Log(GameBoardData.lobbyRoomInfo[0].Name);
-        Debug.Log(GameBoardData.lobbyRoomInfo[0].CustomProperties["index"]);
-        Debug.Log(GameBoardData.lobbyRoomInfo[0].CustomProperties["scene"]);
+       
             if (GameBoardData.lobbyRoomInfo.Length != 0)
             {
-            Debug.Log("WE did IT");
+            
                 foreach (RoomInfo room in GameBoardData.lobbyRoomInfo)
                 {
                     if (!GameBoardData.networkGameNames.Contains(room.Name))
@@ -415,7 +412,7 @@ public class MenuManager : MonoBehaviour
                         newButton.transform.SetParent(ParentOfButtons.transform, false);
 
                         Text[] buttonText = newButton.GetComponentsInChildren<Text>();
-                        Debug.Log(room.CustomProperties[0]);
+                        
                         //name, scene, character index
                         string SceneAndCharacter = (string)room.CustomProperties["joe"];
                         string characterIndex = SceneAndCharacter.Substring(SceneAndCharacter.Length - 1);

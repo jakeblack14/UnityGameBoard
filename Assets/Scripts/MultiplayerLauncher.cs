@@ -192,6 +192,7 @@ namespace TechPlanet.SpaceRace
                 bool order = false;
                 StartGame(order, passedSceneName);
                 PhotonNetwork.RaiseEvent(3, passedSceneName, true, null);
+                PhotonNetwork.RaiseEvent(4, GameBoardData.CharacterIndexLocal, true, null);
             }
             else
             {
@@ -368,7 +369,7 @@ namespace TechPlanet.SpaceRace
             }
             int characterIndexNumber = GameBoardData.CharacterIndexLocal;
 
-            PhotonNetwork.RaiseEvent(4, characterIndexNumber, true, null);
+           // PhotonNetwork.RaiseEvent(4, characterIndexNumber, true, null);
             BoardManager.waitForNetwork = false;
             //jeffGo.NetworkWaiting();
 
@@ -438,7 +439,7 @@ namespace TechPlanet.SpaceRace
             }
             else if (eventCode == 4)
             {
-               
+                GameBoardData.CharacterIndexNetwork = (int)content;
             }
             else if (eventCode == 5)
             {

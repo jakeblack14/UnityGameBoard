@@ -88,14 +88,30 @@ namespace GameCore {
         {
             if(GameBoardData.IsAlien)
             {
-                gamePieces[0].GetComponent<Renderer>().material = green;
-                gamePieces[1].GetComponent<Renderer>().material = white;
+                if (againstNetwork)
+                {
+                    gamePieces[1].GetComponent<Renderer>().material = green;
+                    gamePieces[0].GetComponent<Renderer>().material = white;
+                }
+                else
+                {
+                    gamePieces[0].GetComponent<Renderer>().material = green;
+                    gamePieces[1].GetComponent<Renderer>().material = white;
+                }
 
             }
             else
             {
-                gamePieces[1].GetComponent<Renderer>().material = green;
-                gamePieces[0].GetComponent<Renderer>().material = white;
+                if (againstNetwork)
+                {
+                    gamePieces[0].GetComponent<Renderer>().material = green;
+                    gamePieces[1].GetComponent<Renderer>().material = white;
+                }
+                else
+                {
+                    gamePieces[1].GetComponent<Renderer>().material = green;
+                    gamePieces[0].GetComponent<Renderer>().material = white;
+                }
             }
 
             networkMove = null;
