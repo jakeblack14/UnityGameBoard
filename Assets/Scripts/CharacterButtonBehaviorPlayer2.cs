@@ -43,13 +43,11 @@ public class CharacterButtonBehaviorPlayer2 : MonoBehaviour, IPointerExitHandler
         {
             if (GameBoardData.NetworkGameLocalPlayerIsAstronaut)
             {
-                Debug.Log("local player is an astro");
                 currentHoverSprite = hoverSprite[0];
                 currentClickedSprite = clickedSprite[0];
             }
             else
             {
-                Debug.Log("local player is an alien");
                 currentHoverSprite = hoverSprite[1];
                 currentClickedSprite = clickedSprite[1];
             }

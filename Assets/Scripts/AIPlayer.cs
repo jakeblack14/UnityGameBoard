@@ -113,47 +113,23 @@ namespace GameCore
             //pass IsWhite for if IsWhitesTurn, since, if we are white, and it is our turn, then it is whites turn
             AICore.AIMove nextMove = AICore.AICore.AIGetMove(board.blackCount, board.whiteCount, black, white, isWhite, mode);
 
-            /* //Convert the AIMove to a Move class
+             //Convert the AIMove to a Move class
              if (isWhite)
              {
                  result.Begin.row = 7 - checked((int)nextMove.row);
                  result.Begin.col = 7 - checked((int)nextMove.col);
                  result.End.row = 7 - checked((int)nextMove.row + 1);
-                 int target;
-                 switch (nextMove.target)
-                 {
-                     case 0:
-                         target = 2;
-                         break;
-                     case 1:
-                         target = 1;
-                         break;
-                     default: //case 2:
-                         target = 0;
-                         break;
-                 }
-                 result.End.col = 7 - checked((int)nextMove.col) + target - 1;
-             }
-             else
+                result.End.col = 7 - checked((int)(nextMove.col - nextMove.target - 1));
+
+            }
+            else
              {
                  result.Begin.row = checked((int)nextMove.row);
                  result.Begin.col = checked((int)nextMove.col);
                  result.End.row = checked((int)nextMove.row - 1);
                  result.End.col = checked((int)nextMove.col) + checked((int)nextMove.target) - 1;
 
-             }*/
-            //Convert the AIMove to a Move class
-            result.Begin.row = checked((int)nextMove.row);
-            result.Begin.col = checked((int)nextMove.col);
-            if (isWhite)
-            {
-                result.End.row = checked((int)nextMove.row + 1);
-            }
-            else
-            {
-                result.End.row = checked((int)nextMove.row - 1);
-            }
-            result.End.col = checked((int)(nextMove.col + nextMove.target - 1));
+             }
 
 
             newMove = result;
