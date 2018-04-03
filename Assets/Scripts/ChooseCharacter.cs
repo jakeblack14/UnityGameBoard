@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class ChooseCharacter : MonoBehaviour
 {
-
     public Text introText;
 
     private Sprite[] Astronauts;
@@ -40,24 +39,14 @@ public class ChooseCharacter : MonoBehaviour
 
     public void On_Next_Click_Button()
     {
-        //if(GameBoardData.IsPlayer2)
-        //{
-        //    if(GameBoardData.IsAlien)
-        //    {
-
-        //    }
-        //}
-        //else
-        //{
-            GameBoardData.Astronaut = currentAstro;
-            GameBoardData.Alien = currentAlien;
-        //}
+        GameBoardData.Astronaut = currentAstro;
+        GameBoardData.Alien = currentAlien;
     }
 
     public void SelectAstronaut(int index)
     {
+        GameBoardData.SinglePlayerIsAlien = false;
 
-        GameBoardData.IsAlien = false;
         //AstronautButtons[index].image.sprite = AstroBackground;
         currentAstro = Astronauts[index];
 
@@ -77,7 +66,7 @@ public class ChooseCharacter : MonoBehaviour
 
     public void SelectAlien(int index)
     {
-        GameBoardData.IsAlien = true;
+        GameBoardData.SinglePlayerIsAlien = true;
 
         //AlienButtons[index].image.sprite = AlienBackground;
         currentAlien = Aliens[index];

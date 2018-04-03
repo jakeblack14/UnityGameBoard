@@ -103,33 +103,44 @@ namespace GameCore {
                 turnText.text = GameBoardData.Player2Name + "'s turn!";
             }
 
-            if (GameBoardData.IsAlien)
+            if(GameBoardData.SinglePlayerIsAlien || GameBoardData.LocalGamePlayer1IsAlien || GameBoardData.CharacterIndexLocal > 2)
             {
-                if (againstNetwork)
-                {
-                    gamePieces[1].GetComponent<Renderer>().material = green;
-                    gamePieces[0].GetComponent<Renderer>().material = white;
-                }
-                else
-                {
-                    gamePieces[0].GetComponent<Renderer>().material = green;
-                    gamePieces[1].GetComponent<Renderer>().material = white;
-                }
-
+                gamePieces[0].GetComponent<Renderer>().material = green;
+                gamePieces[1].GetComponent<Renderer>().material = white;
             }
             else
             {
-                if (againstNetwork)
-                {
-                    gamePieces[0].GetComponent<Renderer>().material = green;
-                    gamePieces[1].GetComponent<Renderer>().material = white;
-                }
-                else
-                {
-                    gamePieces[1].GetComponent<Renderer>().material = green;
-                    gamePieces[0].GetComponent<Renderer>().material = white;
-                }
+                gamePieces[1].GetComponent<Renderer>().material = green;
+                gamePieces[0].GetComponent<Renderer>().material = white;
             }
+
+
+            //if (GameBoardData.IsAlien)
+            //{
+            //    if (againstNetwork)
+            //    {
+            //        gamePieces[1].GetComponent<Renderer>().material = green;
+            //        gamePieces[0].GetComponent<Renderer>().material = white;
+            //    }
+            //    else
+            //    {
+            //        gamePieces[0].GetComponent<Renderer>().material = green;
+            //        gamePieces[1].GetComponent<Renderer>().material = white;
+            //    }
+            //}
+            //else
+            //{
+            //    if (againstNetwork)
+            //    {
+            //        gamePieces[0].GetComponent<Renderer>().material = green;
+            //        gamePieces[1].GetComponent<Renderer>().material = white;
+            //    }
+            //    else
+            //    {
+            //        gamePieces[1].GetComponent<Renderer>().material = green;
+            //        gamePieces[0].GetComponent<Renderer>().material = white;
+            //    }
+            //}
 
             networkMove = null;
             //Set the player parameters based on whether we are playing against an AI or network (or the default - against local)

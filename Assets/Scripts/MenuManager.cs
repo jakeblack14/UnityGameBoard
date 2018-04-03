@@ -10,7 +10,6 @@ using System;
 
 public class MenuManager : MonoBehaviour
 {
-
     public List<GameObject> MenuPanels;
     private GameObject BackButton;
     private GameObject HomeButton;
@@ -82,6 +81,11 @@ public class MenuManager : MonoBehaviour
         {
             BackButton.SetActive(true);
             HomeButton.SetActive(false);
+
+            GameBoardData.LocalGamePlayer1IsAlien = false;
+            GameBoardData.SinglePlayerIsAlien = false;
+            GameBoardData.IsPlayer2 = false;
+            GameBoardData.NetworkGameLocalPlayerIsAstronaut = false;
         }
         else
         {
@@ -260,6 +264,15 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
+            if(GameBoardData.SinglePlayerIsAlien)
+            {
+                GameBoardData.LocalGamePlayer1IsAlien = true;
+            }
+            else
+            {
+                GameBoardData.LocalGamePlayer1IsAlien = false;
+            }
+
             GameBoardData.IsPlayer2 = true;
             inputField.text = "";
             MenuPanels[3].SetActive(false);
@@ -344,15 +357,15 @@ public class MenuManager : MonoBehaviour
         highlightButton(networkCharacterButtons, index);
     }
 
-    public void networkCharacterChosen(bool isAlien)
+    public void networkCharacterChosen(bool isAstro)
     {
-        if (isAlien)
+        if (isAstro)
         {
-            GameBoardData.IsAlien = true;
+            GameBoardData.NetworkGameLocalPlayerIsAstronaut = true;
         }
         else
         {
-            GameBoardData.IsAlien = false;
+            GameBoardData.NetworkGameLocalPlayerIsAstronaut = false;
         }
     }
 
@@ -362,7 +375,7 @@ public class MenuManager : MonoBehaviour
         MenuPanels[6].SetActive(false);
         locationButtons = GameObject.Find("NetworkLocationButtons").GetComponentsInChildren<Button>();
         networkCharacterButtons = GameObject.Find("TeamButtons").GetComponentsInChildren<Button>();
-        GameBoardData.IsAlien = true;
+        GameBoardData.NetworkGameLocalPlayerIsAstronaut = true;
         GameBoardData.NetworkGameSelected = false;
     }
 
@@ -424,18 +437,15 @@ public class MenuManager : MonoBehaviour
 
                         GameBoardData.CharacterIndexNetwork = Convert.ToInt32(characterIndex);
 
-                        Debug.Log("network game created. local character index: " + GameBoardData.CharacterIndexLocal + " network character index " + GameBoardData.CharacterIndexNetwork);
-
                         GameBoardData.networkGameNames.Add(room.Name);
                     }
                 }
             }
             else
-        {
+            {
             
+            }
         }
-
-    }
 
     public void OnSelect(BaseEventData eventData)
     {

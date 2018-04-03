@@ -26,6 +26,7 @@ public class GameUIManager : MonoBehaviour {
 
         if (GameCore.BoardManager.againstNetwork)
         {
+            //network game
             Astronauts = Resources.LoadAll<Sprite>("AstronautSprites");
             Aliens = Resources.LoadAll<Sprite>("AlienSprites");
 
@@ -46,10 +47,30 @@ public class GameUIManager : MonoBehaviour {
                 Player2Background.sprite = AstroBackground;
             }
         }
+        else if(GameCore.BoardManager.againstAI)
+        {
+            //single player game
+            if (GameBoardData.SinglePlayerIsAlien)
+            {
+                Player1.sprite = GameBoardData.Alien;
+                Player2.sprite = GameBoardData.Astronaut;
+
+                Player1Background.sprite = AlienBackground;
+                Player2Background.sprite = AstroBackground;
+            }
+            else
+            {
+                Player1.sprite = GameBoardData.Astronaut;
+                Player2.sprite = GameBoardData.Alien;
+
+                Player2Background.sprite = AlienBackground;
+                Player1Background.sprite = AstroBackground;
+            }
+        }
         else
         {
-
-            if (GameBoardData.IsAlien)
+            //local game
+            if(GameBoardData.LocalGamePlayer1IsAlien)
             {
                 Player1.sprite = GameBoardData.Alien;
                 Player2.sprite = GameBoardData.Astronaut;

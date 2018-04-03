@@ -32,34 +32,26 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        if (GameBoardData.IsAlien)
+        if (GameBoardData.LocalGamePlayer1IsAlien || GameBoardData.NetworkGameLocalPlayerIsAstronaut)
         {
-            //Player 1 is an alien so player 2 will be an astronaut
-
             Characters = Resources.LoadAll<Sprite>("AstronautSprites");
             typeOfCharacter.text = "ASTRONAUT";
 
             currentBackground = AstroBackground;
             currentDisabledBackground = AstroDisabledBackground;
 
-            //CharacterButtons[0].image.sprite = AstroBackground;
-
             for (int i = 0; i < 3; i++)
             {
                 CharacterButtons[i].image.sprite = AstroDisabledBackground;
             }
-
         }
         else
         {
-            //player 2 is an alien
             Characters = Resources.LoadAll<Sprite>("AlienSprites");
             typeOfCharacter.text = "ALIEN";
 
             currentBackground = AlienBackground;
             currentDisabledBackground = AlienDisabledBackground;
-
-            //CharacterButtons[0].image.sprite = AlienBackground;
 
             for (int i = 0; i < 3; i++)
             {
@@ -76,46 +68,75 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     void Activate()
     {
-        if (GameBoardData.IsAlien || GameBoardData.CharacterIndexNetwork > 2)
+        if (!GameBoardData.NetworkGameSelected)
         {
-            //Player 1 is an alien so player 2 will be an astronaut
-
-            Characters = Resources.LoadAll<Sprite>("AstronautSprites");
-            typeOfCharacter.text = "ASTRONAUT";
-
-            currentBackground = AstroBackground;
-            currentDisabledBackground = AstroDisabledBackground;
-
-            //CharacterButtons[0].image.sprite = AstroBackground;
-
-            for (int i = 0; i < 3; i++)
+            if (GameBoardData.LocalGamePlayer1IsAlien || GameBoardData.NetworkGameLocalPlayerIsAstronaut)
             {
-                CharacterButtons[i].image.sprite = AstroDisabledBackground;
+                Characters = Resources.LoadAll<Sprite>("AstronautSprites");
+                typeOfCharacter.text = "ASTRONAUT";
+
+                currentBackground = AstroBackground;
+                currentDisabledBackground = AstroDisabledBackground;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    CharacterButtons[i].image.sprite = AstroDisabledBackground;
+                }
+            }
+            else
+            {
+                Characters = Resources.LoadAll<Sprite>("AlienSprites");
+                typeOfCharacter.text = "ALIEN";
+
+                currentBackground = AlienBackground;
+                currentDisabledBackground = AlienDisabledBackground;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    CharacterButtons[i].image.sprite = AlienDisabledBackground;
+                }
             }
 
+            currentCharacter = Characters[0];
+            for (int i = 0; i < 3; i++)
+            {
+                CharacterImages[i].sprite = Characters[i];
+            }
         }
         else
         {
-            //player 2 is an alien
+            if (GameBoardData.CharacterIndexNetwork > 2)
+            {
+                Characters = Resources.LoadAll<Sprite>("AstronautSprites");
+                typeOfCharacter.text = "ASTRONAUT";
 
-            Characters = Resources.LoadAll<Sprite>("AlienSprites");
-            typeOfCharacter.text = "ALIEN";
+                currentBackground = AstroBackground;
+                currentDisabledBackground = AstroDisabledBackground;
 
-            currentBackground = AlienBackground;
-            currentDisabledBackground = AlienDisabledBackground;
+                for (int i = 0; i < 3; i++)
+                {
+                    CharacterButtons[i].image.sprite = AstroDisabledBackground;
+                }
+            }
+            else
+            {
+                Characters = Resources.LoadAll<Sprite>("AlienSprites");
+                typeOfCharacter.text = "ALIEN";
 
-            //CharacterButtons[0].image.sprite = AlienBackground;
+                currentBackground = AlienBackground;
+                currentDisabledBackground = AlienDisabledBackground;
 
+                for (int i = 0; i < 3; i++)
+                {
+                    CharacterButtons[i].image.sprite = AlienDisabledBackground;
+                }
+            }
+
+            currentCharacter = Characters[0];
             for (int i = 0; i < 3; i++)
             {
-                CharacterButtons[i].image.sprite = AlienDisabledBackground;
+                CharacterImages[i].sprite = Characters[i];
             }
-        }
-
-        currentCharacter = Characters[0];
-        for (int i = 0; i < 3; i++)
-        {
-            CharacterImages[i].sprite = Characters[i];
         }
     }
 
@@ -132,13 +153,9 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     public void On_Next_Click_Button()
     {
-        if (GameBoardData.NetworkGameSelected)
+        if (!GameBoardData.NetworkGameSelected)
         {
-            //
-        }
-        else
-        {
-            if (GameBoardData.IsAlien)
+            if (GameBoardData.LocalGamePlayer1IsAlien)
             {
                 GameBoardData.Astronaut = currentCharacter;
             }
@@ -155,7 +172,7 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     {
         currentCharacter = Characters[index];
 
-        if (GameBoardData.IsAlien || GameBoardData.CharacterIndexNetwork > 2)
+        if (GameBoardData.NetworkGameLocalPlayerIsAstronaut || GameBoardData.CharacterIndexNetwork > 2)
         {
             GameBoardData.CharacterIndexLocal = index;
         }

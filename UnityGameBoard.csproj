@@ -518,6 +518,7 @@
     <Compile Include="Assets\Scripts\Board.cs" />
     <Compile Include="Assets\Scripts\BoardManager.cs" />
     <Compile Include="Assets\Scripts\CharacterButtonBehavior.cs" />
+    <Compile Include="Assets\Scripts\CharacterButtonBehaviorPlayer2.cs" />
     <Compile Include="Assets\Scripts\ChooseCharacter.cs" />
     <Compile Include="Assets\Scripts\ChooseCharacterForPlayer2.cs" />
     <Compile Include="Assets\Scripts\ColorBlindMode.cs" />

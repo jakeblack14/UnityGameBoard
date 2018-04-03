@@ -29,6 +29,12 @@ public static class GameBoardData {
 
     private static bool isAlien;
 
+    private static bool singlePlayerIsAlien = false;
+
+    private static bool localGamePlayer1IsAlien = false;
+
+    private static bool networkGameLocalPlayerIsAstro = false;
+
     private static bool isPlayer2 = false;
 
     private static bool gameWasInitialized = false;
@@ -42,6 +48,42 @@ public static class GameBoardData {
         set
         {
             isAlien = value;
+        }
+    }
+
+    public static bool SinglePlayerIsAlien
+    {
+        get
+        {
+            return singlePlayerIsAlien;
+        }
+        set
+        {
+            singlePlayerIsAlien = value;
+        }
+    }
+
+    public static bool LocalGamePlayer1IsAlien
+    {
+        get
+        {
+            return localGamePlayer1IsAlien;
+        }
+        set
+        {
+            localGamePlayer1IsAlien = value;
+        }
+    }
+
+    public static bool NetworkGameLocalPlayerIsAstronaut
+    {
+        get
+        {
+            return networkGameLocalPlayerIsAstro;
+        }
+        set
+        {
+            networkGameLocalPlayerIsAstro = value;
         }
     }
 

@@ -8,12 +8,12 @@ public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPoin
 {
     private Button pb;
 
-    public bool isAlien;
-    public Sprite[] hoverSprite;
-    public Sprite[] clickedSprite;
+    //public bool isAlien;
+    public Sprite hoverSprite;
+    public Sprite clickedSprite;
 
-    private Sprite currentHoverSprite; //hover background
-    private Sprite currentClickedSprite;
+    //private Sprite currentHoverSprite; //hover background
+    //private Sprite currentClickedSprite;
     private Sprite oldSprite;
 
     //private bool isActivated = false;
@@ -22,46 +22,18 @@ public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPoin
     {
         pb = GetComponent<Button>();
         pb.onClick.AddListener(TaskOnClick);
-        oldSprite = pb.image.sprite;
-
-        if (GameBoardData.IsAlien)
-        {
-            isAlien = true;
-        }
-
-        if (isAlien)
-        {
-            currentHoverSprite = hoverSprite[1];
-            currentClickedSprite = clickedSprite[1];
-        }
-        else
-        {
-            currentHoverSprite = hoverSprite[0];
-            currentClickedSprite = clickedSprite[0];
-        }
+        oldSprite = pb.image.sprite; 
     }
 
     void Update()
     {
-        if(GameCore.BoardManager.againstNetwork)
-        {
-            if (GameBoardData.IsAlien)
-            {
-                currentHoverSprite = hoverSprite[1];
-                currentClickedSprite = clickedSprite[1];
-            }
-            else
-            {
-                currentHoverSprite = hoverSprite[0];
-                currentClickedSprite = clickedSprite[0];
-            }
-        }
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         oldSprite = pb.image.sprite;
-        pb.image.sprite = currentHoverSprite;
+        pb.image.sprite = hoverSprite;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -71,7 +43,7 @@ public class CharacterButtonBehavior : MonoBehaviour, IPointerExitHandler, IPoin
 
     public void TaskOnClick()
     {
-        pb.image.sprite = currentClickedSprite;
+        pb.image.sprite = clickedSprite;
         oldSprite = pb.image.sprite;
     }
 }
