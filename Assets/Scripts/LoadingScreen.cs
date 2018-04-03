@@ -16,5 +16,10 @@ public class LoadingScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Rocket.transform.position += (Vector3.right * speed) * Time.deltaTime;
-	}
+
+        if (Rocket.transform.position.x > -0.20f)
+        {   
+            Rocket.transform.position = new Vector3(-0.60f, Rocket.transform.position.y, Rocket.transform.position.z);
+        }
+    }
 }

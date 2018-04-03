@@ -69,7 +69,7 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (MenuPanels[0].activeSelf) //&& !MenuPanels[8].activeSelf && !MenuPanels[9].activeSelf)
+        if (MenuPanels[0].activeSelf)
         {
             if (!GameBoardData.IsPlayer2)
             {
@@ -86,6 +86,7 @@ public class MenuManager : MonoBehaviour
             GameBoardData.SinglePlayerIsAlien = false;
             GameBoardData.IsPlayer2 = false;
             GameBoardData.NetworkGameLocalPlayerIsAstronaut = false;
+            GameCore.BoardManager.playerGoingFirst = true;
         }
         else
         {
