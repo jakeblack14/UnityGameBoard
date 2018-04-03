@@ -86,7 +86,24 @@ namespace GameCore {
 
         private void Start()
         {
-            if(GameBoardData.IsAlien)
+            if (currentPlayer == PlayerX)
+            {
+                if (!againstAI)
+                {
+                    //multiplayer game
+                    turnText.text = GameBoardData.Name + "'s turn!";
+                }
+                else
+                {
+                    turnText.text = "Your turn!";
+                }
+            }
+            else if (currentPlayer == PlayerO)
+            {
+                turnText.text = GameBoardData.Player2Name + "'s turn!";
+            }
+
+            if (GameBoardData.IsAlien)
             {
                 if (againstNetwork)
                 {
@@ -235,9 +252,9 @@ namespace GameCore {
 
                 if (currentPlayer == PlayerX)
                 {
-                    if(!againstAI && !againstNetwork)
+                    if(!againstAI)
                     {
-                        //local game
+                        //multiplayer game
                         turnText.text = GameBoardData.Name + "'s turn!";
                     }
                     else

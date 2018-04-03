@@ -4961,6 +4961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loglevel: 1
+  player2Username: {fileID: 0}
 --- !u!1 &255673252
 GameObject:
   m_ObjectHideFlags: 0
@@ -5404,6 +5405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loglevel: 1
+  player2Username: {fileID: 0}
 --- !u!1 &341251374
 GameObject:
   m_ObjectHideFlags: 0
@@ -9440,6 +9442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loglevel: 1
+  player2Username: {fileID: 0}
 --- !u!224 &793312535
 RectTransform:
   m_ObjectHideFlags: 0

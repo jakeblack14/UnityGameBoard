@@ -48,6 +48,9 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        GameCore.BoardManager.againstAI = false;
+        GameCore.BoardManager.againstNetwork = false;
+
         inputField.characterLimit = 13;
         networkGameInputField.characterLimit = 15;
 
@@ -287,8 +290,6 @@ public class MenuManager : MonoBehaviour
                 MenuPanels[5].SetActive(false);
                 MenuPanels[12].SetActive(true);
 
-                Debug.Log("Network game created. Local character index is " + GameBoardData.CharacterIndexLocal);
-
                 createNetworkGame();
             }
             else
@@ -422,6 +423,8 @@ public class MenuManager : MonoBehaviour
                         buttonText[1].text = sceneName;
 
                         GameBoardData.CharacterIndexNetwork = Convert.ToInt32(characterIndex);
+
+                        Debug.Log("network game created. local character index: " + GameBoardData.CharacterIndexLocal + " network character index " + GameBoardData.CharacterIndexNetwork);
 
                         GameBoardData.networkGameNames.Add(room.Name);
                     }

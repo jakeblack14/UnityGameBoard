@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TechPlanet.SpaceRace;
 
 public class GameUIManager : MonoBehaviour {
 
@@ -15,30 +16,21 @@ public class GameUIManager : MonoBehaviour {
     public Sprite AstroBackground;
 
     public Text username;
-    public Text player2Username;
+    public static Text player2Username;
 
     private Sprite[] Astronauts;
     private Sprite[] Aliens;
-
-    //public Text gameOverText;
 
     // Use this for initialization
     void Start () {
 
         if (GameCore.BoardManager.againstNetwork)
         {
-            Debug.Log("Local character index: " + GameBoardData.CharacterIndexLocal + " network character index: " + GameBoardData.CharacterIndexNetwork);
-
             Astronauts = Resources.LoadAll<Sprite>("AstronautSprites");
             Aliens = Resources.LoadAll<Sprite>("AlienSprites");
 
-            //1-3 astronaut
-            //4-6 alien
-
             if(GameBoardData.CharacterIndexLocal < 3)
             {
-                Debug.Log("player 1 is an astronaut");
-
                 Player1.sprite = Astronauts[GameBoardData.CharacterIndexLocal];
                 Player2.sprite = Aliens[GameBoardData.CharacterIndexNetwork - 3];
 
@@ -47,8 +39,6 @@ public class GameUIManager : MonoBehaviour {
             }
             else
             {
-                Debug.Log("player 2 is an astronaut");
-
                 Player1.sprite = Aliens[GameBoardData.CharacterIndexLocal - 3];
                 Player2.sprite = Astronauts[GameBoardData.CharacterIndexNetwork];
 
@@ -75,14 +65,17 @@ public class GameUIManager : MonoBehaviour {
                 Player2Background.sprite = AlienBackground;
                 Player1Background.sprite = AstroBackground;
             }
-
-            username.text = GameBoardData.Name;
-            player2Username.text = GameBoardData.Player2Name;
         }
-    }
 
+        username.text = GameBoardData.Name;
+        player2Username.text = GameBoardData.Player2Name;
+    }
+    public void SetPlayer2(string name)
+    {
+        player2Username.text = name;
+    }
     private void Update()
     {
-        
+       // player2Username.text = GameBoardData.Player2Name;
     }
 }

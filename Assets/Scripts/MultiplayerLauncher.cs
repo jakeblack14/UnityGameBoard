@@ -5,6 +5,7 @@ using System.Timers;
 using System.Net;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace TechPlanet.SpaceRace
 {
@@ -15,6 +16,7 @@ namespace TechPlanet.SpaceRace
         /// The PUN loglevel. 
         /// </summary>
         public PhotonLogLevel Loglevel = PhotonLogLevel.Informational;
+
         //PhotonPlayer OtherNetworkPlayer;
         Timer connection = new Timer();
         bool waiting = true;
@@ -415,13 +417,18 @@ namespace TechPlanet.SpaceRace
             }
             else if (eventCode == 2)
             {
-                GameObject go = GameObject.Find("GameBoard");
-                BoardManager jeff = go.GetComponent<BoardManager>();
-                string otherPlayer = (string)content;
+                //GameObject go = GameObject.Find("GameBoard");
+               // BoardManager jeff = go.GetComponent<BoardManager>();
+               string otherPlayer = (string)content;
+                 GameBoardData.Player2Name = (string)content;
+            
+                //GameObject goJeffGo = GameObject.Find("GameUIManager");
+                //GameUIManager jeffGoes = goJeffGo.GetComponent<GameUIManager>();
+                //jeffGoes.SetPlayer2(otherPlayer);
                 //int character = jeff.characterNumber thing here
                 // Pass character with otherPlayer name 
                 //int character = GameBoardData.CharacterIndexLocal;
-                jeff.ReceiveNetworkPlayerName(otherPlayer);
+                // jeff.ReceiveNetworkPlayerName(otherPlayer);
             }
             else if (eventCode == 3)
             {

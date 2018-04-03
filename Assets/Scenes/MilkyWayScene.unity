@@ -2055,6 +2055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loglevel: 1
+  player2Username: {fileID: 729561870}
 --- !u!1 &385537730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,6 +2259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loglevel: 1
+  player2Username: {fileID: 0}
 --- !u!1 &396553980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5775,6 +5777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loglevel: 1
+  player2Username: {fileID: 0}
 --- !u!114 &1060640508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6987,6 +6990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loglevel: 1
+  player2Username: {fileID: 0}
 --- !u!1 &1333735622
 GameObject:
   m_ObjectHideFlags: 0
@@ -8624,7 +8628,6 @@ MonoBehaviour:
   AlienBackground: {fileID: 21300000, guid: c83a7493e3a515e498e36a560024a3d8, type: 3}
   AstroBackground: {fileID: 21300000, guid: 14235cc5e42cd3441aa146be6fb89053, type: 3}
   username: {fileID: 949530116}
-  player2Username: {fileID: 729561870}
 --- !u!1 &1667429114
 GameObject:
   m_ObjectHideFlags: 0
