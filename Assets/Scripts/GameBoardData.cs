@@ -8,6 +8,8 @@ public static class GameBoardData {
     public static RoomInfo[] lobbyRoomInfo = new RoomInfo[10];
     public static List<string> networkGameNames = new List<string>();
 
+    public static bool transitionToNewCharactersDone = false;
+
     private static bool isNetworkGame;
 
     private static bool networkGameSelected = false;
@@ -27,7 +29,7 @@ public static class GameBoardData {
     //character other computer chose
     private static int characterIndexNetwork;
 
-    private static bool isAlien;
+    //private static bool isAlien;
 
     private static bool singlePlayerIsAlien = false;
 
@@ -39,17 +41,17 @@ public static class GameBoardData {
 
     private static bool gameWasInitialized = false;
 
-    public static bool IsAlien
-    {
-        get
-        {
-            return isAlien;
-        }
-        set
-        {
-            isAlien = value;
-        }
-    }
+    //public static bool IsAlien
+    //{
+    //    get
+    //    {
+    //        return isAlien;
+    //    }
+    //    set
+    //    {
+    //        isAlien = value;
+    //    }
+    //}
 
     public static bool SinglePlayerIsAlien
     {

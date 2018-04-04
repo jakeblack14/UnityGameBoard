@@ -17,10 +17,6 @@ public class GamePieces : MonoBehaviour
     void Start()
     {
         currentPiece = GetComponent<GameObject>();
-        if(GameBoardData.IsAlien)
-        {
-
-        }
     }
 
     public void SetPosition(int x, int y)

@@ -17,13 +17,13 @@ public class SettingsManager : MonoBehaviour {
     {
         username.text = GameBoardData.Name;
 
-        if (GameBoardData.IsAlien)
-        {
-            character.sprite = GameBoardData.Alien;
-        }
-        else
-        {
-            character.sprite = GameBoardData.Astronaut;
-        }
+        //if (GameBoardData.IsAlien)
+        //{
+        //    character.sprite = GameBoardData.Alien;
+        //}
+        //else
+        //{
+        //    character.sprite = GameBoardData.Astronaut;
+        //}
     }
 }

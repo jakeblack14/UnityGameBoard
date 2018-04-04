@@ -86,6 +86,8 @@ public class MenuManager : MonoBehaviour
             GameBoardData.SinglePlayerIsAlien = false;
             GameBoardData.IsPlayer2 = false;
             GameBoardData.NetworkGameLocalPlayerIsAstronaut = false;
+            GameBoardData.CharacterIndexLocal = 0;
+            GameBoardData.CharacterIndexNetwork = 0;
             GameCore.BoardManager.playerGoingFirst = true;
         }
         else
