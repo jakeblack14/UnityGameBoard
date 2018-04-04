@@ -194,6 +194,8 @@ namespace GameCore {
                             MoveGamePiece(networkMove.End.col, networkMove.End.row);   
                         }
                         networkMove = null;
+
+                        animator.SetBool("AfterFirstTurn", true);
                     }
                 }
                 else if (Input.GetMouseButtonDown(0))

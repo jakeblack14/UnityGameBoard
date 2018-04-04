@@ -56,19 +56,19 @@ public class CharacterButtonBehaviorPlayer2 : MonoBehaviour, IPointerExitHandler
 
     void Update()
     {
-        //if (GameCore.BoardManager.againstNetwork)
-        //{
-        //    if (GameBoardData.NetworkGameLocalPlayerIsAstronaut)
-        //    {
-        //        currentHoverSprite = hoverSprite[0];
-        //        currentClickedSprite = clickedSprite[0];
-        //    }
-        //    else
-        //    {
-        //        currentHoverSprite = hoverSprite[1];
-        //        currentClickedSprite = clickedSprite[1];
-        //    }
-        //}
+        if (GameCore.BoardManager.againstNetwork)
+        {
+            if (GameBoardData.CharacterIndexNetwork > 2)
+            {
+                currentHoverSprite = hoverSprite[0];
+                currentClickedSprite = clickedSprite[0];
+            }
+            else
+            {
+                currentHoverSprite = hoverSprite[1];
+                currentClickedSprite = clickedSprite[1];
+            }
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
