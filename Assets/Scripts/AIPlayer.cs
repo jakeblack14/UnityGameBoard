@@ -119,7 +119,7 @@ namespace GameCore
                  result.Begin.row = 7 - checked((int)nextMove.row);
                  result.Begin.col = 7 - checked((int)nextMove.col);
                  result.End.row = 7 - checked((int)nextMove.row + 1);
-                result.End.col = 7 - checked((int)(nextMove.col - nextMove.target - 1));
+                result.End.col = 7 - (checked((int)nextMove.col) + checked((int)nextMove.target) - 1);
 
             }
             else
