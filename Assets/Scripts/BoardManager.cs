@@ -53,8 +53,7 @@ namespace GameCore {
         public GameObject GameOverPanel;
         public Text winnerText;
         public Text turnText;
-        //public Image turnImage;
-        //public Sprite[] choicesForTurnImage;
+
         public GameObject Rocket;
         private GameObject currentRocket;
         Animator animator;
@@ -145,11 +144,11 @@ namespace GameCore {
 
             if(playerGoingFirst)
             {
-                currentRocket = Instantiate(Rocket, new Vector3(0, 2, 8), Quaternion.Euler(new Vector3(0, 90, 0)));
+                currentRocket = Instantiate(Rocket, new Vector3(-2, 2, 8), Quaternion.Euler(new Vector3(0, 90, 0)));
             }
             else
             {
-                currentRocket = Instantiate(Rocket, new Vector3(8, 2, 8), Quaternion.Euler(new Vector3(0, -90, 0)));
+                currentRocket = Instantiate(Rocket, new Vector3(10, 2, 8), Quaternion.Euler(new Vector3(0, -90, 0)));
             }
 
             currentRocket.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);

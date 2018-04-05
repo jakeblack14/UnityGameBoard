@@ -21,7 +21,14 @@ public class FadeEffect : MonoBehaviour {
     #region MONOBEHAVIOR
     private void OnEnable()
     {
-        StartCoroutine(Fade(FadeDirection.Out));
+        //if (!GameBoardData.GameInitialized)
+        //{
+        //    StartCoroutine(Fade(FadeDirection.Out));
+        //}
+        //else
+        {
+            fadeOutUIImage.enabled = false;
+        }
     }
     #endregion
     #region FADE

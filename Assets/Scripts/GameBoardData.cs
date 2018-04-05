@@ -23,13 +23,13 @@ public static class GameBoardData {
     private static Sprite AlienImage;
     private static Sprite AstroImage;
 
+    private static bool musicIsOn = true;
+
     //character this computer chose
     private static int characterIndexLocal;
 
     //character other computer chose
     private static int characterIndexNetwork;
-
-    //private static bool isAlien;
 
     private static bool singlePlayerIsAlien = false;
 
@@ -40,18 +40,6 @@ public static class GameBoardData {
     private static bool isPlayer2 = false;
 
     private static bool gameWasInitialized = false;
-
-    //public static bool IsAlien
-    //{
-    //    get
-    //    {
-    //        return isAlien;
-    //    }
-    //    set
-    //    {
-    //        isAlien = value;
-    //    }
-    //}
 
     public static bool SinglePlayerIsAlien
     {
@@ -222,6 +210,18 @@ public static class GameBoardData {
         set
         {
             currentNetworkGameScene = value;
+        }
+    }
+
+    public static bool MusicIsOn
+    {
+        get
+        {
+            return musicIsOn;
+        }
+        set
+        {
+            musicIsOn = value;
         }
     }
 }

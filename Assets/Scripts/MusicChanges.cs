@@ -9,9 +9,10 @@ using UnityEngine.SceneManagement;
 public class MusicChanges : MonoBehaviour
 {
     public AudioSource source;
-    public AudioSource MenuMusic;
+    //public AudioSource MenuMusic;
     public Button MyButton;
     public Slider slider;
+    private Text text;
 
     private void Awake()
     {
@@ -23,28 +24,42 @@ public class MusicChanges : MonoBehaviour
     {
         MyButton = MyButton.GetComponent<Button>();
         MyButton.onClick.AddListener(TaskOnClick);
+        text = MyButton.GetComponentInChildren<Text>();
     }
 
     public void Update()
     {
         source.volume = slider.value;
-    }
 
-    void TaskOnClick()
-    {
-        Text text = MyButton.GetComponentInChildren<Text>();
-        if (source.mute == false)
+        if(GameBoardData.MusicIsOn)
+        {
+            source.mute = false;
+            text.text = "On";
+            slider.value = .5f;
+        }
+        else
         {
             source.mute = true;
             text.text = "Off";
             slider.value = 0;
-            
+        }
+    }
+
+    void TaskOnClick()
+    {
+        if(GameBoardData.MusicIsOn)
+        {
+            source.mute = true;
+            text.text = "Off";
+            slider.value = 0;
+            GameBoardData.MusicIsOn = false;
         }
         else
         {
             source.mute = false;
             text.text = "On";
             slider.value = .5f;
+            GameBoardData.MusicIsOn = true;
         }
     }
 }
