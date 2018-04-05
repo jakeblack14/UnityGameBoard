@@ -434,13 +434,27 @@ public class MenuManager : MonoBehaviour
                         
                         //name, scene, character index
                         string SceneAndCharacter = (string)room.CustomProperties["joe"];
-                        string characterIndex = SceneAndCharacter.Substring(SceneAndCharacter.Length - 1);
-                        string sceneName = SceneAndCharacter.TrimEnd(SceneAndCharacter[SceneAndCharacter.Length - 1]);
-
+                        string characterIndex = SceneAndCharacter.Substring(1, 1);
+                        string sceneIndex = SceneAndCharacter.Substring(0, 1);
+                        string player2Name = SceneAndCharacter.Substring(2);
+                    string sceneName;
+                        if (sceneIndex == "M")
+                        {
+                             sceneName = "Milky Way";
+                        }
+                        else
+                        {
+                            sceneName = "Asteroid Belt";
+                        }
+                         
                         buttonText[0].text = room.Name;
                         buttonText[1].text = sceneName;
+                        buttonText[2].text = characterIndex;
+                        buttonText[2].enabled = false;
+                        buttonText[3].text = player2Name;
+                        buttonText[3].enabled = false;
 
-                        GameBoardData.CharacterIndexNetwork = Convert.ToInt32(characterIndex);
+                        //GameBoardData.CharacterIndexNetwork = Convert.ToInt32(characterIndex);
 
                         GameBoardData.networkGameNames.Add(room.Name);
                     }

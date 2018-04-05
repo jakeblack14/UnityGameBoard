@@ -162,15 +162,24 @@ namespace TechPlanet.SpaceRace
             roomOptions.IsVisible = true;
             roomOptions.MaxPlayers = 2;
             roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable();
+            string oneLetterScene;
+            if (Scene.StartsWith("M"))
+            {
+                oneLetterScene = "M";
+            }
+            else
+            {
+                oneLetterScene = "A";
+            }
             string testing = GameBoardData.CharacterIndexLocal.ToString();
-            string cat = Scene + testing;
+            string cat = oneLetterScene + testing + GameBoardData.Name;
             roomOptions.CustomRoomProperties.Add("index", GameBoardData.CharacterIndexLocal.ToString());
             roomOptions.CustomRoomProperties.Add("scene", Scene);
             roomOptions.CustomRoomProperties.Add("joe", cat);
             Debug.Log(roomOptions.CustomRoomProperties["index"]);
             
-            roomOptions.CustomRoomPropertiesForLobby = new string[] { "index" }; //makes name accessible in a room list in the lobby
-            roomOptions.CustomRoomPropertiesForLobby = new string[] { "scene" }; // Makes scene name accessible in a room list in the lobby
+            //roomOptions.CustomRoomPropertiesForLobby = new string[] { "index" }; //makes name accessible in a room list in the lobby
+            //roomOptions.CustomRoomPropertiesForLobby = new string[] { "scene" }; // Makes scene name accessible in a room list in the lobby
             roomOptions.CustomRoomPropertiesForLobby = new string[] { "joe" };
             Debug.Log("testing 123");
             Debug.Log(roomOptions.CustomRoomProperties["index"]);
