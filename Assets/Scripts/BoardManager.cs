@@ -102,7 +102,7 @@ namespace GameCore {
                 turnText.text = GameBoardData.Player2Name + "'s turn!";
             }
 
-            if(GameBoardData.SinglePlayerIsAlien || GameBoardData.LocalGamePlayer1IsAlien || GameBoardData.CharacterIndexLocal > 2)
+            if(GameBoardData.SinglePlayerIsAlien || GameBoardData.LocalGamePlayer1IsAlien) //|| GameBoardData.CharacterIndexLocal > 2) Not sure why we need this. showed up as 4
             {
                 gamePieces[0].GetComponent<Renderer>().material = green;
                 gamePieces[1].GetComponent<Renderer>().material = white;
