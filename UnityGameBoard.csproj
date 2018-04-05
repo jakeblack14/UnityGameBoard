@@ -527,6 +527,7 @@
     <Compile Include="Assets\Scripts\Coord.cs" />
     <Compile Include="Assets\Scripts\EarthSpinScript.cs" />
     <Compile Include="Assets\Scripts\Enums.cs" />
+    <Compile Include="Assets\Scripts\FadeEffect.cs" />
     <Compile Include="Assets\Scripts\GameBoard.cs" />
     <Compile Include="Assets\Scripts\GameBoardData.cs" />
     <Compile Include="Assets\Scripts\GamePieces.cs" />

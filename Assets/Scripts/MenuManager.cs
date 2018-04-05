@@ -258,11 +258,13 @@ public class MenuManager : MonoBehaviour
         {
             if (locationIndex == 0)
             {
-                SceneManager.LoadScene("AsteroidScene");
+                //SceneManager.LoadScene("AsteroidScene");
+                StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().FadeAndLoadScene(FadeEffect.FadeDirection.In, "AsteroidScene"));
             }
             else if (locationIndex == 1)
             {
-                SceneManager.LoadScene("MilkyWayScene");
+                //SceneManager.LoadScene("MilkyWayScene");
+                StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().FadeAndLoadScene(FadeEffect.FadeDirection.In, "MilkyWayScene"));
             }
         }
         else
