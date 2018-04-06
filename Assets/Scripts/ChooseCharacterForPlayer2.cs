@@ -154,12 +154,14 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
         if (!GameBoardData.NetworkGameSelected)
         {
             if (GameBoardData.LocalGamePlayer1IsAlien)
-            {
-                GameBoardData.Astronaut = currentCharacter;
+            {              
+                    GameBoardData.Astronaut = currentCharacter;       
             }
             else
             {
-                GameBoardData.Alien = currentCharacter;
+               
+                    GameBoardData.Alien = currentCharacter;
+               
             }
         }
 

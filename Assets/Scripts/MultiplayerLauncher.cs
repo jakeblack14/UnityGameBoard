@@ -107,23 +107,7 @@ namespace TechPlanet.SpaceRace
 
         private void Update()
        {
-        //    if (waiting)
-        //    {
-        //        if (PhotonNetwork.room.PlayerCount == 2)
-        //        {
-        //            if (GameBoardData.CurrentNetworkGameScene == "Asteroid Belt")
-        //            {
-        //                random = "AsteroidScene";
-        //            }
-        //            else
-        //            {
-        //                random = "MilkyWayScene";
-        //            }
-        //            StartGame(true, random);
-        //           // SceneManager.LoadScene(random);
-        //            waiting = false;
-        //        }
-        //    }
+         
         }
         #endregion
 
@@ -312,12 +296,13 @@ namespace TechPlanet.SpaceRace
         public static void LeaveGame()
         {
             PhotonNetwork.Disconnect();
+            GameBoardData.NetworkGameSelected = false;
             SceneManager.LoadScene("MainMenu");
         }
         public bool LoadOurGame(string name)
         {
             StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene(name));
-           // SceneManager.LoadScene(name);
+            //SceneManager.LoadScene(name);
             return true;
         }
         void StartGame(bool order, string sceneName)
