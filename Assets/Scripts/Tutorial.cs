@@ -31,23 +31,20 @@ public class Tutorial : MonoBehaviour {
         // All of the Texts for the Help Menu Text Box
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         ScreenText = new string[5];
-        ScreenText[0] = "Welcome to the Help Menu. Click the Large Question Mark at any point to get some Help!";
-        ScreenText[1] = "To take a peice click on the piece you want to move. In order to take an enemy piece, your piece must be able to move diagonally left or diagonally right onto" +
-            "an enemy piece.";
-        ScreenText[2] = "To win the game either take all the enemy pieces or get to the very end of the board on the enemies side.";
-        ScreenText[3] = "Teach the user how to do other things";
-        ScreenText[4] = "teach the user how to use the settings page at any point";
+        ScreenText[0] = "To make a move, Begin by clicking on the piece you would like to move. The piece will highlight when you have correctly clicked your piece. Click an open square either: Above, Diagonally Left, or Diagonally Right. ";
+        ScreenText[1] = "Feel Free to change your choice after you have clicked on one of your pieces by clicking somewhere else or on your new piece twice.";
+        ScreenText[2] = "To take an enemy piece move your piece diagonally. You may not take a piece vertically.";
+        ScreenText[3] = "To win the game move one of your pieces to the other side of the game board on the enemies' side";
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         // All of the Texts for the Help Menu Title Box
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         TitleText = new string[5];
-        TitleText[0] = "Help Menu";
-        TitleText[1] = "Make Move";
-        TitleText[2] = "Take Peices";
-        TitleText[3] = "Other";
-        TitleText[4] = "Other1";
+        TitleText[0] = "Make Move"; 
+        TitleText[1] = "Change Move";
+        TitleText[2] = "Take Pieces";
+        TitleText[3] = "Win Game";
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         videoPlayer = Vid.GetComponent<VideoPlayer>();
         //videoPlayer.source = VideoSource.VideoClip;
