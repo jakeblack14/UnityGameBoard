@@ -316,7 +316,8 @@ namespace TechPlanet.SpaceRace
         }
         public bool LoadOurGame(string name)
         {
-            SceneManager.LoadScene(name);
+            StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene(name));
+           // SceneManager.LoadScene(name);
             return true;
         }
         void StartGame(bool order, string sceneName)

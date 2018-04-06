@@ -454,7 +454,9 @@ public class MenuManager : MonoBehaviour
             {
             
                 foreach (RoomInfo room in GameBoardData.lobbyRoomInfo)
-                {
+                { 
+                   
+                
                     if (!GameBoardData.networkGameNames.Contains(room.Name))
                     {
 
