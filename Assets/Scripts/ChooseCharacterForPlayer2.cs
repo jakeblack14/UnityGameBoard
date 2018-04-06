@@ -9,6 +9,8 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     private Sprite[] Characters;
     private Button[] CharacterButtons;
 
+    public Button nextButton;
+
     private Sprite currentCharacter;
 
     public GameObject Astros;
@@ -27,6 +29,8 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        nextButton.interactable = false;
+
         if (GameBoardData.LocalGamePlayer1IsAlien || GameBoardData.NetworkGameLocalPlayerIsAstronaut)
         {
             Characters = Resources.LoadAll<Sprite>("AstronautSprites");
@@ -65,6 +69,8 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     void Activate()
     {
+        nextButton.interactable = false;
+
         if (!GameBoardData.NetworkGameSelected)
         {
 
@@ -171,6 +177,8 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
 
     public void SelectCharacter(int index)
     {
+        nextButton.interactable = true;
+
         currentCharacter = Characters[index];
 
         if (GameCore.BoardManager.againstNetwork)

@@ -69,10 +69,6 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("enter"))
-        {
-            usernameButtonClick();
-        }
 
         if (MenuPanels[0].activeSelf)
         {
