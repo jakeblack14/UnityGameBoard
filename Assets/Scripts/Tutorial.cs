@@ -6,9 +6,9 @@ using UnityEngine.Video;
 
 public class Tutorial : MonoBehaviour {
 
-    public VideoClip[] s1;
-    public VideoPlayer I1;
-    public Image Vid;
+    public VideoClip[] ClipArray;
+    public VideoPlayer videoPlayer;
+    public GameObject Vid;
     public Image Next;
     public Image Back;
     public string[] ScreenText;
@@ -27,7 +27,7 @@ public class Tutorial : MonoBehaviour {
         }
 
         
-
+        
         // All of the Texts for the Help Menu Text Box
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         ScreenText = new string[5];
@@ -49,29 +49,37 @@ public class Tutorial : MonoBehaviour {
         TitleText[3] = "Other";
         TitleText[4] = "Other1";
         //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        s1 = Resources.LoadAll<VideoClip>("Sprites");
+        videoPlayer = Vid.GetComponent<VideoPlayer>();
+        //videoPlayer.source = VideoSource.VideoClip;
+        ClipArray = Resources.LoadAll<VideoClip>("Sprites");
+        Vid.GetComponent<Renderer>().material.mainTexture = videoPlayer.texture; // THIS WAS THE PROBLEM!!! I HATE TEXTURES
+        videoPlayer.clip = ClipArray[0];
+        videoPlayer.Play();
+        Debug.Log("Playing Video");
 
         TextBox.text = ScreenText[0];
         TitleBox.text = TitleText[0];
 
-        I1.clip = s1[count];
+        
+
+        
+       
     }
 
     public void On_Click_Button()
     {
-        if (count != s1.Length - 1)
+        if (count != ClipArray.Length - 1)
         {
             count++;
-            I1.clip = s1[count];
+            videoPlayer.clip = ClipArray[count];
+            videoPlayer.Play();
             TextBox.text = ScreenText[count];
             TitleBox.text = TitleText[count];
             Back.enabled = true;
         }
         
 
-        if(count == s1.Length - 1)
+        if(count == ClipArray.Length - 1)
         {
             Next.enabled = false;
         }
@@ -81,7 +89,8 @@ public class Tutorial : MonoBehaviour {
         if (count != 0)
         {
             count--;
-            I1.clip = s1[count];
+            videoPlayer.clip = ClipArray[count];
+            videoPlayer.Play();
             TextBox.text = ScreenText[count];
             TitleBox.text = TitleText[count];
             Next.enabled = true;

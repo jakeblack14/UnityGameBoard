@@ -60,8 +60,9 @@ namespace TechPlanet.SpaceRace
         /// </summary>
         void Awake()
         {
-
+          
             
+            //DontDestroyOnLoad.((this)gameObject);
             // #Critical
             // we don't join the lobby. There is no need to join a lobby to get the list of rooms.
             PhotonNetwork.autoJoinLobby = true;
@@ -301,6 +302,14 @@ namespace TechPlanet.SpaceRace
         }
         public bool LoadOurGame(string name)
         {
+          //  if (GameObject.FindObjectOfType<FadeEffect>() != null)
+          //  {
+          //      StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene(name));
+          //  }
+          //  else if (GameObject.FindObjectOfType<FadeEffect>() == null)
+          //  {
+          //      GameObject.FindObjectOfType<FadeEffect>() = GameObject.GetComponent<FadeEffect>;
+           // }
             StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene(name));
             //SceneManager.LoadScene(name);
             return true;
