@@ -437,7 +437,7 @@ public class MenuManager : MonoBehaviour
                         string characterIndex = SceneAndCharacter.Substring(1, 1);
                         string sceneIndex = SceneAndCharacter.Substring(0, 1);
                         string player2Name = SceneAndCharacter.Substring(2);
-                    string sceneName;
+                        string sceneName;
                         if (sceneIndex == "M")
                         {
                              sceneName = "Milky Way";
