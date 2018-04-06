@@ -42,6 +42,7 @@ public class MenuManager : MonoBehaviour
 
     public Button networkGameButton;
     public GameObject ParentOfButtons;
+    public Button JoinNetworkGameButton;
 
     private List<Button> networkButtons;
 
@@ -129,7 +130,7 @@ public class MenuManager : MonoBehaviour
 
         if(MenuPanels[12].activeSelf || MenuPanels[9].activeSelf || MenuPanels[10].activeSelf || MenuPanels[11].activeSelf)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 9; i++)
             {
                 if(MenuPanels[i].activeSelf)
                 {
@@ -137,7 +138,7 @@ public class MenuManager : MonoBehaviour
                 }
             }
 
-            for (int i=0; i<8; i++)
+            for (int i=0; i<9; i++)
             {
                 MenuPanels[i].SetActive(false);
             }
@@ -145,6 +146,11 @@ public class MenuManager : MonoBehaviour
         if (updateLobby)
         {
             SpawnNetworkGameButtons();
+        }
+
+        if(GameBoardData.NetworkGameSelected)
+        {
+            JoinNetworkGameButton.interactable = true;
         }
 
         destroyButtonAfterRoomDisconnected();
@@ -382,11 +388,7 @@ public class MenuManager : MonoBehaviour
         GameCore.BoardManager.waitForNetwork = true;
         //Does the update for the lobby system
         updateLobby = true;
-    }
-
-    private void OnTimedEvent(object sender, ElapsedEventArgs e)
-    {
-       // SpawnNetworkGameButtons();
+        JoinNetworkGameButton.interactable = false;
     }
 
     public void highlightNetworkCharacterButton(int index)
@@ -412,6 +414,7 @@ public class MenuManager : MonoBehaviour
         MenuPanels[6].SetActive(false);
         locationButtons = GameObject.Find("NetworkLocationButtons").GetComponentsInChildren<Button>();
         networkCharacterButtons = GameObject.Find("TeamButtons").GetComponentsInChildren<Button>();
+        networkGameInputField.placeholder.GetComponent<Text>().text = GameBoardData.Name + "'s Game";
         GameBoardData.NetworkGameLocalPlayerIsAstronaut = true;
         GameBoardData.NetworkGameSelected = false;
     }
@@ -427,7 +430,14 @@ public class MenuManager : MonoBehaviour
 
     public void createNetworkGame()
     {
-        networkGameName = networkGameInputField.text;
+        if(networkGameInputField.text == "")
+        {
+            networkGameName = networkGameInputField.placeholder.GetComponent<Text>().text;
+        }
+        else
+        {
+            networkGameName = networkGameInputField.text;
+        }
 
         if (locationIndex == 0)
         {
@@ -438,8 +448,6 @@ public class MenuManager : MonoBehaviour
             networkGameLocation = "Milky Way";
         }
         GameBoardData.CurrentNetworkGameScene = networkGameLocation;
-        //MenuPanels[7].SetActive(false);
-        //MenuPanels[5].SetActive(true);
         GameObject goJeff = GameObject.Find("Canvas");
         MultiplayerLauncher jeffGo = goJeff.GetComponent<MultiplayerLauncher>();
         jeffGo.CreateNewGame(networkGameName, networkGameLocation);
@@ -499,9 +507,4 @@ public class MenuManager : MonoBehaviour
             
             }
         }
-
-    public void OnSelect(BaseEventData eventData)
-    {
-        throw new System.NotImplementedException();
-    }
 }
