@@ -1683,8 +1683,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e66d876bf8c891469b41455a838dedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s1: []
-  I1: {fileID: 1263023961}
+  ClipArray: []
+  videoPlayer: {fileID: 0}
+  Vid: {fileID: 0}
   Next: {fileID: 1004014899}
   Back: {fileID: 340722308}
   ScreenText: []
@@ -1992,6 +1993,7 @@ GameObject:
   - component: {fileID: 364588627}
   - component: {fileID: 364588626}
   - component: {fileID: 364588628}
+  - component: {fileID: 364588629}
   m_Layer: 0
   m_Name: GameBoard
   m_TagString: Untagged
@@ -2055,6 +2057,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loglevel: 1
+--- !u!114 &364588629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 364588625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb541cd2a2bcf4d4297d8788b707d5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characters: []
+  mainImage: {fileID: 0}
+  text: {fileID: 0}
 --- !u!1 &385537730
 GameObject:
   m_ObjectHideFlags: 0
@@ -5744,8 +5760,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e66d876bf8c891469b41455a838dedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s1: []
-  I1: {fileID: 1263023961}
+  ClipArray: []
+  videoPlayer: {fileID: 0}
+  Vid: {fileID: 0}
   Next: {fileID: 1004014899}
   Back: {fileID: 340722308}
   ScreenText: []
@@ -7698,8 +7715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e66d876bf8c891469b41455a838dedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s1: []
-  I1: {fileID: 1263023961}
+  ClipArray: []
+  videoPlayer: {fileID: 0}
+  Vid: {fileID: 0}
   Next: {fileID: 1004014899}
   Back: {fileID: 340722308}
   ScreenText: []
