@@ -2,18 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TechPlanet.SpaceRace;
 
 public class LoadSceneOnClick : MonoBehaviour {
 
     public void LoadByIndex(int sceneIndex)
     {
-        if (!GameBoardData.GameInitialized)
+        if (GameCore.BoardManager.againstNetwork)
         {
-            StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene("MainMenu"));
+            TechPlanet.SpaceRace.MultiplayerLauncher.LeaveGame();
         }
         else
         {
-            SceneManager.LoadScene("MainMenu");
+            if (!GameBoardData.GameInitialized)
+            {
+                StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene("MainMenu"));
+            }
+            else
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
     }
 }

@@ -126,9 +126,9 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        if(MenuPanels[8].activeSelf || MenuPanels[9].activeSelf || MenuPanels[10].activeSelf || MenuPanels[11].activeSelf)
+        if(MenuPanels[12].activeSelf || MenuPanels[9].activeSelf || MenuPanels[10].activeSelf || MenuPanels[11].activeSelf)
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
             {
                 if(MenuPanels[i].activeSelf)
                 {
@@ -136,7 +136,7 @@ public class MenuManager : MonoBehaviour
                 }
             }
 
-            for (int i=0; i<7; i++)
+            for (int i=0; i<8; i++)
             {
                 MenuPanels[i].SetActive(false);
             }
@@ -145,6 +145,8 @@ public class MenuManager : MonoBehaviour
         {
             SpawnNetworkGameButtons();
         }
+
+        destroyButtonAfterRoomDisconnected();
     }
 
     public void restoreCurrentPanel()
@@ -306,7 +308,7 @@ public class MenuManager : MonoBehaviour
             {
                 //create network game
                 MenuPanels[5].SetActive(false);
-                MenuPanels[12].SetActive(true);
+                MenuPanels[8].SetActive(true);
 
                 createNetworkGame();
             }
@@ -317,16 +319,45 @@ public class MenuManager : MonoBehaviour
                 MultiplayerLauncher jeffGo = goJeff.GetComponent<MultiplayerLauncher>();
                 jeffGo.JoinCreatedGame(GameBoardData.CurrentNetworkGameName, GameBoardData.CurrentNetworkGameScene);
 
-                foreach (Transform b in ParentOfButtons.transform)
-                {
-                    Text[] text = b.GetComponentsInChildren<Text>();
-
-                    if (text[0].text.ToString() == GameBoardData.CurrentNetworkGameName)
-                    {
-                        Destroy(b.gameObject);
-                    }
-                }
+                destroyNetworkLobby();
             }
+        }
+    }
+
+    public void destroyButtonAfterRoomDisconnected()
+    {
+        bool found = false;
+        foreach (Transform b in ParentOfButtons.transform)
+        {
+            Text[] text = b.GetComponentsInChildren<Text>();
+
+            foreach (RoomInfo room in GameBoardData.lobbyRoomInfo)
+            {
+                if (text[0].text.ToString() == room.Name)
+                {
+                    found = true;
+                }
+
+            }
+            if (!found)
+            {
+                Destroy(b.gameObject);
+            }
+            found = false;
+        }
+    }
+
+    public void destroyNetworkLobby()
+    {
+        foreach (Transform b in ParentOfButtons.transform)
+        {
+            Text[] text = b.GetComponentsInChildren<Text>();
+
+            if (text[0].text.ToString() == GameBoardData.CurrentNetworkGameName)
+            {
+                Destroy(b.gameObject);
+            }
+
         }
     }
 

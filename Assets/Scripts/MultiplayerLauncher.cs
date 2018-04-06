@@ -309,7 +309,7 @@ namespace TechPlanet.SpaceRace
             
         }
 
-        public void LeaveGame()
+        public static void LeaveGame()
         {
             PhotonNetwork.Disconnect();
             SceneManager.LoadScene("MainMenu");
