@@ -7,67 +7,49 @@ using System.Collections;
 
 public class FadeEffect : MonoBehaviour {
 
-    #region FIELDS
+    public Image[] characters;
+    public Image mainImage;
+    public Text text;
 
-    public Image fadeOutUIImage;
-    public float fadeSpeed;
+    Animator animator;
 
-    public enum FadeDirection
-    {
-        In,
-        Out
-    }
-    #endregion
-    #region MONOBEHAVIOR
     private void OnEnable()
     {
-        //if (!GameBoardData.GameInitialized)
-        //{
-        //    StartCoroutine(Fade(FadeDirection.Out));
-        //}
-        //else
+        for(int i=0; i<6; i++)
         {
-            fadeOutUIImage.enabled = false;
+            characters[i].enabled = false;
         }
+
+        text.enabled = false;
+        mainImage.enabled = false;
+        
     }
-    #endregion
-    #region FADE
-    private IEnumerator Fade(FadeDirection fadeDirection)
+
+    public IEnumerator FadeIn()
     {
-        float alpha = (fadeDirection == FadeDirection.Out) ? 1 : 0;
-        float fadeEndValue = (fadeDirection == FadeDirection.Out) ? 0 : 1;
-        if(fadeDirection == FadeDirection.Out)
+        mainImage.enabled = true;
+        text.enabled = true;
+
+        for(int i=0; i<6; i++)
         {
-            while(alpha >= fadeEndValue)
-            {
-                SetColorImage(ref alpha, fadeDirection);
-                yield return null;
-            }
-            fadeOutUIImage.enabled = false;
-        }
-        else
-        {
-            fadeOutUIImage.enabled = true;
-            while (alpha <= fadeEndValue)
-            {
-                SetColorImage(ref alpha, fadeDirection);
-                yield return null;
-            }
+            AnimateCharacters(characters[i]);
+            yield return new WaitForSecondsRealtime(0.750f);
         }
     }
 
-    #endregion
-    #region HELPERS
-
-    public IEnumerator FadeAndLoadScene(FadeDirection fadeDirection, string sceneToLoad)
+    private void AnimateCharacters(Image character)
     {
-        yield return Fade(fadeDirection);
+        animator = character.GetComponent<Animator>();
+        animator.SetBool("characterEnabled", false);
+
+        character.enabled = true;
+
+        animator.SetBool("characterEnabled", true);
+    }
+
+    public IEnumerator EffectsAndLoadScene(string sceneToLoad)
+    {
+        yield return FadeIn();
         SceneManager.LoadScene(sceneToLoad);
     }
-    private void SetColorImage(ref float alpha, FadeDirection fadeDirection)
-    {
-        fadeOutUIImage.color = new Color(fadeOutUIImage.color.r, fadeOutUIImage.color.g, fadeOutUIImage.color.b, alpha);
-        alpha += Time.deltaTime * (1.0f / fadeSpeed) * ((fadeDirection == FadeDirection.Out) ? -1 : 1);
-    }
-    #endregion
 }

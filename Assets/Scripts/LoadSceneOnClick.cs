@@ -7,6 +7,13 @@ public class LoadSceneOnClick : MonoBehaviour {
 
     public void LoadByIndex(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        if (!GameBoardData.GameInitialized)
+        {
+            StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene("MainMenu"));
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

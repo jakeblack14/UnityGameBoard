@@ -259,12 +259,12 @@ public class MenuManager : MonoBehaviour
             if (locationIndex == 0)
             {
                 //SceneManager.LoadScene("AsteroidScene");
-                StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().FadeAndLoadScene(FadeEffect.FadeDirection.In, "AsteroidScene"));
+                StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene("AsteroidScene"));
             }
             else if (locationIndex == 1)
             {
                 //SceneManager.LoadScene("MilkyWayScene");
-                StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().FadeAndLoadScene(FadeEffect.FadeDirection.In, "MilkyWayScene"));
+                StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene("MilkyWayScene"));
             }
         }
         else
@@ -292,11 +292,11 @@ public class MenuManager : MonoBehaviour
         {
             if (locationIndex == 0)
             {
-                SceneManager.LoadScene("AsteroidScene");
+                StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene("AsteroidScene"));
             }
             else if (locationIndex == 1)
             {
-                SceneManager.LoadScene("MilkyWayScene");
+                StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene("MilkyWayScene"));
             }
         }
         //network game

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class Tutorial : MonoBehaviour {
 
-    public Sprite[] s1;
-    public Image I1;
+    public VideoClip[] s1;
+    public VideoPlayer I1;
+    public Image Vid;
     public Image Next;
     public Image Back;
     public string[] ScreenText;
@@ -24,6 +26,7 @@ public class Tutorial : MonoBehaviour {
             Back.enabled = false;
         }
 
+        
 
         // All of the Texts for the Help Menu Text Box
         /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,12 +51,12 @@ public class Tutorial : MonoBehaviour {
         //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        s1 = Resources.LoadAll<Sprite>("Sprites");
+        s1 = Resources.LoadAll<VideoClip>("Sprites");
 
         TextBox.text = ScreenText[0];
         TitleBox.text = TitleText[0];
 
-        I1.sprite = s1[count];
+        I1.clip = s1[count];
     }
 
     public void On_Click_Button()
@@ -61,7 +64,7 @@ public class Tutorial : MonoBehaviour {
         if (count != s1.Length - 1)
         {
             count++;
-            I1.sprite = s1[count];
+            I1.clip = s1[count];
             TextBox.text = ScreenText[count];
             TitleBox.text = TitleText[count];
             Back.enabled = true;
@@ -78,7 +81,7 @@ public class Tutorial : MonoBehaviour {
         if (count != 0)
         {
             count--;
-            I1.sprite = s1[count];
+            I1.clip = s1[count];
             TextBox.text = ScreenText[count];
             TitleBox.text = TitleText[count];
             Next.enabled = true;

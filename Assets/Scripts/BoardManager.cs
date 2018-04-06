@@ -102,7 +102,7 @@ namespace GameCore {
                 turnText.text = GameBoardData.Player2Name + "'s turn!";
             }
 
-            if(GameBoardData.SinglePlayerIsAlien || GameBoardData.LocalGamePlayer1IsAlien) //|| GameBoardData.CharacterIndexLocal > 2) Not sure why we need this. showed up as 4
+            if(GameBoardData.SinglePlayerIsAlien || GameBoardData.LocalGamePlayer1IsAlien|| GameBoardData.CharacterIndexLocal > 2)
             {
                 gamePieces[0].GetComponent<Renderer>().material = green;
                 gamePieces[1].GetComponent<Renderer>().material = white;
@@ -144,11 +144,11 @@ namespace GameCore {
 
             if(playerGoingFirst)
             {
-                currentRocket = Instantiate(Rocket, new Vector3(-2, 2, 8), Quaternion.Euler(new Vector3(0, 90, 0)));
+                currentRocket = Instantiate(Rocket, new Vector3(-0.50f, 2, 8), Quaternion.Euler(new Vector3(0, 90, 0)));
             }
             else
             {
-                currentRocket = Instantiate(Rocket, new Vector3(10, 2, 8), Quaternion.Euler(new Vector3(0, -90, 0)));
+                currentRocket = Instantiate(Rocket, new Vector3(8.50f, 2, 8), Quaternion.Euler(new Vector3(0, -90, 0)));
             }
 
             currentRocket.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);

@@ -171,13 +171,16 @@ public class ChooseCharacterForPlayer2 : MonoBehaviour {
     {
         currentCharacter = Characters[index];
 
-        if (GameBoardData.NetworkGameLocalPlayerIsAstronaut || GameBoardData.CharacterIndexNetwork > 2)
+        if (GameCore.BoardManager.againstNetwork)
         {
-            GameBoardData.CharacterIndexLocal = index;
-        }
-        else
-        {
-            GameBoardData.CharacterIndexLocal = index + 3;
+            if (GameBoardData.NetworkGameLocalPlayerIsAstronaut || GameBoardData.CharacterIndexNetwork > 2)
+            {
+                GameBoardData.CharacterIndexLocal = index;
+            }
+            else
+            {
+                GameBoardData.CharacterIndexLocal = index + 3;
+            }
         }
 
         for (int i = 0; i < 3; i++)

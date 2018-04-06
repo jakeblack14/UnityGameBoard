@@ -26,10 +26,10 @@ public static class GameBoardData {
     private static bool musicIsOn = true;
 
     //character this computer chose
-    private static int characterIndexLocal;
+    private static int characterIndexLocal = 0;
 
     //character other computer chose
-    private static int characterIndexNetwork;
+    private static int characterIndexNetwork = 0;
 
     private static bool singlePlayerIsAlien = false;
 

@@ -16,7 +16,7 @@ public class GameUIManager : MonoBehaviour {
     public Sprite AstroBackground;
 
     public Text username;
-    public static Text player2Username;
+    public Text player2Username;
 
     private Sprite[] Astronauts;
     private Sprite[] Aliens;
@@ -94,9 +94,5 @@ public class GameUIManager : MonoBehaviour {
     public void SetPlayer2(string name)
     {
         player2Username.text = name;
-    }
-    private void Update()
-    {
-       // player2Username.text = GameBoardData.Player2Name;
     }
 }
