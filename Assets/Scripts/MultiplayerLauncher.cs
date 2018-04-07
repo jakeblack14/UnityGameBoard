@@ -6,9 +6,11 @@ using System.Net;
 using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace TechPlanet.SpaceRace
 {
+   
     public class MultiplayerLauncher : Photon.PunBehaviour
     {
         #region Public Variables
@@ -25,6 +27,7 @@ namespace TechPlanet.SpaceRace
         string passedSceneName;
         RoomInfo[] roomsList =  new RoomInfo[10];
         string random;
+        private static bool created = false;
         /// <summary>
         /// The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created.
         /// </summary>   
@@ -36,7 +39,9 @@ namespace TechPlanet.SpaceRace
         // [Tooltip("The UI Label to inform the user that the connection is in progress")]
         //  public GameObject progressLabel;
         //GameObject button;
-        public GameCore.NetworkPlayer player1 = null;  
+        public GameCore.NetworkPlayer player1 = null;
+        FadeEffect jeffGoesFading;
+        //public GameObject g;
         #endregion
 
 
@@ -60,8 +65,13 @@ namespace TechPlanet.SpaceRace
         /// </summary>
         void Awake()
         {
-          
-            
+            //if (!created)
+            //{
+            //    DontDestroyOnLoad(g);
+            //    created = true;
+            //    Debug.Log("Awake: " + this.gameObject);
+            //}
+            jeffGoesFading = new FadeEffect();
             //DontDestroyOnLoad.((this)gameObject);
             // #Critical
             // we don't join the lobby. There is no need to join a lobby to get the list of rooms.
@@ -182,7 +192,7 @@ namespace TechPlanet.SpaceRace
         
         public void OnJoinedCreatedGame()
         {
-           
+            Debug.Log("OnJoinedCreatedGame is called");
             if (PhotonNetwork.room.PlayerCount == 2)
             {
                 bool order = false;
@@ -302,16 +312,19 @@ namespace TechPlanet.SpaceRace
         }
         public bool LoadOurGame(string name)
         {
-          //  if (GameObject.FindObjectOfType<FadeEffect>() != null)
-          //  {
-          //      StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene(name));
-          //  }
-          //  else if (GameObject.FindObjectOfType<FadeEffect>() == null)
-          //  {
-          //      GameObject.FindObjectOfType<FadeEffect>() = GameObject.GetComponent<FadeEffect>;
-           // }
-            StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene(name));
-            //SceneManager.LoadScene(name);
+            //GameObject go = GameObject.Find("Canvas");
+            //FadeEffect jeff = go.GetComponent<FadeEffect>();
+            //if (jeff == null)
+            //{
+            //    SceneManager.LoadScene(name);
+            //}
+            //else
+            //{
+            //    jeffGoesFading.EffectsAndLoadScene(name);
+            //}
+           // StartCoroutine(jeff.EffectsAndLoadScene(name));
+            //StartCoroutine(GameObject.FindObjectOfType<FadeEffect>().EffectsAndLoadScene(name));
+            SceneManager.LoadScene(name);
             return true;
         }
         void StartGame(bool order, string sceneName)
@@ -463,7 +476,64 @@ namespace TechPlanet.SpaceRace
         }
         #endregion
     }
-    
+
+    //public class FadeEffect : MonoBehaviour
+    //{
+    //    private GameObject fadeStuff;
+    //    private Image[] characters;
+    //    private Image mainImage;
+    //    private Text text;
+
+    //    Animator animator;
+
+    //    private void Awake()
+    //    {
+    //        fadeStuff = GameObject.Find("FadeEffect");
+    //        mainImage = fadeStuff.GetComponentInChildren<Image>();
+    //        text = fadeStuff.GetComponentInChildren<Text>();
+    //        characters = mainImage.GetComponentsInChildren<Image>();
+    //    }
+
+    //    private void OnEnable()
+    //    {
+    //        for (int i = 0; i < 6; i++)
+    //        {
+    //            characters[i].enabled = false;
+    //        }
+
+    //        text.enabled = false;
+    //        mainImage.enabled = false;
+
+    //    }
+
+    //    public IEnumerator FadeIn()
+    //    {
+    //        mainImage.enabled = true;
+    //        text.enabled = true;
+
+    //        for (int i = 0; i < 6; i++)
+    //        {
+    //            AnimateCharacters(characters[i]);
+    //            yield return new WaitForSecondsRealtime(0.750f);
+    //        }
+    //    }
+
+    //    private void AnimateCharacters(Image character)
+    //    {
+    //        animator = character.GetComponent<Animator>();
+    //        animator.SetBool("characterEnabled", false);
+
+    //        character.enabled = true;
+
+    //        animator.SetBool("characterEnabled", true);
+    //    }
+
+    //    public IEnumerator EffectsAndLoadScene(string sceneToLoad)
+    //    {
+    //        yield return FadeIn();
+    //        SceneManager.LoadScene(sceneToLoad);
+    //    }
+    //}
 
 
 }
