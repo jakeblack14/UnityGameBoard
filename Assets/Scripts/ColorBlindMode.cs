@@ -19,14 +19,14 @@ public class ColorBlindMode : MonoBehaviour {
             HueShiftValue.basic.hueShift = 0;
             colorBlindModeProfile.colorGrading.settings = HueShiftValue;
             inColorBlindMode = false;
-            buttonText.text = "Off";
+            buttonText.text = "Turn On";
         }
         else
         {
             HueShiftValue.basic.hueShift = -89;
             colorBlindModeProfile.colorGrading.settings = HueShiftValue;
             inColorBlindMode = true;
-            buttonText.text = "On";
+            buttonText.text = "Turn Off";
         }
     }
 }

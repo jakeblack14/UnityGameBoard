@@ -53,12 +53,15 @@ namespace GameCore {
         public GameObject GameOverPanel;
         public Text winnerText;
         public Text turnText;
-        //public Image turnImage;
+        public Image turnImage;
 
-        //private bool player1IsGreen;
+        private Sprite player1Image;
+        private Sprite player2Image;
 
-        //public Sprite greenImage;
-        //public Sprite whiteImage;
+        private bool player1IsGreen;
+
+        public Sprite greenImage;
+        public Sprite whiteImage;
 
         public GameObject Rocket;
         private GameObject currentRocket;
@@ -91,26 +94,35 @@ namespace GameCore {
 
         private void Start()
         {
+            //player1Image = turnImage;
+            //player2Image = turnImage;
+
             if (GameBoardData.SinglePlayerIsAlien || GameBoardData.LocalGamePlayer1IsAlien || GameBoardData.CharacterIndexLocal > 2)
             {
                 gamePieces[0].GetComponent<Renderer>().material = green;
                 gamePieces[1].GetComponent<Renderer>().material = white;
-               //layer1IsGreen = true;
+                player1IsGreen = true;
             }
             else
             {
-                //ayer1IsGreen = false;
+                player1IsGreen = false;
                 gamePieces[1].GetComponent<Renderer>().material = green;
                 gamePieces[0].GetComponent<Renderer>().material = white;
             }
 
+            if (player1IsGreen)
+            {
+                player1Image = greenImage;
+                player2Image = whiteImage;
+            }
+            else
+            {
+                player1Image = whiteImage;
+                player2Image = greenImage;
+            }
+
             if (currentPlayer == PlayerX)
             {
-                //if(player1IsGreen)
-                //{
-                //    tur
-                //}
-
                 if (!againstAI)
                 {
                     //multiplayer game
@@ -121,10 +133,13 @@ namespace GameCore {
                 {
                     turnText.text = "Your turn!";
                 }
+
+                turnImage.sprite = player1Image;
             }
             else if (currentPlayer == PlayerO)
             {
                 turnText.text = GameBoardData.Player2Name + "'s turn!";
+                turnImage.sprite = player2Image;
             }
 
             networkMove = null;
@@ -192,9 +207,7 @@ namespace GameCore {
                         MoveGamePiece(  automove.End.col, automove.End.row);
                         animator.SetBool("AfterFirstTurn", true);
 
-                    }
-
-                    
+                    }   
                 }
                 else if (againstNetwork && waitForNetwork)
                 {
@@ -263,6 +276,8 @@ namespace GameCore {
                         turnText.text = "Your turn!";
                     }
 
+                    turnImage.sprite = player1Image;
+
                     animator.SetBool("Player1Turn", true);
                     animator.SetBool("Player2Turn", false);
 
@@ -272,6 +287,7 @@ namespace GameCore {
                 {
                     
                     turnText.text = GameBoardData.Player2Name + "'s turn!";
+                    turnImage.sprite = player2Image;
                     animator.SetBool("Player2Turn", true);
                     animator.SetBool("Player1Turn", false);
                 }
