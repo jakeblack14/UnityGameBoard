@@ -176,8 +176,11 @@ namespace GameCore {
                         Move automove = currentPlayer.getMove();
                         SelectGamePiece(automove.Begin.col, automove.Begin.row);
                         MoveGamePiece(  automove.End.col, automove.End.row);
+                        animator.SetBool("AfterFirstTurn", true);
 
                     }
+
+                    
                 }
                 else if (againstNetwork && waitForNetwork)
                 {

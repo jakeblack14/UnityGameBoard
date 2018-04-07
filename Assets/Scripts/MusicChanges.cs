@@ -31,18 +31,28 @@ public class MusicChanges : MonoBehaviour
     {
         source.volume = slider.value;
 
-        if(GameBoardData.MusicIsOn)
-        {
-            source.mute = false;
-            text.text = "On";
-            slider.value = .5f;
-        }
-        else
-        {
-            source.mute = true;
-            text.text = "Off";
-            slider.value = 0;
-        }
+        //if(GameBoardData.MusicIsOn)
+        //{
+        //    source.mute = false;
+        //    text.text = "Turn Off";
+        //    //slider.value = .5f;
+        //}
+        //else
+        //{
+            if (slider.value > 0)
+            {
+                source.mute = false;
+                text.text = "Turn Off";
+                GameBoardData.MusicIsOn = true;
+            }
+            else
+            {
+                source.mute = true;
+                text.text = "Turn On";
+                GameBoardData.MusicIsOn = false;
+            }
+            //slider.value = 0;
+       // }
     }
 
     void TaskOnClick()
@@ -50,14 +60,14 @@ public class MusicChanges : MonoBehaviour
         if(GameBoardData.MusicIsOn)
         {
             source.mute = true;
-            text.text = "Off";
+            text.text = "Turn On";
             slider.value = 0;
             GameBoardData.MusicIsOn = false;
         }
         else
         {
             source.mute = false;
-            text.text = "On";
+            text.text = "Turn Off";
             slider.value = .5f;
             GameBoardData.MusicIsOn = true;
         }
