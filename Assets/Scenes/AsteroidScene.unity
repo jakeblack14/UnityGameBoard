@@ -2984,6 +2984,75 @@ Transform:
   m_PrefabParentObject: {fileID: 4291082695050010, guid: f230e371571ae6e44839a6ddb45e4f39,
     type: 2}
   m_PrefabInternal: {fileID: 102830278}
+--- !u!1 &109877513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 109877514}
+  - component: {fileID: 109877516}
+  - component: {fileID: 109877515}
+  m_Layer: 5
+  m_Name: TurnDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &109877514
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109877513}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00006452392}
+  m_LocalScale: {x: 1.0002593, y: 1.0002593, z: 1.0002593}
+  m_Children:
+  - {fileID: 2013730311}
+  m_Father: {fileID: 294127386}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.9996004, y: 126.600006}
+  m_SizeDelta: {x: 148.3, y: 25.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &109877515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109877513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 14235cc5e42cd3441aa146be6fb89053, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &109877516
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109877513}
 --- !u!1 &118729048 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1782331842542782, guid: f109c34a9760bb44a82a5b8e4011115a,
@@ -6970,7 +7039,7 @@ RectTransform:
   - {fileID: 1206815962}
   - {fileID: 1156710970}
   - {fileID: 353572128}
-  - {fileID: 1715549972}
+  - {fileID: 109877514}
   - {fileID: 380727143}
   - {fileID: 2094012771}
   - {fileID: 648857694}
@@ -43778,80 +43847,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4216537559340776, guid: f109c34a9760bb44a82a5b8e4011115a,
     type: 2}
   m_PrefabInternal: {fileID: 1708372650}
---- !u!1 &1715549971
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1715549972}
-  - component: {fileID: 1715549974}
-  - component: {fileID: 1715549973}
-  m_Layer: 5
-  m_Name: TurnDisplay
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1715549972
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1715549971}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 294127386}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000045211, y: -139}
-  m_SizeDelta: {x: 236.2, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1715549973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1715549971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 1bc484f5878fa694d8e7cf89b5be16ef, type: 3}
-    m_FontSize: 20
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Your turn
---- !u!222 &1715549974
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1715549971}
 --- !u!1 &1720660997 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1782331842542782, guid: f109c34a9760bb44a82a5b8e4011115a,
@@ -48273,7 +48268,10 @@ MonoBehaviour:
     type: 2}
   winnerText: {fileID: 114366426313645030, guid: 3ec01bbacbcf81345af382dd05f5be6b,
     type: 2}
-  turnText: {fileID: 1715549973}
+  turnText: {fileID: 2013730312}
+  turnImage: {fileID: 109877515}
+  greenImage: {fileID: 21300000, guid: c83a7493e3a515e498e36a560024a3d8, type: 3}
+  whiteImage: {fileID: 21300000, guid: 14235cc5e42cd3441aa146be6fb89053, type: 3}
   Rocket: {fileID: 1000010329560674, guid: 19bc64b6ea73a2f41b4ec6bb93226f1d, type: 2}
   selectedMat: {fileID: 2100000, guid: 74b24824a9d02ef4aa58ce73fe6bf59b, type: 2}
 --- !u!4 &1898283316
@@ -51228,6 +51226,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+--- !u!1 &2013730310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2013730311}
+  - component: {fileID: 2013730313}
+  - component: {fileID: 2013730312}
+  m_Layer: 5
+  m_Name: TurnDisplayText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2013730311
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013730310}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 109877514}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.6, y: -16.1}
+  m_SizeDelta: {x: 148.3, y: 25.5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2013730312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013730310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1bc484f5878fa694d8e7cf89b5be16ef, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Your turn
+--- !u!222 &2013730313
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013730310}
 --- !u!1001 &2018633319
 Prefab:
   m_ObjectHideFlags: 0
