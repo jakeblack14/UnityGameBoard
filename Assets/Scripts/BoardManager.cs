@@ -353,18 +353,6 @@ namespace GameCore {
 
         public void MoveGamePiece(int x, int y)
         {
-            //if (selectedGamePiece.isMoveValid(x, y))
-            //{
-            //    GamePiecesArray[selectedGamePiece.CurrentX, selectedGamePiece.CurrentY] = null;
-
-            //    //move the piece to the new location
-            //    if (GamePiecesArray[x, y] != null)
-            //        return;
-            //    selectedGamePiece.transform.position = GetTileCenter(x, y);
-            //    GamePiecesArray[x, y] = selectedGamePiece;
-            //    isPlayerXTurn = !isPlayerXTurn;
-            //}
-
             currentMove.End.row = y;
             currentMove.End.col = x;
 
