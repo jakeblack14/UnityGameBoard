@@ -12,7 +12,6 @@ public class IntroVideo : MonoBehaviour {
     public VideoPlayer videoPlayer2;
     public GameObject Vid1;
     public GameObject Vid2;
-    public AudioSource audioSource;
 
     public Text text;
 
@@ -39,7 +38,6 @@ public class IntroVideo : MonoBehaviour {
     {
         if (!videoPlayer1.isPlaying)
         {
-            videoPlayer1.audioOutputMode = VideoAudioOutputMode.AudioSource;
             videoPlayer1.Play();
             yield return new WaitForSeconds(3.5f);
 
@@ -56,7 +54,6 @@ public class IntroVideo : MonoBehaviour {
 
         if (!videoPlayer2.isPlaying)
         {
-            videoPlayer2.audioOutputMode = VideoAudioOutputMode.AudioSource;
             videoPlayer2.Play();
             yield return new WaitForSeconds(10.0f);
 
