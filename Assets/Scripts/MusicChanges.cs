@@ -35,13 +35,13 @@ public class MusicChanges : MonoBehaviour
         {
             source.mute = false;
             text.text = "On";
-           // slider.value = .5f;
+            slider.value = .5f;
         }
         else
         {
             source.mute = true;
             text.text = "Off";
-            //slider.value = 0;
+            slider.value = 0;
         }
     }
 
