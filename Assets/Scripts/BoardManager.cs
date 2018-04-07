@@ -53,6 +53,12 @@ namespace GameCore {
         public GameObject GameOverPanel;
         public Text winnerText;
         public Text turnText;
+        //public Image turnImage;
+
+        //private bool player1IsGreen;
+
+        //public Sprite greenImage;
+        //public Sprite whiteImage;
 
         public GameObject Rocket;
         private GameObject currentRocket;
@@ -85,12 +91,31 @@ namespace GameCore {
 
         private void Start()
         {
+            if (GameBoardData.SinglePlayerIsAlien || GameBoardData.LocalGamePlayer1IsAlien || GameBoardData.CharacterIndexLocal > 2)
+            {
+                gamePieces[0].GetComponent<Renderer>().material = green;
+                gamePieces[1].GetComponent<Renderer>().material = white;
+               //layer1IsGreen = true;
+            }
+            else
+            {
+                //ayer1IsGreen = false;
+                gamePieces[1].GetComponent<Renderer>().material = green;
+                gamePieces[0].GetComponent<Renderer>().material = white;
+            }
+
             if (currentPlayer == PlayerX)
             {
+                //if(player1IsGreen)
+                //{
+                //    tur
+                //}
+
                 if (!againstAI)
                 {
                     //multiplayer game
                     turnText.text = GameBoardData.Name + "'s turn!";
+                    
                 }
                 else
                 {
@@ -100,17 +125,6 @@ namespace GameCore {
             else if (currentPlayer == PlayerO)
             {
                 turnText.text = GameBoardData.Player2Name + "'s turn!";
-            }
-
-            if(GameBoardData.SinglePlayerIsAlien || GameBoardData.LocalGamePlayer1IsAlien|| GameBoardData.CharacterIndexLocal > 2)
-            {
-                gamePieces[0].GetComponent<Renderer>().material = green;
-                gamePieces[1].GetComponent<Renderer>().material = white;
-            }
-            else
-            {
-                gamePieces[1].GetComponent<Renderer>().material = green;
-                gamePieces[0].GetComponent<Renderer>().material = white;
             }
 
             networkMove = null;
