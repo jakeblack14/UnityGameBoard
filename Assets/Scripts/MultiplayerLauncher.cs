@@ -40,7 +40,7 @@ namespace TechPlanet.SpaceRace
         //  public GameObject progressLabel;
         //GameObject button;
         public GameCore.NetworkPlayer player1 = null;
-        FadeEffect jeffGoesFading;
+        //FadeEffect jeffGoesFading;
         //public GameObject g;
         #endregion
 
@@ -71,7 +71,7 @@ namespace TechPlanet.SpaceRace
             //    created = true;
             //    Debug.Log("Awake: " + this.gameObject);
             //}
-            jeffGoesFading = new FadeEffect();
+           // jeffGoesFading = new FadeEffect();
             //DontDestroyOnLoad.((this)gameObject);
             // #Critical
             // we don't join the lobby. There is no need to join a lobby to get the list of rooms.
