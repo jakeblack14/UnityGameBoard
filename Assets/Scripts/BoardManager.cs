@@ -202,6 +202,8 @@ namespace GameCore {
 
         private void Update()
         {
+            GameBoardData.GameOver = game.gameOver();
+
             UpdateSelection();
             //DrawChessboard();
             if (!game.gameOver())

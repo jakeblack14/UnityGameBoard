@@ -10,7 +10,7 @@ public static class GameBoardData {
 
     public static bool transitionToNewCharactersDone = false;
 
-    private static bool isNetworkGame;
+   private static bool gameOver;
 
     private static bool networkGameSelected = false;
     public static bool goingFirst = false;
@@ -222,6 +222,18 @@ public static class GameBoardData {
         set
         {
             musicIsOn = value;
+        }
+    }
+
+    public static bool GameOver
+    {
+        get
+        {
+            return gameOver;
+        }
+        set
+        {
+            gameOver = value;
         }
     }
 }

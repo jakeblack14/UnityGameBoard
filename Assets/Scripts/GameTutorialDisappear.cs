@@ -9,14 +9,24 @@ public class GameTutorialDisappear : MonoBehaviour
 
     public void CheckHelpMenu(int index)
     {
-        if(!ToolPanelMenus[index].activeSelf)
+        if (!GameBoardData.GameOver)
         {
-            ToolPanelMenus[index].SetActive(true);
-        }
+            if (!ToolPanelMenus[index].activeSelf)
+            {
+                ToolPanelMenus[index].SetActive(true);
+            }
 
-        for (int i = 0; i < ToolPanelMenus.Length; i++)
+            for (int i = 0; i < ToolPanelMenus.Length; i++)
+            {
+                if (i != index)
+                {
+                    ToolPanelMenus[i].SetActive(false);
+                }
+            }
+        }
+        else
         {
-            if (i != index)
+            for (int i = 0; i < ToolPanelMenus.Length; i++)
             {
                 ToolPanelMenus[i].SetActive(false);
             }

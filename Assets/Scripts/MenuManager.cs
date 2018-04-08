@@ -91,6 +91,7 @@ public class MenuManager : MonoBehaviour
             GameBoardData.CharacterIndexLocal = 0;
             GameBoardData.CharacterIndexNetwork = 0;
             GameCore.BoardManager.playerGoingFirst = true;
+            GameBoardData.GameOver = false;
         }
         else
         {
