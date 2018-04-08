@@ -51,6 +51,7 @@ namespace GameCore {
 
         public GameObject canvas;
         public GameObject GameOverPanel;
+        private Button[] gameOverOptionButtons;
         public Text winnerText;
         public Text turnText;
         public Image turnImage;
@@ -321,7 +322,14 @@ namespace GameCore {
                 {
                     if (currentPlayer == PlayerO)
                     {
-                        winnerText.text = "You win!!";
+                        if (GameCore.BoardManager.againstAI)
+                        {
+                            winnerText.text = "You win!!";
+                        }
+                        else
+                        {
+                            winnerText.text = GameBoardData.Name + " Wins!!";
+                        }
                     }
                     else if (currentPlayer == PlayerX)
                     {
@@ -331,6 +339,12 @@ namespace GameCore {
                     GameObject gameOverPanel = Instantiate(GameOverPanel) as GameObject;
                     gameOverPanel.transform.SetParent(canvas.transform, false);
                     wasCreated = true;
+
+                    if(GameCore.BoardManager.againstNetwork)
+                    {
+                        gameOverOptionButtons = gameOverPanel.GetComponentsInChildren<Button>();
+                        gameOverOptionButtons[0].gameObject.SetActive(false);
+                    }
 
                 }
             }
