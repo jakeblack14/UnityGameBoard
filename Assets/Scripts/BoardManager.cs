@@ -73,6 +73,13 @@ namespace GameCore {
 
         private Move currentMove;
 
+        //green then white in the array
+        public GameObject[] destructionGamePieces;
+        private GameObject playerXDestruction;
+        private GameObject playerODestruction;
+        public GameObject explosion;
+        private GameObject instance;
+
 
         private void setFirstPlayer()
         {
@@ -99,12 +106,18 @@ namespace GameCore {
                 gamePieces[0].GetComponent<Renderer>().material = green;
                 gamePieces[1].GetComponent<Renderer>().material = white;
                 player1IsGreen = true;
+
+                playerXDestruction = destructionGamePieces[0];
+                playerODestruction = destructionGamePieces[1];
             }
             else
             {
                 player1IsGreen = false;
                 gamePieces[1].GetComponent<Renderer>().material = green;
                 gamePieces[0].GetComponent<Renderer>().material = white;
+
+                playerXDestruction = destructionGamePieces[1];
+                playerODestruction = destructionGamePieces[0];
             }
 
             if(player1IsGreen)
@@ -248,6 +261,9 @@ namespace GameCore {
                             endRow = selectionX;
                             if (beginCol != endCol && endCol != beginCol - 1)
                             {
+                                // Last part to fix
+                                // needs to be an if statement here that checks to see if it is moving forward and if there is a piece blocking it
+                                // or fix the boolean that goes through like 10 files 
                                 if (checkValidMove)
                                 {
                                     checkValidMove = false;
@@ -367,23 +383,21 @@ namespace GameCore {
                 {
                     removedGamePiece = GamePiecesArray[game.pieceLastTaken.col, game.pieceLastTaken.row];
 
-                    Destroy(removedGamePiece.GetComponent<MeshRenderer>());
+                    //Destroy(removedGamePiece.GetComponent<MeshRenderer>());
                     //activeGamePieces.Remove();
                     GamePiecesArray[game.pieceLastTaken.col, game.pieceLastTaken.row] = selectedGamePiece;
 
-                    Destroy(removedGamePiece.GetComponent<GamePieces>());
+                    DestroyPiece();
+
+                    //Destroy(removedGamePiece.GetComponent<GamePieces>());
                     //GamePiecesArray[game.pieceLastTaken.X, game.pieceLastTaken.Y] = null;
 
                 }
                 
                 GamePiecesArray[currentMove.Begin.col,currentMove.Begin.row] = null;
-                //GamePiecesArray[currentMove.End.col, currentMove.End.row] = selectedGamePiece;
-
-                Debug.Log(selectedGamePiece);
 
                 StartCoroutine(AnimatePiece(selectedGamePiece, GetTileCenter(x,y).x, GetTileCenter(x,y).z));
 
-                //selectedGamePiece.transform.localPosition = GetTileCenter(x, y);
                 GamePiecesArray[x,y] = selectedGamePiece;
 
                 selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
@@ -412,6 +426,28 @@ namespace GameCore {
                     selectedGamePiece = null;
                 }
             }
+        }
+
+        public void DestroyPiece()
+        {
+            GameObject currentDestruction;
+
+            if(removedGamePiece.pieceIdentity == identity.X)
+            {
+                currentDestruction = playerXDestruction;
+            }
+            else
+            {
+                currentDestruction = playerODestruction;
+            }
+
+            instance = Instantiate(currentDestruction, removedGamePiece.transform.position, Quaternion.identity);
+            Instantiate(explosion, removedGamePiece.transform.position, Quaternion.identity);
+
+            Destroy(removedGamePiece.GetComponent<MeshRenderer>());
+            Destroy(removedGamePiece.GetComponent<GamePieces>());
+
+            Destroy(instance, 20);
         }
 
         IEnumerator AnimatePiece(GamePieces piece, float x, float z)
