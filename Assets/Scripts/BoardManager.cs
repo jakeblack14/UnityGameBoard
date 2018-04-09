@@ -71,6 +71,8 @@ namespace GameCore {
 
         private Material previousMat;
         public Material selectedMat;
+        public Material White;
+        public Material Green;
 
         private Move currentMove;
 
@@ -267,6 +269,9 @@ namespace GameCore {
                                 // Last part to fix
                                 // needs to be an if statement here that checks to see if it is moving forward and if there is a piece blocking it
                                 // or fix the boolean that goes through like 10 files 
+
+                                //if(currentPlayer.isNetwork() && currentPlayer.getIdentity() == identity.X)
+
                                 if (checkValidMove)
                                 {
                                     checkValidMove = false;
@@ -374,16 +379,28 @@ namespace GameCore {
             if (GamePiecesArray[x, y].pieceIdentity != currentPlayer.getIdentity())
                 return;
 
-            
+            if (GamePiecesArray[x, y].pieceIdentity != currentPlayer.getIdentity() && currentPlayer.isNetwork())
+            {
+                if (player1IsGreen)
+                {
+                    selectedGamePiece.GetComponent<MeshRenderer>().material = green;
+                }
+                else
+                {
+                    selectedGamePiece.GetComponent<MeshRenderer>().material = white;
+                }
+            }
+
             currentMove.Begin.row = y;
             currentMove.Begin.col = x;
 
             selectedGamePiece = GamePiecesArray[x, y];
-            
+
             //DO NOT DEBUG NEXT LINE
-            previousMat = selectedGamePiece.GetComponent<MeshRenderer>().material;
-            selectedMat.mainTexture = previousMat.mainTexture;
-            selectedGamePiece.GetComponent<MeshRenderer>().material = selectedMat;
+                previousMat = selectedGamePiece.GetComponent<MeshRenderer>().material;
+                selectedMat.mainTexture = previousMat.mainTexture;
+                selectedGamePiece.GetComponent<MeshRenderer>().material = selectedMat;
+           
 
         }
 
@@ -394,8 +411,10 @@ namespace GameCore {
 
             if(game.movePiece(currentPlayer.getIdentity(), currentMove))
             {
+
                 checkValidMove = true;
-                if(game.pieceLastTaken != null)
+
+                if (game.pieceLastTaken != null)
                 {
                     removedGamePiece = GamePiecesArray[game.pieceLastTaken.col, game.pieceLastTaken.row];
 
@@ -417,8 +436,8 @@ namespace GameCore {
                 GamePiecesArray[x,y] = selectedGamePiece;
 
                 selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
+           
                 selectedGamePiece = null;
-
 
                 if (currentPlayer.getIdentity() == identity.X)
                 {
@@ -440,6 +459,15 @@ namespace GameCore {
                         selectedGamePiece.GetComponent<MeshRenderer>().material = previousMat;
                     }
                     selectedGamePiece = null;
+                }
+
+                if (player1IsGreen)
+                {
+                    selectedGamePiece.GetComponent<MeshRenderer>().material = green;
+                }
+                else
+                {
+                    selectedGamePiece.GetComponent<MeshRenderer>().material = white;
                 }
             }
         }

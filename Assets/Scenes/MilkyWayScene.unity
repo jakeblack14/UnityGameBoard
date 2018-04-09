@@ -1378,6 +1378,8 @@ MonoBehaviour:
   whiteImage: {fileID: 21300000, guid: 14235cc5e42cd3441aa146be6fb89053, type: 3}
   Rocket: {fileID: 1000010329560674, guid: 19bc64b6ea73a2f41b4ec6bb93226f1d, type: 2}
   selectedMat: {fileID: 2100000, guid: 6981dccdbd114a7011005aba44295342, type: 2}
+  White: {fileID: 2100000, guid: fc077f0d30f0a4ccea1d2c28fa3cf93b, type: 2}
+  Green: {fileID: 2100000, guid: 0a58941bbd115a7011005aba44295342, type: 2}
   destructionGamePieces:
   - {fileID: 1413683576817116, guid: cdd05daa837182e4c979a606fdfcecdc, type: 2}
   - {fileID: 1413683576817116, guid: 0ee0a58a43e91b34e9810b945b3d6738, type: 2}
