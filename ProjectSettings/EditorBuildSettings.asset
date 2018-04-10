@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroVideoScene.unity
     guid: 870c0f352bf4b0a4fb99432189217d41
   - enabled: 1
+    path: Assets/Scenes/OpeningVideos.unity
+    guid: ea3656966c1202944915b308a24e1018
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: d4a5bff4b5930344e9eb5f798a96681e
   - enabled: 1
@@ -20,6 +23,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CreditsVideo.unity
     guid: 7bb27858df4a06745b890cb862c9607a
-  - enabled: 1
-    path: Assets/Scenes/OpeningVideos.unity
-    guid: ea3656966c1202944915b308a24e1018
