@@ -526,6 +526,7 @@
     <Compile Include="Assets\Scripts\ChooseCharacterForPlayer2.cs" />
     <Compile Include="Assets\Scripts\ColorBlindMode.cs" />
     <Compile Include="Assets\Scripts\Coord.cs" />
+    <Compile Include="Assets\Scripts\Credits.cs" />
     <Compile Include="Assets\Scripts\EarthSpinScript.cs" />
     <Compile Include="Assets\Scripts\Enums.cs" />
     <Compile Include="Assets\Scripts\FadeEffect.cs" />

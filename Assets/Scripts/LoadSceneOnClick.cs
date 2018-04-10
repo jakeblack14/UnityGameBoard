@@ -6,7 +6,7 @@ using TechPlanet.SpaceRace;
 
 public class LoadSceneOnClick : MonoBehaviour {
 
-    public void LoadByIndex(int sceneIndex)
+    public void LoadByIndex()
     {
         if (GameCore.BoardManager.againstNetwork)
         {
@@ -23,5 +23,10 @@ public class LoadSceneOnClick : MonoBehaviour {
                 SceneManager.LoadScene("MainMenu");
             }
         }
+    }
+
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("CreditsVideo");
     }
 }
