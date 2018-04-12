@@ -25,6 +25,7 @@ namespace TechPlanet.SpaceRace
         static int passedCharacter = 0;
         //bool initializing = true;
         string passedSceneName;
+        public static string delete;
         RoomInfo[] roomsList =  new RoomInfo[10];
         string random;
         private static bool created = false;
@@ -146,6 +147,7 @@ namespace TechPlanet.SpaceRace
         public override void OnReceivedRoomListUpdate()
         {
             GameBoardData.lobbyRoomInfo = PhotonNetwork.GetRoomList();
+
         }
         
 
@@ -192,6 +194,9 @@ namespace TechPlanet.SpaceRace
         
         public void OnJoinedCreatedGame()
         {
+            delete = PhotonNetwork.room.Name;
+            Debug.Log("setting delete");
+            Debug.Log(delete);
             Debug.Log("OnJoinedCreatedGame is called");
             if (PhotonNetwork.room.PlayerCount == 2)
             {
@@ -304,8 +309,41 @@ namespace TechPlanet.SpaceRace
             
         }
 
-        public static void LeaveGame()
+        public void LeaveGame()
         {
+            
+            
+
+
+                //string delete = PhotonNetwork.room.Name;
+                int x = 0;
+                int indexItIsAt = 0;
+                bool testingIt = false;
+
+                foreach (string nameToDelete in GameBoardData.networkGameNames)
+                {
+                Debug.Log("Gets in the foreach");
+                Debug.Log(nameToDelete);
+                Debug.Log(delete);
+                    if (nameToDelete == delete)
+                    {
+                    Debug.Log("Finds the thing to delete");
+                        testingIt = true;
+                        indexItIsAt = x;
+                        //GameBoardData.networkGameNames.RemoveAt(x);
+                    }
+                    x++;
+                }
+            Debug.Log(testingIt);
+                if (testingIt)
+                {
+                Debug.Log(GameBoardData.networkGameNames.IndexOf(delete));
+                Debug.Log(indexItIsAt);
+                    GameBoardData.networkGameNames.RemoveAt(indexItIsAt);
+                Debug.Log(GameBoardData.networkGameNames.IndexOf(delete));
+                }
+            testingIt = false;
+            
             PhotonNetwork.Disconnect();
             GameBoardData.NetworkGameSelected = false;
             SceneManager.LoadScene("MainMenu");

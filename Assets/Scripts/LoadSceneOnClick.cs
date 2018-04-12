@@ -6,12 +6,27 @@ using TechPlanet.SpaceRace;
 
 public class LoadSceneOnClick : MonoBehaviour {
 
+    string sceneName;
+
+    private void Start()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        sceneName = currentScene.name;
+
+        Debug.Log(sceneName);
+    }
+
     public void LoadByIndex()
     {
         if (GameCore.BoardManager.againstNetwork)
         {
-            TechPlanet.SpaceRace.MultiplayerLauncher.LeaveGame();
+            if(sceneName == "MainMenu")
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
+            
         else
         {
             if (!GameBoardData.GameInitialized)

@@ -7255,7 +7255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 505.46008, y: -467.3764}
+  m_AnchoredPosition: {x: 505.46008, y: -371.84393}
   m_SizeDelta: {x: 795.8, y: 195.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &517660833
@@ -8487,7 +8487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 505.46008, y: -130.67642}
+  m_AnchoredPosition: {x: 505.46008, y: -35.143913}
   m_SizeDelta: {x: 780, y: 58.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &623949348
@@ -11138,7 +11138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 505.46008, y: -591.8264}
+  m_AnchoredPosition: {x: 505.46008, y: -496.2939}
   m_SizeDelta: {x: 780, y: 53.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &912012611
@@ -13081,7 +13081,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 505.46008, y: -699.9264}
+  m_AnchoredPosition: {x: 505.46008, y: -604.3939}
   m_SizeDelta: {x: 650, y: 162.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142519263
@@ -14488,7 +14488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 505.46008, y: -821.32635}
+  m_AnchoredPosition: {x: 505.46008, y: -725.7939}
   m_SizeDelta: {x: 177.29999, y: 80.400024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1302031292
@@ -22178,7 +22178,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 505.46008, y: -288.6264}
+  m_AnchoredPosition: {x: 505.46008, y: -193.0939}
   m_SizeDelta: {x: 650, y: 162.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046226695
@@ -22795,7 +22795,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2106335540}
         m_MethodName: LoadByIndex
-        m_Mode: 3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 203865858}
+        m_MethodName: LeaveGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -23015,7 +23026,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 505.46008, y: -183.72641}
+  m_AnchoredPosition: {x: 505.46008, y: -88.19391}
   m_SizeDelta: {x: 219.9, y: 47.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2109079626
